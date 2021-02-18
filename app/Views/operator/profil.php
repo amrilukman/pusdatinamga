@@ -44,7 +44,7 @@
                 <div class="header-body">
                     <div class="row align-items-center py-4">
                         <div class="col">
-                            <h6 class="h2 text-white d-inline-block mb-0">Halo !, Operator Amri Lukman</h6>
+                            <h6 class="h2 text-white d-inline-block mb-0">Halo, Amri Lukman</h6>
                         </div>
                     </div>
                     <!-- ============================================================== -->
@@ -78,70 +78,68 @@
                 </div>
                 <div class="card-body bg-white border-0">
                     <form>
-                        <div class="form-group mb-3 my-0">
-                            <label for="nisn" class="form-control-label">ID :</label>
-                            <input class="form-control" type="numeric" id="nisn" placeholder="NISN" value="24060118140108">
-                        </div>
-                        <div class="form-group mb-3 my-0">
-                            <label for="nama" class="form-control-label">Nama :</label>
-                            <input class="form-control" type="text" id="nama" placeholder="Nama Lengkap" value="Amri Lukman Muzaki">
-                        </div>
-                        <div class="form-group mb-3 my-0">
-                            <label class="form-control-label">Jenis Kelamin :</label>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="lakilaki" name="jeniskelamin" class="custom-control-input" checked>
-                                <label class="custom-control-label" for="lakilaki">Laki-laki</label>
+                        <h6 class="heading-small text-muted mb-3">User Information</h6>
+                        <div class="ml-3">
+                            <div class="form-group form-row mb-3 my-0">
+                                <div class="col-4">
+                                    <label for="nisn" class="form-control-label">ID/NIP/NISN :</label>
+                                    <input class="form-control" type="numeric" id="nisn" placeholder="NISN" value="24060118140108">
+                                </div>
+                                <div class="col-8">
+                                    <div class="form-group my-0">
+                                        <label for="nama" class="form-control-label">Nama :</label>
+                                        <input class="form-control" type="text" id="nama" placeholder="Nama Lengkap" value="Amri Lukman Muzaki">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input type="radio" id="perempuan" name="jeniskelamin" class="custom-control-input">
-                                <label class="custom-control-label" for="perempuan">Perempuan</label>
+                            <div class="form-group form-row mb-3 my-0">
+                                <div class="col-4">
+                                    <label for="tempatlahir" class="form-control-label">Tempat Lahir :</label>
+                                    <input class="form-control" type="text" id="tempatlahir" placeholder="Tempat Lahir" value="Pemalang">
+                                </div>
+                                <div class="col-8">
+                                    <label for="tanggallahir" class="form-control-label">Tanggal Lahir</label>
+                                    <input class="form-control" type="date" id="tanggallahir" value="2000-09-20">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group form-row mb-3 my-0">
-                            <div class="col-4">
-                                <label for="tempatlahir" class="form-control-label">Tempat Lahir :</label>
-                                <input class="form-control" type="text" id="tempatlahir" placeholder="Tempat Lahir" value="Pemalang">
-                            </div>
-                            <div class="col-8">
-                                <label for="tanggallahir" class="form-control-label">Tanggal Lahir</label>
-                                <input class="form-control" type="date" id="tanggallahir" value="2000-09-20">
-                            </div>
-                        </div>
-                        <div class="form-group form-row mb-3 my-0">
-                            <div class="col-4">
-                                <label for="jurusan" class="form-control-label">Jurusan :</label>
-                                <select class="form-control" id="jurusan">
-                                    <option selected>Teknik Komputer dan Informatika</option>
-                                    <option>Teknik Kendarangan Ringan</option>
-                                    <option>Teknik Pemesinan</option>
-                                    <option>Teknik Pengelasan</option>
-                                    <option>Teknik Audio Video</option>
-                                    <option>Tata Busana</option>
-                                    <option>Teknik Instalasi Tenaga Listrik</option>
-                                    <option>Teknik Elektronika Industri</option>
-                                </select>
-                            </div>
-                            <div class="col-4">
-                                <label for="kelas" class="form-control-label">Kelas :</label>
-                                <select class="form-control" id="kelas">
-                                    <option>X</option>
-                                    <option>XI</option>
-                                    <option selected>XII</option>
-                                </select>
-                            </div>
-                            <div class="col-4">
-                                <label for="rombel" class="form-control-label">Rombel :</label>
-                                <select class="form-control" id="rombel">
-                                    <option selected>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                </select>
+                            <div class="form-group mb-3 my-0">
+                                <label class="form-control-label">Jenis Kelamin :</label>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="lakilaki" name="jeniskelamin" class="custom-control-input" checked>
+                                    <label class="custom-control-label" for="lakilaki">Laki-laki</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="perempuan" name="jeniskelamin" class="custom-control-input">
+                                    <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <?php $message = ("Jl. Sukorejo Tumbal RT 02/09 Dk. Sumurlembu Ds. Sukorejo Kec. Ulujami Kab. Pemalang 52371"); ?>
-                            <label class="form-control-label" for="alamat">Alamat</label>
-                            <textarea class="form-control" id="alamat" rows="3" placeholder="Alamat Lengkap"><?php echo htmlspecialchars($message); ?></textarea>
+                        <hr class="my-4">
+                        <h6 class="heading-small text-muted mb-3">User Contact</h6>
+                        <div class="ml-3">
+                            <div class="form-group form-row mb-3 my-0">
+                                <div class="col-4">
+                                    <label for="nisn" class="form-control-label">Kecamatan :</label>
+                                    <input class="form-control" type="numeric" id="nisn" placeholder="Kecamatan" value="Ulujami">
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group my-0">
+                                        <label for="nama" class="form-control-label">Email :</label>
+                                        <input class="form-control" type="text" id="nama" placeholder="Email" value="ampry.muzaki@gmail.com">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group my-0">
+                                        <label for="nama" class="form-control-label">No. Telp/WA :</label>
+                                        <input class="form-control" type="text" id="nama" placeholder="No. Telp/Whatsapp" value="085777617635">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <?php $message = ("Jl. Sukorejo Tumbal RT 02/09 Dk. Sumurlembu Ds. Sukorejo Kec. Ulujami Kab. Pemalang 52371"); ?>
+                                <label class="form-control-label" for="alamat">Alamat Lengkap</label>
+                                <textarea class="form-control" id="alamat" rows="3" placeholder="Alamat Lengkap"><?php echo htmlspecialchars($message); ?></textarea>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col text-right">
@@ -151,6 +149,7 @@
                                 </a>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>

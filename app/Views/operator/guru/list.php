@@ -110,7 +110,7 @@
                                 <option>XII</option>
                             </select>
                         </div>
-                        <div class="col-6 pl-2 pr-0 text-right">
+                        <div class="col-6 pl-2 text-right">
                             <ul class="nav justify-content-end">
                                 <li>
                                     <button class="btn btn-icon btn-outline-secondary" type="button">

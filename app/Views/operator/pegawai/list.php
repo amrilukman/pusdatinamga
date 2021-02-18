@@ -90,7 +90,7 @@
             <div class="card">
                 <div class="card-header border-0">
                     <div class="row align-items-left">
-                        <div class="col-3 pl-2 pr-0">
+                        <div class="col-4 pl-2 pr-0">
                             <select class="form-control" id="kelas">
                                 <option>Semua Kategori</option>
                                 <option>Tata Usaha</option>
@@ -99,7 +99,7 @@
                                 <option>BKK</option>
                             </select>
                         </div>
-                        <div class="col-9 text-left">
+                        <div class="col-8 text-left">
                             <ul class="nav justify-content-end">
                                 <li>
                                     <button class="btn btn-icon btn-outline-secondary" type="button">

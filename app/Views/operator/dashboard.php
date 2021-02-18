@@ -311,7 +311,7 @@
                                 <div class="col-10">
                                     <h3 class="mb-0">Notifikasi Perubahan Data</h3>
                                 </div>
-                                <div class="col-2 justify-content-end">
+                                <div class="col-2 text-right justify-content-end">
                                     <span class="badge badge-md badge-circle badge-floating badge-danger border-white">3</span>
                                 </div>
                             </div>
@@ -373,35 +373,70 @@
                     <!-- ============================================================== -->
                     <!-- Informasi dan Pengumuman -->
                     <!-- ============================================================== -->
-                    <div class="card">
-                        <div class="card-header bg-transparent">
+                    <div class="card bg-white pb-2">
+                        <div class="card-header bg-transparent border-0">
                             <div class="row align-items-center">
-                                <div class="col-9">
+                                <div class="col">
                                     <h3 class="mb-0">Informasi dan Pengumuman</h3>
                                 </div>
-                                <div class="col-3 justify-content-end">
-                                    <a href="<?= base_url('/operator/info/edit') ?>">
-                                        <button type="button" class="btn btn-sm text-white" style="background-color: #1174EF;">Edit</button>
+                                <div class="col-2 text-right justify-content-end">
+                                    <a data-toggle="tooltip" data-placement="top" title="Tambah" onclick="addInfoForm('<?php echo base_url('operator/dashboard') ?>')" href="#!">
+                                        <button class="btn btn-icon pl-1 pr-1 pt-0 pb-0" type="button" style="border-radius: 100%; background-color: #1174EF">
+                                            <span class="btn-inner--icon"><i class="text-white ni ni-fat-add"></i></span>
+                                        </button>
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body pt-0 pr-2 pl-2 pb-1">
-                            <div class="list-group list-group-flush">
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="mb-0 text-sm">Jadwal Ujian Akhir Semester</h4>
-                                    </div>
-                                    <p class="text-sm mb-0">Tahun Ajaran 2021/2022</p>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <h4 class="mb-0 text-sm">Pendaftaran POLMAN Astra</h4>
-                                    </div>
-                                    <p class="text-sm mb-0">Tahun Ajaran 2022/2023</p>
-                                </a>
+                        <div class="card-body pl-0 pr-0 pt-0 pb-0">
+                            <div class="table-responsive">
+                                <table class="table align-items-center list-group-flush">
+                                    <tbody class="list">
+                                        <tr>
+                                            <td class="pl-2 pt-0 pr-2 pb-0">
+                                                <a href="#!" class="list-group-item list-group-item-action">
+                                                    <div class="d-flex">
+                                                        <h4 class="mb-0 text-sm">Jadwal Ujian Akhir Semester</h4>
+                                                    </div>
+                                                    <p class="text-sm mb-0 ">Tahun Ajaran 2021/2022</p>
+                                                </a>
+                                            </td>
+                                            <td class="pl-0 pr-0">
+                                                <div class="dropdown">
+                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                        <a class="dropdown-item" onclick="editInfoForm('<?php echo base_url('operator/dashboard') ?>')" href="#!">Edit</a>
+                                                        <a class="dropdown-item text-danger" onclick="deleteConfirm('<?php echo base_url('operator/dashboard') ?>')" href="#!">Hapus</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pl-2 pt-0 pr-2 pb-0">
+                                                <a href="#!" class="list-group-item list-group-item-action">
+                                                    <div class="d-flex">
+                                                        <h4 class="mb-0 text-sm">Pendaftaran POLMAN Astra</h4>
+                                                    </div>
+                                                    <p class="text-sm mb-0 ">Periode 2021/2022</p>
+                                                </a>
+                                            </td>
+                                            <td class="pl-0 pr-0">
+                                                <div class="dropdown">
+                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fas fa-ellipsis-v"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item text-danger" href="#">Hapus</a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <!-- <small class="text-center">Tidak ada permintaan perubahan data</small> -->
                         </div>
                     </div>
                     <!-- ============================================================== -->
@@ -409,23 +444,55 @@
                     <!-- ============================================================== -->
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End of Page Content -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Footer - File that you can find on __partial/footer.php -->
-            <!-- ============================================================== -->
-
-            <?= $this->include('operator/__partial/footer') ?>
-
-            <!-- ============================================================== -->
-            <!-- End of Footer - File that you can find on __partial/footer.php -->
-            <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Page Content -->
+        <!-- End of Page Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Footer - File that you can find on __partial/footer.php -->
+        <!-- ============================================================== -->
+
+        <?= $this->include('operator/__partial/footer') ?>
+
+        <!-- ============================================================== -->
+        <!-- End of Footer - File that you can find on __partial/footer.php -->
         <!-- ============================================================== -->
     </div>
+    <!-- ============================================================== -->
+    <!-- End Page Content -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- Modal - File that you can find on __partial/modal.php -->
+    <!-- ============================================================== -->
+
+    <?= $this->include('operator/info/tambah-info') ?>
+    <?= $this->include('operator/__partial/modal') ?>
+
+    <script>
+        function addInfoForm(url) {
+            $('#btn-add').attr('href', url);
+            $('#addModal').modal();
+        }
+    </script>
+
+    <script>
+        function editInfoForm(url) {
+            $('#btn-edit').attr('href', url);
+            $('#editModal').modal();
+        }
+    </script>
+
+    <script>
+        function deleteConfirm(url) {
+            $('#btn-delete').attr('href', url);
+            $('#deleteModal').modal();
+        }
+    </script>
+
+    <!-- ============================================================== -->
+    <!-- End of Modal - File that you can find on __partial/modal.php -->
+    <!-- ============================================================== -->
     <!-- ============================================================== -->
     <!-- jQuery - File that you can find on __partial/js.php -->
     <!-- ============================================================== -->
