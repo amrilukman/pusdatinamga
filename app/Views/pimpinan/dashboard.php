@@ -2,7 +2,7 @@
 <!-- Header - File that you can find on __partial/header.php -->
 <!-- ============================================================== -->
 
-<?= $this->include('operator/__partial/header') ?>
+<?= $this->include('pimpinan/__partial/header') ?>
 
 <!-- ============================================================== -->
 <!-- Body -->
@@ -14,7 +14,7 @@
     <!-- Sidebar - File that you can find on __partial/sidebar.php -->
     <!-- ============================================================== -->
 
-    <?= $this->include('operator/__partial/sidebar') ?>
+    <?= $this->include('pimpinan/__partial/sidebar') ?>
 
     <!-- ============================================================== -->
     <!-- End of Sidebar - File that you can find on __partial/sidebar.php -->
@@ -30,7 +30,7 @@
         <!-- Navbarr - File that you can find on __partial/navbar.php -->
         <!-- ============================================================== -->
 
-        <?= $this->include('operator/__partial/navbar') ?>
+        <?= $this->include('pimpinan/__partial/navbar') ?>
 
         <!-- ============================================================== -->
         <!-- End of Navbar - File that you can find on __partial/navbar.php -->
@@ -305,138 +305,59 @@
                 <!-- Notifikasi Perubahan Data -->
                 <!-- ============================================================== -->
                 <div class="col-xl-4">
-                    <div class="card">
-                        <div class="card-header bg-transparent">
-                            <div class="row align-items-center">
-                                <div class="col-10">
-                                    <h3 class="mb-0">Notifikasi Perubahan Data</h3>
-                                </div>
-                                <div class="col-2 text-right justify-content-end">
-                                    <span class="badge badge-md badge-circle badge-floating badge-danger border-white">3</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body pt-0 pr-2 pl-2 pb-1">
-                            <div class="list-group list-group-flush">
-                                <a class="list-group-item list-group-item-action" onclick="notifModal('<?php echo base_url('operator/dashboard') ?>')" href="#!">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                                <i class="ni ni-hat-3"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h4 class="mb-0 text-sm">Amri Lukman Muzaki</h4>
-                                            </div>
-                                            <p class="text-sm mb-0">Perubahan data NISN</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                                <i class="fas fa-chalkboard-teacher"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h4 class="mb-0 text-sm">Rohman Pujadi</h4>
-                                            </div>
-                                            <p class="text-sm mb-0">Perubahan Tanggal Lahir</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                                <i class="fas fa-chalkboard-teacher"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h4 class="mb-0 text-sm">Syukron Jamil</h4>
-                                            </div>
-                                            <p class="text-sm mb-0">Perubahan NIP</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- <small class="text-center">Tidak ada permintaan perubahan data</small> -->
-                        </div>
-                    </div>
                     <!-- ============================================================== -->
                     <!-- End of Notifikasi Perubahan Data -->
                     <!-- ============================================================== -->
                     <!-- ============================================================== -->
                     <!-- Informasi dan Pengumuman -->
                     <!-- ============================================================== -->
-                    <div class="card bg-white pb-2">
-                        <div class="card-header bg-transparent border-0">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    <h3 class="mb-0">Informasi dan Pengumuman</h3>
-                                </div>
-                                <div class="col-2 text-right justify-content-end">
-                                    <a data-toggle="tooltip" data-placement="top" title="Tambah" onclick="addInfoForm('<?php echo base_url('operator/dashboard') ?>')" href="#!">
-                                        <button class="btn btn-icon pl-1 pr-1 pt-0 pb-0" type="button" style="border-radius: 100%; background-color: #1174EF">
-                                            <span class="btn-inner--icon"><i class="text-white ni ni-fat-add"></i></span>
-                                        </button>
-                                    </a>
-                                </div>
-                            </div>
+                    <div class="card">
+                        <div class="card-header bg-transparent">
+                            <h3 class="mb-0">Informasi dan Pengumuman</h3>
                         </div>
-                        <div class="card-body pl-0 pr-0 pt-0 pb-0">
-                            <div class="table-responsive">
-                                <table class="table align-items-center list-group-flush">
-                                    <tbody class="list">
-                                        <tr>
-                                            <td class="pl-2 pt-0 pr-2 pb-0">
-                                                <a href="https://smkn1amga.sch.id" target="_blank" class="list-group-item list-group-item-action">
-                                                    <div class="d-flex">
-                                                        <h4 class="mb-0 text-sm">Jadwal Ujian Akhir Semester</h4>
-                                                    </div>
-                                                    <p class="text-sm mb-0 ">Tahun Ajaran 2021/2022</p>
-                                                </a>
-                                            </td>
-                                            <td class="pl-0 pr-0">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" onclick="editInfoForm('<?php echo base_url('operator/dashboard') ?>')" href="#!">Edit</a>
-                                                        <a class="dropdown-item text-danger" onclick="deleteConfirm('<?php echo base_url('operator/dashboard') ?>')" href="#!">Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pl-2 pt-0 pr-2 pb-0">
-                                                <a href="#!" class="list-group-item list-group-item-action">
-                                                    <div class="d-flex">
-                                                        <h4 class="mb-0 text-sm">Pendaftaran POLMAN Astra</h4>
-                                                    </div>
-                                                    <p class="text-sm mb-0 ">Periode 2021/2022</p>
-                                                </a>
-                                            </td>
-                                            <td class="pl-0 pr-0">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item text-danger" href="#">Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <div class="card-body pt-0 pr-2 pl-2 pb-1">
+                            <div class="list-group list-group-flush">
+                                <a href="https://smkn1amga.sch.id" target="_blank" class="list-group-item list-group-item-action">
+                                    <div class="d-flex">
+                                        <h4 class="mb-0 text-sm">Jadwal Ujian Akhir Semester</h4>
+                                    </div>
+                                    <p class="text-sm mb-0 ">Tahun Ajaran 2021/2022</p>
+                                </a>
+                                <a href="#!" class="list-group-item list-group-item-action">
+                                    <div class="d-flex">
+                                        <h4 class="mb-0 text-sm">Pendaftaran POLMAN Astra</h4>
+                                    </div>
+                                    <p class="text-sm mb-0 ">Periode 2021/2022</p>
+                                </a>
                             </div>
+                            <!-- <small class="text-center">Tidak ada pengumuman</small> -->
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End of Informasi dan Pengumuman -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Form Informasi Kelulusan -->
+                    <!-- ============================================================== -->
+                    <div class="card">
+                        <div class="card-header bg-transparent">
+                            <h3 class="mb-0">Informasi Kelulusan</h3>
+                            <h6 class="text-muted text-uppercase ls-1 mb-0">Tahun Ajaran 2021/2022</h6>
+                        </div>
+                        <div class="card-body pt-2 pb-2">
+                            <form>
+                                <div class="form-group mb-4 mt-2">
+                                    <label for="nisn" class="form-control-label">NISN / Nama :</label>
+                                    <input class="form-control" type="numeric" id="nisn" placeholder="NISN / Nama" required>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col text-right">
+                                        <a onclick="lulusModal('<?php echo base_url('/pimpinan/dashboard') ?>')" href="#!" class="btn" type="submit" style="color: white; background-color: #1174EF">
+                                            <span>Cari</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <!-- ============================================================== -->
@@ -452,7 +373,7 @@
         <!-- Footer - File that you can find on __partial/footer.php -->
         <!-- ============================================================== -->
 
-        <?= $this->include('operator/__partial/footer') ?>
+        <?= $this->include('pimpinan/__partial/footer') ?>
 
         <!-- ============================================================== -->
         <!-- End of Footer - File that you can find on __partial/footer.php -->
@@ -465,39 +386,13 @@
     <!-- Modal - File that you can find on __partial/modal.php -->
     <!-- ============================================================== -->
 
-    <?= $this->include('operator/info') ?>
-    <?= $this->include('operator/notif') ?>
-    <?= $this->include('operator/__partial/modal') ?>
+    <?= $this->include('pimpinan/lulus') ?>
 
-    <!-- Add Info -->
+    <!-- Kelulusan Modul -->
     <script>
-        function addInfoForm(url) {
-            $('#btn-add').attr('href', url);
-            $('#addModal').modal();
-        }
-    </script>
-
-    <!-- Edit Info -->
-    <script>
-        function editInfoForm(url) {
-            $('#btn-edit').attr('href', url);
-            $('#editModal').modal();
-        }
-    </script>
-
-    <!-- Add Info -->
-    <script>
-        function deleteConfirm(url) {
-            $('#btn-delete').attr('href', url);
-            $('#deleteModal').modal();
-        }
-    </script>
-
-    <!-- Notif Modul -->
-    <script>
-        function notifModal(url) {
-            $('#btn-notif').attr('href', url);
-            $('#notifModal').modal();
+        function lulusModal(url) {
+            $('#btn-lulus').attr('href', url);
+            $('#lulusModal').modal();
         }
     </script>
 
@@ -508,7 +403,7 @@
     <!-- jQuery - File that you can find on __partial/js.php -->
     <!-- ============================================================== -->
 
-    <?= $this->include('operator/__partial/js.php') ?>
+    <?= $this->include('pimpinan/__partial/js.php') ?>
 
     <!-- ============================================================== -->
     <!-- End of jQuery - File that you can find on __partial/js.php -->

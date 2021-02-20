@@ -31,11 +31,22 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+// ==============================================================
+// PUblic's Router -->
+// ==============================================================
 $routes->get('login', 'Login::index');
 $routes->get('signup', 'Signup::index');
+$routes->get('/', 'Home::index');
+// ==============================================================
+// End of PUblic's Router -->
+// ==============================================================
+
+// ==============================================================
+// Operator's Router -->
+// ==============================================================
 $routes->get('operator/dashboard', 'Operator/Dashboard::index');
 $routes->get('operator/profil', 'Operator/Profil::index');
-$routes->get('operator/siswa', 'Operator/Siswa::index');
 $routes->get('operator/siswa/list', 'Operator/Siswa::index');
 $routes->get('operator/siswa/add', 'Operator/Siswa::add');
 $routes->get('operator/siswa/edit', 'Operator/Siswa::edit');
@@ -57,8 +68,35 @@ $routes->get('operator/wali/edit', 'Operator/Wali::edit');
 $routes->get('operator/alumni/list', 'Operator/Alumni::index');
 $routes->get('operator/alumni/add', 'Operator/Alumni::add');
 $routes->get('operator/alumni/edit', 'Operator/Alumni::edit');
-$routes->get('/', 'Home::index');
+// ==============================================================
+// End of Operator's Router -->
+// ==============================================================
 
+// ==============================================================
+// Pimpinan's Router -->
+// ==============================================================
+$routes->get('pimpinan/dashboard', 'Pimpinan/Dashboard::index');
+$routes->get('pimpinan/profil', 'Pimpinan/Profil::index');
+$routes->get('pimpinan/siswa/list', 'Pimpinan/Siswa::index');
+$routes->get('pimpinan/guru/list', 'Pimpinan/Guru::index');
+$routes->get('pimpinan/pegawai/list', 'Pimpinan/Pegawai::index');
+$routes->get('pimpinan/alumni/list', 'Pimpinan/Alumni::index');
+// ==============================================================
+// End of Pimpinan's Router -->
+// ==============================================================
+
+// ==============================================================
+// Pimpinan's Router -->
+// ==============================================================
+$routes->get('user/dashboard', 'User/Dashboard::index');
+$routes->get('user/profil', 'User/Profil::index');
+$routes->get('user/siswa/list', 'User/Siswa::index');
+$routes->get('user/guru/list', 'User/Guru::index');
+$routes->get('user/pegawai/list', 'User/Pegawai::index');
+$routes->get('user/alumni/list', 'User/Alumni::index');
+// ==============================================================
+// End of Pimpinan's Router -->
+// ==============================================================
 
 /**
  * --------------------------------------------------------------------
