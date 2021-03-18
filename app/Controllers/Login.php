@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+
 class Login extends BaseController
 {
     public function index()
@@ -9,6 +11,37 @@ class Login extends BaseController
         return view("login");
     }
 
+    public function auth()
+    {
+        $user = new userModel();
+        $email = $this->request->getVar('email');
+        $password = md5($this->request->getVar('password'));
+        $datauser = $user->where([
+            'email' => $email,
+        ])->first();
+        if ($datauser) {
+            if ($password == $datauser->password) {
+                session()->set([
+                    'email' => $datauser->email,
+                    'nama' => $datauser->nama,
+                    'logged_in' => TRUE
+                ]);
+                return redirect()->to(base_url('user/dashboard'));
+            } else {
+                session()->setFlashdata('error', 'Email & Password Salah');
+                return redirect()->back();
+            }
+        } else {
+            session()->setFlashdata('error', 'Email belum terdaftar');
+            return redirect()->back();
+        }
+    }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/login');
+    }
     //--------------------------------------------------------------------
 
 }

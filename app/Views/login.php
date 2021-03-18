@@ -8,14 +8,15 @@
 	<meta name="author" content="Creative Tim">
 	<title>PUSDATIN AMGA - Login</title>
 	<!-- Favicon -->
-	<link rel="icon" href="../assets/img/brand/pusdatinicon.png" type="image/png">
 	<!-- Fonts -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
 	<!-- Icons -->
-	<link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
-	<link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+	<link rel="stylesheet" href="<?= base_url('../assets/vendor/nucleo/css/nucleo.css') ?>" type="text/css">
+	<link rel="stylesheet" href="<?= base_url('../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') ?>" type="text/css">
+	<!-- Page plugins -->
 	<!-- Argon CSS -->
-	<link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+	<link rel="stylesheet" href="<?= base_url('../assets/css/argon.css?v=1.2.0') ?>" type="text/css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body class="bg-default">
@@ -35,13 +36,20 @@
 							</div>
 						</div>
 						<div class="card-body px-lg-5 py-lg-5">
-							<form role="form">
+							<?php if (!empty(session()->getFlashdata('error'))) : ?>
+								<div class="alert alert-warning alert-dismissible fade show" role="alert">
+									<?= session()->getFlashdata('error'); ?>
+								</div>
+							<?php endif; ?>
+
+							<form method="post" action="<?= base_url('login/process') ?>" role="form">
+								<?php csrf_field(); ?>
 								<div class="form-group mb-3">
 									<div class="input-group input-group-merge input-group-alternative">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="ni ni-email-83"></i></span>
 										</div>
-										<input class="form-control" placeholder="Email" type="email">
+										<input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
 									</div>
 								</div>
 								<div class="form-group">
@@ -49,11 +57,11 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
 										</div>
-										<input class="form-control" placeholder="Password" type="password">
+										<input class="form-control" id="password" name="password" placeholder="Password" type="password" required>
 									</div>
 								</div>
 								<div class="text-center">
-									<button type="button" class="btn my-4" style="color: white; background-color: #1174EF">Sign in</button>
+									<button type="submit" class="btn my-4" style="color: white; background-color: #1174EF">Sign in</button>
 								</div>
 							</form>
 							<div class="text-center">
@@ -77,13 +85,13 @@
 	</footer>
 	<!-- Argon Scripts -->
 	<!-- Core -->
-	<script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-	<script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-	<script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+	<script src="<?= base_url('../assets/vendor/jquery/dist/jquery.min.js') ?>"></script>
+	<script src="<?= base_url('../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
+	<script src="<?= base_url('../assets/vendor/js-cookie/js.cookie.js') ?>"></script>
+	<script src="<?= base_url('../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') ?>"></script>
+	<script src="<?= base_url('../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') ?>"></script>
 	<!-- Argon JS -->
-	<script src="../assets/js/argon.js?v=1.2.0"></script>
+	<script src="<?= base_url('../assets/js/argon.js?v=1.2.0') ?>"></script>
 </body>
 
 </html>

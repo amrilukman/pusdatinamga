@@ -36,6 +36,8 @@ $routes->setAutoRoute(true);
 // PUblic's Router -->
 // ==============================================================
 $routes->get('login', 'Login::index');
+$routes->post('login/auth', 'Login::auth');
+$routes->get('logout', 'Login::logout');
 $routes->get('signup', 'Signup::index');
 $routes->get('/', 'Home::index');
 // ==============================================================
