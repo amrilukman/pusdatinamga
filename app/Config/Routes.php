@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('Login');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(true);
 $routes->set404Override();
@@ -37,6 +37,7 @@ $routes->setAutoRoute(true);
 // ==============================================================
 $routes->get('login', 'Login::index');
 $routes->post('login/auth', 'Login::auth');
+
 $routes->get('logout', 'Login::logout');
 $routes->get('signup', 'Signup::index');
 $routes->get('/', 'Home::index');
@@ -47,29 +48,29 @@ $routes->get('/', 'Home::index');
 // ==============================================================
 // Operator's Router -->
 // ==============================================================
-$routes->get('operator/dashboard', 'Operator/Dashboard::index');
-$routes->get('operator/profil', 'Operator/Profil::index');
-$routes->get('operator/siswa/list', 'Operator/Siswa::index');
-$routes->get('operator/siswa/add', 'Operator/Siswa::add');
-$routes->get('operator/siswa/edit', 'Operator/Siswa::edit');
-$routes->get('operator/guru/list', 'Operator/Guru::index');
-$routes->get('operator/guru/add', 'Operator/Guru::add');
-$routes->get('operator/guru/edit', 'Operator/Guru::edit');
-$routes->get('operator/pegawai/list', 'Operator/Pegawai::index');
-$routes->get('operator/pegawai/add', 'Operator/Pegawai::add');
-$routes->get('operator/pegawai/edit', 'Operator/Pegawai::edit');
-$routes->get('operator/jurusan/list', 'Operator/Jurusan::index');
-$routes->get('operator/jurusan/add', 'Operator/Jurusan::add');
-$routes->get('operator/jurusan/edit', 'Operator/Jurusan::edit');
-$routes->get('operator/mapel/list', 'Operator/Mapel::index');
-$routes->get('operator/mapel/add', 'Operator/Mapel::add');
-$routes->get('operator/mapel/edit', 'Operator/Mapel::edit');
-$routes->get('operator/wali/list', 'Operator/Wali::index');
-$routes->get('operator/wali/add', 'Operator/Wali::add');
-$routes->get('operator/wali/edit', 'Operator/Wali::edit');
-$routes->get('operator/alumni/list', 'Operator/Alumni::index');
-$routes->get('operator/alumni/add', 'Operator/Alumni::add');
-$routes->get('operator/alumni/edit', 'Operator/Alumni::edit');
+$routes->get('operator/dashboard', 'Operator/Dashboard::index', ['filter' => 'authoperator']);
+$routes->get('operator/profil', 'Operator/Profil::index', ['filter' => 'authoperator']);
+$routes->get('operator/siswa/list', 'Operator/Siswa::index', ['filter' => 'authoperator']);
+$routes->get('operator/siswa/add', 'Operator/Siswa::add', ['filter' => 'authoperator']);
+$routes->get('operator/siswa/edit', 'Operator/Siswa::edit', ['filter' => 'authoperator']);
+$routes->get('operator/guru/list', 'Operator/Guru::index', ['filter' => 'authoperator']);
+$routes->get('operator/guru/add', 'Operator/Guru::add', ['filter' => 'authoperator']);
+$routes->get('operator/guru/edit', 'Operator/Guru::edit', ['filter' => 'authoperator']);
+$routes->get('operator/pegawai/list', 'Operator/Pegawai::index', ['filter' => 'authoperator']);
+$routes->get('operator/pegawai/add', 'Operator/Pegawai::add', ['filter' => 'authoperator']);
+$routes->get('operator/pegawai/edit', 'Operator/Pegawai::edit', ['filter' => 'authoperator']);
+$routes->get('operator/jurusan/list', 'Operator/Jurusan::index', ['filter' => 'authoperator']);
+$routes->get('operator/jurusan/add', 'Operator/Jurusan::add', ['filter' => 'authoperator']);
+$routes->get('operator/jurusan/edit', 'Operator/Jurusan::edit', ['filter' => 'authoperator']);
+$routes->get('operator/mapel/list', 'Operator/Mapel::index', ['filter' => 'authoperator']);
+$routes->get('operator/mapel/add', 'Operator/Mapel::add', ['filter' => 'authoperator']);
+$routes->get('operator/mapel/edit', 'Operator/Mapel::edit', ['filter' => 'authoperator']);
+$routes->get('operator/wali/list', 'Operator/Wali::index', ['filter' => 'authoperator']);
+$routes->get('operator/wali/add', 'Operator/Wali::add', ['filter' => 'authoperator']);
+$routes->get('operator/wali/edit', 'Operator/Wali::edit', ['filter' => 'authoperator']);
+$routes->get('operator/alumni/list', 'Operator/Alumni::index', ['filter' => 'authoperator']);
+$routes->get('operator/alumni/add', 'Operator/Alumni::add', ['filter' => 'authoperator']);
+$routes->get('operator/alumni/edit', 'Operator/Alumni::edit', ['filter' => 'authoperator']);
 // ==============================================================
 // End of Operator's Router -->
 // ==============================================================
@@ -77,12 +78,12 @@ $routes->get('operator/alumni/edit', 'Operator/Alumni::edit');
 // ==============================================================
 // Pimpinan's Router -->
 // ==============================================================
-$routes->get('pimpinan/dashboard', 'Pimpinan/Dashboard::index');
-$routes->get('pimpinan/profil', 'Pimpinan/Profil::index');
-$routes->get('pimpinan/siswa/list', 'Pimpinan/Siswa::index');
-$routes->get('pimpinan/guru/list', 'Pimpinan/Guru::index');
-$routes->get('pimpinan/pegawai/list', 'Pimpinan/Pegawai::index');
-$routes->get('pimpinan/alumni/list', 'Pimpinan/Alumni::index');
+$routes->get('pimpinan/dashboard', 'Pimpinan/Dashboard::index', ['filter' => 'authpimpinan']);
+$routes->get('pimpinan/profil', 'Pimpinan/Profil::index', ['filter' => 'authpimpinan']);
+$routes->get('pimpinan/siswa/list', 'Pimpinan/Siswa::index', ['filter' => 'authpimpinan']);
+$routes->get('pimpinan/guru/list', 'Pimpinan/Guru::index', ['filter' => 'authpimpinan']);
+$routes->get('pimpinan/pegawai/list', 'Pimpinan/Pegawai::index', ['filter' => 'authpimpinan']);
+$routes->get('pimpinan/alumni/list', 'Pimpinan/Alumni::index', ['filter' => 'authpimpinan']);
 // ==============================================================
 // End of Pimpinan's Router -->
 // ==============================================================
@@ -90,12 +91,12 @@ $routes->get('pimpinan/alumni/list', 'Pimpinan/Alumni::index');
 // ==============================================================
 // Pimpinan's Router -->
 // ==============================================================
-$routes->get('user/dashboard', 'User/Dashboard::index');
-$routes->get('user/profil', 'User/Profil::index');
-$routes->get('user/siswa/list', 'User/Siswa::index');
-$routes->get('user/guru/list', 'User/Guru::index');
-$routes->get('user/pegawai/list', 'User/Pegawai::index');
-$routes->get('user/alumni/list', 'User/Alumni::index');
+$routes->get('user/dashboard', 'User/Dashboard::index', ['filter' => 'authuser']);
+$routes->get('user/profil', 'User/Profil::index', ['filter' => 'authuser']);
+$routes->get('user/siswa/list', 'User/Siswa::index', ['filter' => 'authuser']);
+$routes->get('user/guru/list', 'User/Guru::index', ['filter' => 'authuser']);
+$routes->get('user/pegawai/list', 'User/Pegawai::index', ['filter' => 'authuser']);
+$routes->get('user/alumni/list', 'User/Alumni::index', ['filter' => 'authuser']);
 // ==============================================================
 // End of Pimpinan's Router -->
 // ==============================================================

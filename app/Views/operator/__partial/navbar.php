@@ -22,7 +22,7 @@
                                 <img alt="Image placeholder" src="<?= base_url('../assets/img/theme/user.png') ?>">
                             </span>
                             <div class="media-body  ml-2  d-none d-lg-block">
-                                <span class="mb-0 text-sm  font-weight-bold">Amri Lukman</span>
+                                <span class="mb-0 text-sm  font-weight-bold"><?= session()->get('nama'); ?></span>
                             </div>
                         </div>
                     </a>
@@ -35,7 +35,7 @@
                             <span>My profile</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="<?= base_url('login') ?>" class="dropdown-item">
+                        <a href="<?= base_url('login/logout') ?>" class="dropdown-item">
                             <i class="ni ni-user-run"></i>
                             <span>Logout</span>
                         </a>

@@ -42,14 +42,14 @@
 								</div>
 							<?php endif; ?>
 
-							<form method="post" action="<?= base_url('login/process') ?>" role="form">
+							<form method="post" action="<?= base_url('login/auth') ?>" role="form">
 								<?php csrf_field(); ?>
 								<div class="form-group mb-3">
 									<div class="input-group input-group-merge input-group-alternative">
 										<div class="input-group-prepend">
 											<span class="input-group-text"><i class="ni ni-email-83"></i></span>
 										</div>
-										<input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+										<input class="form-control" id="email" name="email" placeholder="Email/NIP/NISN/ID" type="text" required>
 									</div>
 								</div>
 								<div class="form-group">

@@ -16,17 +16,24 @@ class Login extends BaseController
         $user = new userModel();
         $email = $this->request->getVar('email');
         $password = md5($this->request->getVar('password'));
-        $datauser = $user->where([
-            'email' => $email,
-        ])->first();
+        $datauser = $user->where(['email' => $email])->orWhere(['nomor_induk' => $email])->first();
         if ($datauser) {
             if ($password == $datauser->password) {
                 session()->set([
                     'email' => $datauser->email,
                     'nama' => $datauser->nama,
+                    'nomor_induk' => $datauser->nomor_induk,
+                    'role' => $datauser->role,
                     'logged_in' => TRUE
                 ]);
-                return redirect()->to(base_url('user/dashboard'));
+                $role = session()->get('role');
+                if ($role == 'operator') {
+                    return redirect()->to(base_url('operator/dashboard'));
+                } else if ($role == 'siswa' or $role == 'guru' or $role == 'pegawai' or $role == 'alumni') {
+                    return redirect()->to(base_url('user/dashboard'));
+                } else if ($role == 'pimpinan') {
+                    return redirect()->to(base_url('pimpinan/dashboard'));
+                }
             } else {
                 session()->setFlashdata('error', 'Email & Password Salah');
                 return redirect()->back();
