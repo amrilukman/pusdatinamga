@@ -19,14 +19,14 @@ class Login extends BaseController
         $password = md5($this->request->getVar('password'));
         $datauser = $user->where(['email' => $email])->orWhere(['nomor_induk' => $email])->first();
         if ($datauser) {
-            if ($password == $datauser['password']) {
+            if ($password == $datauser->password) {
                 session()->set([
-                    'id' => $datauser['id'],
-                    'email' => $datauser['email'],
-                    'password' => $datauser['password'],
-                    'nama' => $datauser['nama'],
-                    'nomor_induk' => $datauser['nomor_induk'],
-                    'role' => $datauser['role'],
+                    'id' => $datauser->id,
+                    'email' => $datauser->email,
+                    'password' => $datauser->password,
+                    'nama' => $datauser->nama,
+                    'nomor_induk' => $datauser->nomor_induk,
+                    'role' => $datauser->role,
                     'logged_in' => TRUE,
                 ]);
                 $role = session()->get('role');

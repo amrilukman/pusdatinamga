@@ -14,7 +14,7 @@
             <?php if (session()->get('password') == md5('12345678') and current_url() == base_url('operator/dashboard')) : ?>
                 <div class="alert alert-danger inline alert-dismissible fade show mb-0 mt-0" role="alert">
                     <span class="alert-text">Anda masih menggunakan default password!</span>
-                    <a href="<?= base_url('operator/profil/resetpassword/' . $user['id'] . '/edit') ?>" class="btn btn-icon btn-secondary btn-sm ml-4 mr-0" type="button">
+                    <a href="<?= base_url('operator/profil/resetpassword/' . $user->id . '') ?>" class="btn btn-icon btn-secondary btn-sm ml-4 mr-0" type="button">
                         <span class="btn-inner--text">Reset Password</span>
                     </a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

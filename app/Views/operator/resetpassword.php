@@ -66,33 +66,38 @@
                         </div>
                         <div class="card-body px-lg-4 py-lg-4 mb-3">
                             <?php if (!empty(session()->getFlashdata('error'))) : ?>
-                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <?= session()->getFlashdata('error'); ?>
-                                </div>
-                            <?php elseif (session()->setFlashdata('success')) : ?>
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <?= session()->getFlashdata('success'); ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                             <?php endif ?>
 
                             <script>
                                 var check = function() {
-                                    if (document.getElementById('password_baru').value ==
+                                    if (document.getElementById('password_baru').value == '') {
+                                        document.getElementById('message').innerHTML = '';
+                                        document.getElementById('submit').disabled = true;
+
+                                    } else if (document.getElementById('password_baru').value ==
                                         document.getElementById('confirm_password').value) {
                                         document.getElementById('message').style.color = 'green';
                                         document.getElementById('message').innerHTML = 'Matching';
+                                        document.getElementById('submit').disabled = false;
                                     } else {
                                         document.getElementById('message').style.color = 'red';
                                         document.getElementById('message').innerHTML = 'Not matching';
+                                        document.getElementById('submit').disabled = true;
                                     }
                                 }
                             </script>
 
-                            <form method="post" action="" role="form">
+                            <form method="post" action="<?= base_url('operator/profil/reset/' . $user->id . '') ?>" role="form">
                                 <?php csrf_field(); ?>
                                 <div class="form-group mb-3">
                                     <label for="id" class="form-control-label">ID/NIP/NISN :</label>
-                                    <input class="form-control" id="id" name="id" value="<?= session()->get('id') ?>" type="text" readonly>
+                                    <input class="form-control" id="id" name="id" value="<?= $user->id ?>" type="text" readonly>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="password" class="form-control-label">Password Lama :</label>
@@ -105,7 +110,7 @@
                                     <small><span id='message'></span><small>
                                 </div>
                                 <div class="text-center pt-3">
-                                    <button type="submit" class="btn" style="color: white; background-color: #1174EF">Update</button>
+                                    <button type="submit" id="submit" class="btn" style="color: white; background-color: #1174EF" disabled>Update</button>
                                 </div>
                             </form>
                         </div>

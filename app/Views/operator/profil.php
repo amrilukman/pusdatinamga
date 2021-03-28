@@ -77,7 +77,7 @@
                             <h3 class="mb-0 text-dark">Edit Profil</h3>
                         </div>
                         <div class="col-6 nav justify-content-end">
-                            <a href="<?= base_url('operator/profil/resetpassword/' . $user['id'] . '/edit') ?>" class="btn btn-icon btn-danger" type="button">
+                            <a href="<?= base_url('operator/profil/resetpassword/' . $user->id . '') ?>" class="btn btn-icon btn-danger" type="button">
                                 <span class="btn-inner--text">Reset Password</span>
                             </a>
                         </div>
