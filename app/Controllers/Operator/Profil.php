@@ -42,9 +42,10 @@ class Profil extends BaseController
                 ]
             ],
             'password_baru' => [
-                'rules' => 'required',
+                'rules' => 'required|min_length[8]',
                 'errors' => [
                     'required' => 'Password baru belum diisi',
+                    'minlength' => 'Password harus lebih dari 8'
                 ]
             ],
             'confirm_password' => [

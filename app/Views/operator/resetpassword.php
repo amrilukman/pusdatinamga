@@ -76,12 +76,16 @@
 
                             <script>
                                 var check = function() {
-                                    if (document.getElementById('password_baru').value == '') {
-                                        document.getElementById('message').innerHTML = '';
+                                    var password_baru = document.getElementById('password_baru').value;
+                                    var confirm_password = document.getElementById('confirm_password').value;
+                                    if (password_baru.length < 8) {
                                         document.getElementById('submit').disabled = true;
-
-                                    } else if (document.getElementById('password_baru').value ==
-                                        document.getElementById('confirm_password').value) {
+                                        document.getElementById('message').style.color = 'red';
+                                        document.getElementById('message').innerHTML = 'Password harus lebih dari 8 karakter';
+                                    } else if (confirm_password == '' && password_baru.length >= 8) {
+                                        document.getElementById('message').innerHTML = '';
+                                        document.getElementById('submit').disabled = false;
+                                    } else if (password_baru == confirm_password) {
                                         document.getElementById('message').style.color = 'green';
                                         document.getElementById('message').innerHTML = 'Matching';
                                         document.getElementById('submit').disabled = false;
@@ -103,9 +107,11 @@
                                     <label for="password" class="form-control-label">Password Lama :</label>
                                     <input class="form-control" id="password" name="password" placeholder="Password" type="password" required>
                                 </div>
-                                <div class="form-group mb-3">
+                                <div class="form-group mb-0">
                                     <label for="password" class="form-control-label">Password Baru :</label>
                                     <input class="form-control mb-1" id="password_baru" name="password_baru" placeholder="Password Baru" type="password" onkeyup="check();" required>
+                                </div>
+                                <div class="form-group">
                                     <input class="form-control" id="confirm_password" name="confirm_password" placeholder="Password Verify" type="password" onkeyup="check();" required>
                                     <small><span id='message'></span><small>
                                 </div>
