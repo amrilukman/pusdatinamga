@@ -60,7 +60,7 @@ class Profil extends BaseController
             return redirect()->back()->withInput();
         }
 
-        $user = $this->user->where(['id' => session()->get('id')])->first();
+        $user = $this->user->where(['id' => $id])->first();
         $password = md5($this->request->getVar('password'));
         if ($password == $user->password) {
             $this->user->update($id, [
