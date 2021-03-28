@@ -48,14 +48,21 @@ $routes->get('/', 'Home::index');
 // ==============================================================
 // Operator's Router -->
 // ==============================================================
-$routes->get('operator/dashboard', 'Operator/Dashboard::index', ['filter' => 'authoperator']);
+$routes->get('operator/dashboard', 'Operator/Dashboard::index/', ['filter' => 'authoperator']);
 $routes->get('operator/profil', 'Operator/Profil::index', ['filter' => 'authoperator']);
+$routes->add('operator/profil/resetpassword/[:any]/edit', 'Operator/Profil::resetpassword/$1', ['filter' => 'authoperator']);
+
 $routes->get('operator/siswa/list', 'Operator/Siswa::index', ['filter' => 'authoperator']);
 $routes->get('operator/siswa/add', 'Operator/Siswa::add', ['filter' => 'authoperator']);
 $routes->get('operator/siswa/edit', 'Operator/Siswa::edit', ['filter' => 'authoperator']);
+
 $routes->get('operator/guru/list', 'Operator/Guru::index', ['filter' => 'authoperator']);
 $routes->get('operator/guru/add', 'Operator/Guru::add', ['filter' => 'authoperator']);
-$routes->get('operator/guru/edit', 'Operator/Guru::edit', ['filter' => 'authoperator']);
+$routes->get('operator/guru/add/store', 'Operator/Guru::store', ['filter' => 'authoperator']);
+$routes->post('operator/guru/edit/(:segment)', 'Operator/Guru::edit/$1', ['filter' => 'authoperator']);
+$routes->post('operator/guru/edit/update/(: segment)', 'Operator/Guru::update/$1', ['filter' => 'authoperator']);
+$routes->get('operator/guru/list/delete/(:segment)', 'Operator/Guru::delete/$1', ['filter' => 'authoperator']);
+
 $routes->get('operator/pegawai/list', 'Operator/Pegawai::index', ['filter' => 'authoperator']);
 $routes->get('operator/pegawai/add', 'Operator/Pegawai::add', ['filter' => 'authoperator']);
 $routes->get('operator/pegawai/edit', 'Operator/Pegawai::edit', ['filter' => 'authoperator']);

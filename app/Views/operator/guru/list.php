@@ -126,142 +126,62 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Nama</th>
+                                <th scope="col">No</th>
                                 <th scope="col">NIP</th>
+                                <th scope="col">Nama</th>
                                 <th scope="col">Jenis Kelamin</th>
+                                <th scope="col">Tempat Lahir</th>
+                                <th scope="col">Tanggal Lahir</th>
+                                <th scope="col">Kecamatan</th>
+                                <th scope="col">Alamat</th>
+                                <th scope="col">No HP</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">PNS/Non-PNS</th>
+                                <th scope="col">SK CPNS</th>
+                                <th scope="col">NUPTK</th>
                                 <th scope="col">Jurusan</th>
-                                <th scope="col">Mata Pelajaran</th>
+                                <th scope="col">Mapel 1</th>
+                                <th scope="col">Mapel 2</th>
+                                <th scope="col">Mapel 3</th>
+                                <th scope="col">NPWP</th>
+                                <th scope="col">NIK</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                                <td>
-                                    Teknik Komputer dan Informatika
-                                </td>
-                                <td>
-                                    Pemrograman Web
-                                </td>
-                                <td>
-                                    <a href="<?= base_url('/operator/guru/edit') ?>" class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                        <span><i class="far fa-edit"></i></span>
-                                    </a>
-                                    <a class="icon icon-shape bg-gradient-red text-white rounded-circle shadow" onclick="deleteConfirm('<?php echo base_url('guru/list') ?>')" href="#!" class="btn btn-circle btn-danger">
-                                        <span><i class="far fa-trash-alt"></i></span></a>
-                                    <!-- <a href="#" class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                        <span><i class="far fa-trash-alt"></i></span>
-                                    </a> -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                                <td>
-                                    Teknik Komputer dan Informatika
-                                </td>
-                                <td>
-                                    Pemrograman Web
-                                </td>
-                                <td>
-                                    <a href="#" class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                        <span><i class="far fa-edit"></i></span>
-                                    </a>
-                                    <a href="#" class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                        <span><i class="far fa-trash-alt"></i></span>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                                <td>
-                                    Teknik Komputer dan Informatika
-                                </td>
-                                <td>
-                                    Pemrograman Web
-                                </td>
-                                <td>
-                                    <a href="#" class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                        <span><i class="far fa-edit"></i></span>
-                                    </a>
-                                    <a href="#" class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                        <span><i class="far fa-trash-alt"></i></span>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                                <td>
-                                    Teknik Komputer dan Informatika
-                                </td>
-                                <td>
-                                    Pemrograman Web
-                                </td>
-                                <td>
-                                    <a href="#" class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                        <span><i class="far fa-edit"></i></span>
-                                    </a>
-                                    <a href="#" class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                        <span><i class="far fa-trash-alt"></i></span>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                                <td>
-                                    Teknik Komputer dan Informatika
-                                </td>
-                                <td>
-                                    Pemrograman Web
-                                </td>
-                                <td>
-                                    <a href="#" class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                        <span><i class="far fa-edit"></i></span>
-                                    </a>
-                                    <a href="#" class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                        <span><i class="far fa-trash-alt"></i></span>
-                                    </a>
-                                </td>
-                            </tr>
+                            <?php $no = 1;
+                            foreach ($guru as $row) {
+                            ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $row->nip; ?></td>
+                                    <td><?= $row->nama_guru; ?></td>
+                                    <td><?= $row->jenis_kelamin; ?></td>
+                                    <td><?= $row->tempat_lahir; ?></td>
+                                    <td><?= $row->tanggal_lahir; ?></td>
+                                    <td><?= $row->kecamatan; ?></td>
+                                    <td><?= $row->alamat; ?></td>
+                                    <td><?= $row->no_hp; ?></td>
+                                    <td><?= $row->email_guru; ?></td>
+                                    <td><?= $row->status_kepegawaian; ?></td>
+                                    <td><?= $row->sk_cpns; ?></td>
+                                    <td><?= $row->nuptk; ?></td>
+                                    <td><?= $row->guru_jurusan; ?></td>
+                                    <td><?= $row->mapel1; ?></td>
+                                    <td><?= $row->mapel2; ?></td>
+                                    <td><?= $row->mapel3; ?></td>
+                                    <td><?= $row->npwp; ?></td>
+                                    <td><?= $row->nik; ?></td>
+                                    <td>
+                                        <a title="Edit" href="<?= base_url('/operator/guru/edit/' . $row->nip . '') ?>" class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                            <span><i class="far fa-edit"></i></span>
+                                        </a>
+                                        <a onclick="deleteConfirm('<?php echo base_url('operator/guru/delete/' . $row->nip . '') ?>')" title="Delete" class="icon icon-shape bg-gradient-red text-white rounded-circle shadow" href="#!" class="btn btn-circle btn-danger">
+                                            <span><i class="far fa-trash-alt"></i></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

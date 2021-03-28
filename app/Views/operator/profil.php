@@ -72,8 +72,15 @@
             <!-- ============================================================== -->
             <div class="card bg-white border-0 mb-0">
                 <div class="card-header bg-transparent">
-                    <div>
-                        <h3 class="mb-0 text-dark">Edit Profil</h3>
+                    <div class="row align-items-left">
+                        <div class="col-6 pl-3 pr-0 mt-2">
+                            <h3 class="mb-0 text-dark">Edit Profil</h3>
+                        </div>
+                        <div class="col-6 nav justify-content-end">
+                            <a href="<?= base_url('operator/profil/resetpassword/' . $user['id'] . '/edit') ?>" class="btn btn-icon btn-danger" type="button">
+                                <span class="btn-inner--text">Reset Password</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body bg-white border-0">

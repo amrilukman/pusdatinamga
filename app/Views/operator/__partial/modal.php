@@ -16,7 +16,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Kembali</button>
-                <button type="button" class="btn btn-link text-white ml-auto">Hapus</button>
+                <a id="btn-delete" type="button" href="#" class="btn btn-link text-white ml-auto">Hapus</button>
             </div>
         </div>
     </div>

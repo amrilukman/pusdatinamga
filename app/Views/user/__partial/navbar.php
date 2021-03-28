@@ -10,7 +10,18 @@
                     <i class="sidenav-toggler-line"></i>
                 </div>
             </div>
-
+            <!-- Default password alert -->
+            <?php if (session()->get('password') == md5('12345678') and current_url() == base_url('operator/dashboard')) : ?>
+                <div class="alert alert-danger inline alert-dismissible fade show mb-0 mt-0" role="alert">
+                    <span class="alert-text">Anda masih menggunakan default password!</span>
+                    <a href="<?= base_url('operator/profil/resetpassword') ?>" class="btn btn-icon btn-secondary btn-sm ml-4 mr-0" type="button">
+                        <span class="btn-inner--text">Reset Password</span>
+                    </a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php endif ?>
             <!-- Navbar links -->
             <ul class="navbar-nav justify-content-between ml-md-auto">
             </ul>
