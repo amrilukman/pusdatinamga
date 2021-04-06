@@ -177,19 +177,19 @@
                             <div class="form-row my-0">
                                 <div class="form-group col-4">
                                     <label for="nip" class="form-control-label">NIP :</label>
-                                    <input class="form-control" type="numeric" name="nip" id="nip" placeholder="NIP" value="<?= old('nip'); ?>" required>
+                                    <input class="form-control" type="numeric" name="nip" id="nip" placeholder="NIP" value="<?= old('nip'); ?>">
                                 </div>
                                 <div class="form-group col-4">
                                     <label for="nuptk" class="form-control-label">NUPTK :</label>
-                                    <input class="form-control" type="numeric" name="nuptk" id="nuptk" placeholder="NUPTK" value="<?= old('nuptk'); ?>" required>
+                                    <input class="form-control" type="numeric" name="nuptk" id="nuptk" placeholder="NUPTK" value="<?= old('nuptk'); ?>">
                                 </div>
                                 <div class="form-group col-4">
                                     <label for="npwp" class="form-control-label">NPWP :</label>
-                                    <input class="form-control" type="numeric" name="npwp" id="npwp" placeholder="NPWP" value="<?= old('npwp'); ?>" required>
+                                    <input class="form-control" type="numeric" name="npwp" id="npwp" placeholder="NPWP" value="<?= old('npwp'); ?>">
                                 </div>
                             </div>
                             <div class="form-row my-0">
-                                <div class="form-group mb-3 my-0 col-4" required>
+                                <div class="form-group mb-0 my-0 col-4" required>
                                     <label for="status" class="form-control-label">Status Kepegawaian :</label>
                                     <div class="custom-control custom-radio mb-3 mt-2 pl-0">
                                         <input type="radio" id="status" name="status" value="PNS" onchange="showhideForm(this.value);">
@@ -210,7 +210,7 @@
                                         }
                                     }
                                 </script>
-                                <div id="div1" class="form-group col-8" style="display: none" required>
+                                <div id="div1" class="form-group col-8 mb-0" style="display: none" required>
                                     <label for="sk-cpns" class="form-control-label">SK-CPNS :</label>
                                     <input class="form-control" type="text" id="sk-cpns" placeholder="SK-CPNS" value="<?= old('sk-cpns'); ?>" required>
                                 </div>
@@ -220,45 +220,10 @@
                                     <label for="jurusan" class="form-control-label">Jurusan :</label>
                                     <select class="form-control" name="jurusan" id="jurusan" required>
                                         <option value="">Pilih Jurusan</option>
-                                        <option value="umum">Umum</option>
-                                        <option value="1">Teknik Komputer dan Informatika</option>
-                                        <option value="2">Teknik Kendarangan Ringan</option>
-                                        <option value="3">Teknik Pemesinan</option>
-                                        <option value="4">Teknik Pengelasan</option>
-                                        <option value="5">Teknik Audio Video</option>
-                                        <option value="6">Tata Busana</option>
-                                        <option value="7">Teknik Instalasi Tenaga Listrik</option>
-                                        <option value="8">Teknik Elektronika Industri</option>
+                                        <?php foreach ($jurusan as $key => $data) { ?>
+                                            <option value="<?= $data->id_jurusan; ?>"><?= $data->nama_jurusan; ?></option>
+                                        <?php } ?>
                                     </select>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group mb-3 my-0">
-                                        <label for="mapel1" class="form-control-label">Mata Pelajaran 1 :</label>
-                                        <select class="form-control" name="mapel1" id="mapel1" required>
-                                            <option value="">Pilih Mata Pelajaran</option>
-                                            <option value="1">Pemrograman Web</option>
-                                            <option value="2">Jaringan Komputer</option>
-                                            <option value="3">XII</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mb-3 my-0">
-                                        <label for="mapel2" class="form-control-label">Mata Pelajaran 2 :</label>
-                                        <select class="form-control" name="mapel2" id="mapel2">
-                                            <option value="">Pilih Mata Pelajaran</option>
-                                            <option value="1">Pemrograman Web</option>
-                                            <option value="1">Jaringan Komputer</option>
-                                            <option value="1">XII</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mb-3 my-0">
-                                        <label for="mapel3" class="form-control-label">Mata Pelajaran 3 :</label>
-                                        <select class="form-control" name="mapel3" id="mapel3">
-                                            <option value="">Pilih Mata Pelajaran</option>
-                                            <option value="1">Pemrograman Web</option>
-                                            <option value="1">Jaringan Komputer</option>
-                                            <option value="1">XII</option>
-                                        </select>
-                                    </div>
                                 </div>
                             </div>
                         </div>

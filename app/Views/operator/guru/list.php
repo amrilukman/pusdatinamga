@@ -48,13 +48,23 @@
                         </div>
                         <div class="col-9 text-right">
                             <ul class="nav justify-content-end">
-                                <li class="mr-1">
-                                    <form class="search mb-1 toggler">
-                                        <div class="search__wrapper">
-                                            <div class="input-group-prepend input-group-merge">
-                                                <input type="text" class="form-control search__field" style="height: 44px;" placeholder="Search" aria-label="Search">
-                                                <span class="input-group-text search__icon" style="color: #525f7f;"><i class="fas fa-search"></i></span>
-                                            </div>
+                                <li class="pr-1">
+                                    <form class="search mb-1">
+                                        <div class="input-group input-group-merge">
+                                            <?php
+                                            $form_keyword = [
+                                                'type'  => 'text',
+                                                'name'  => 'keyword',
+                                                'id'    => 'keyword',
+                                                'value' => $keyword,
+                                                'class' => 'form-control search__field',
+                                                'placeholder' => 'Search',
+                                                'style' => 'height: 44px;',
+                                                'aria-label' => 'Search'
+                                            ];
+                                            echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
+                                            echo form_input($form_keyword);
+                                            ?>
                                         </div>
                                     </form>
                                 </li>
@@ -90,25 +100,32 @@
             <div class="card">
                 <div class="card-header border-0">
                     <div class="row align-items-left">
+                        <!-- Filter Jurusan -->
                         <div class="col-3 pl-2 pr-0">
-                            <select class="form-control" id="kelas">
-                                <option>Semua Jurusan</option>
-                                <option>Teknik Komputer dan Informatika</option>
-                                <option>Teknik Kendarangan Ringan</option>
-                                <option>Teknik Pemesinan</option>
-                                <option>Teknik Pengelasan</option>
-                                <option>Teknik Audio Video</option>
-                                <option>Tata Busana</option>
-                                <option>Teknik Instalasi Tenaga Listrik</option>
-                                <option>Teknik Elektronika Industri</option>
-                            </select>
+                            <?php
+                            echo form_dropdown('jurusan', $jurusans, $jurusan, ['class' => 'form-control', 'id' => 'jurusan']);
+                            ?>
                         </div>
+                        <script>
+                            $(document).ready(function() {
+                                $("#jurusan").change(function() {
+                                    filter();
+                                });
+                                $("#keyword").keypress(function(event) {
+                                    if (event.keyCode == 13) {
+                                        filter();
+                                    }
+                                });
+
+                                var filter = function() {
+                                    var jurusan = $("#jurusan").val();
+                                    var keyword = $("#keyword").val();
+                                    window.location.replace("/operator/guru/list?jurusan=" + jurusan + "&keyword=" + keyword);
+                                }
+                            });
+                        </script>
+                        <!-- End of Filter Jurusan -->
                         <div class="col-3 pl-2 pr-0">
-                            <select class="form-control" id="kelas">
-                                <option>Semua Mata Pelajaran</option>
-                                <option>XI</option>
-                                <option>XII</option>
-                            </select>
                         </div>
                         <div class="col-6 pl-2 text-right">
                             <ul class="nav justify-content-end">
@@ -123,7 +140,7 @@
                 </div>
                 <div class="table-responsive">
                     <!-- Projects table -->
-                    <table class="table align-items-center table-flush">
+                    <table id="myTable" class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
                                 <th scope="col">No</th>
@@ -140,9 +157,6 @@
                                 <th scope="col">SK CPNS</th>
                                 <th scope="col">NUPTK</th>
                                 <th scope="col">Jurusan</th>
-                                <th scope="col">Mapel 1</th>
-                                <th scope="col">Mapel 2</th>
-                                <th scope="col">Mapel 3</th>
                                 <th scope="col">NPWP</th>
                                 <th scope="col">NIK</th>
                                 <th scope="col">Action</th>
@@ -166,17 +180,14 @@
                                     <td><?= $row->status_kepegawaian; ?></td>
                                     <td><?= $row->sk_cpns; ?></td>
                                     <td><?= $row->nuptk; ?></td>
-                                    <td><?= $row->guru_jurusan; ?></td>
-                                    <td><?= $row->mapel1; ?></td>
-                                    <td><?= $row->mapel2; ?></td>
-                                    <td><?= $row->mapel3; ?></td>
+                                    <td><?= $row->akronim_jurusan; ?></td>
                                     <td><?= $row->npwp; ?></td>
                                     <td><?= $row->nik; ?></td>
                                     <td>
-                                        <a title="Edit" href="<?= base_url('/operator/guru/edit/' . $row->nip . '') ?>" class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                        <a title="Edit" href="<?= base_url('/operator/guru/edit/' . $row->nik . '') ?>" class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
                                             <span><i class="far fa-edit"></i></span>
                                         </a>
-                                        <a onclick="deleteConfirm('<?php echo base_url('operator/guru/delete/' . $row->nip . '') ?>')" title="Delete" class="icon icon-shape bg-gradient-red text-white rounded-circle shadow" href="#!" class="btn btn-circle btn-danger">
+                                        <a onclick="deleteConfirm('<?php echo base_url('operator/guru/delete/' . $row->nik . '') ?>')" title="Delete" class="icon icon-shape bg-gradient-red text-white rounded-circle shadow" href="#!" class="btn btn-circle btn-danger">
                                             <span><i class="far fa-trash-alt"></i></span>
                                         </a>
                                     </td>
@@ -186,27 +197,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <nav aria-label="...">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">
-                                    <i class="fa fa-angle-left"></i>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#" style="background-color: #1174EF;">1</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <i class="fa fa-angle-right"></i>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <?= $pager->links('guru', 'pagination') ?>
                 </div>
             </div>
         </div>

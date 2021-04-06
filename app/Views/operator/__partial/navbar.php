@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Sidenav toggler -->
-            <div class="pr-3 sidenav-toggler sidenav-toggler-dark nav-item d-xl-none" data-action="sidenav-hide" data-target="#sidenav-main">
+            <div class="pr-3 sidenav-toggler sidenav-toggler-dark d-xl-none" data-action="sidenav-pin" data-target="#sidenav-main">
                 <div class="sidenav-toggler-inner">
                     <i class="sidenav-toggler-line"></i>
                     <i class="sidenav-toggler-line"></i>

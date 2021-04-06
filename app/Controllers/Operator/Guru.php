@@ -4,6 +4,8 @@ namespace App\Controllers\Operator;
 
 use App\Controllers\BaseController;
 use App\Models\GuruModel;
+use App\Models\JurusanModel;
+use App\Config\Services;
 
 class Guru extends BaseController
 {
@@ -11,12 +13,42 @@ class Guru extends BaseController
 
     function __construct()
     {
+        helper('form');
         $this->guru = new GuruModel();
+        $this->jurusan = new JurusanModel();
     }
 
     public function index()
     {
-        $data['guru'] = $this->guru->findAll();
+        $jurusan = $this->request->getGet('jurusan');
+        $keyword = $this->request->getGet('keyword');
+
+        $data['jurusan'] = $jurusan;
+        $data['keyword'] = $keyword;
+
+        //dropdown
+        $jurusans = $this->jurusan->findAll();
+        $data['jurusans'] = ['' => 'Semua Jurusan'] + array_column($jurusans, 'nama_jurusan', 'id_jurusan');
+
+        //filter
+        $where = [];
+        $like = [];
+        $or_like = [];
+
+        if (!empty($jurusan)) {
+            $where = ['guru.jurusan' => $jurusan];
+        }
+
+        if (!empty($keyword)) {
+            $like = ['guru.nama_guru' => $keyword];
+            $or_like = ['guru.nip' => $keyword];
+        }
+
+        //end filter
+
+        //pagination
+        $data['guru'] = $this->guru->join('jurusan', 'jurusan.id_jurusan = guru.jurusan')->where($where)->like($like)->orLike($or_like)->orderBy('nip', 'ASC')->paginate(25, 'guru');
+        $data['pager'] = $this->guru->pager;
         return view('operator/guru/list', $data);
     }
 
@@ -24,11 +56,31 @@ class Guru extends BaseController
 
     public function add()
     {
-        return view('operator/guru/add');
+        $data['jurusan'] = $this->jurusan->findAll();
+        return view('operator/guru/add', $data);
     }
 
     public function store()
     {
+        $nip = $this->request->getVar('nip');
+        if ($nip == '') {
+            $nip = NULL;
+        }
+
+        $nuptk = $this->request->getVar('nuptk');
+        if ($nuptk == '') {
+            $nuptk = NULL;
+        }
+
+        $npwp = $this->request->getVar('npwp');
+        if ($npwp == '') {
+            $npwp = NULL;
+        }
+
+        $sk_cpns = $this->request->getVar('sk-cpns');
+        if ($sk_cpns == '') {
+            $sk_cpns = NULL;
+        }
         if (!$this->validate([
             'nik' => [
                 'rules' => 'required|is_unique[guru.nik]',
@@ -88,23 +140,20 @@ class Guru extends BaseController
                 ]
             ],
             'nip' => [
-                'rules' => 'required|is_unique[guru.nip]',
+                'rules' => 'permit_empty|is_unique[guru.nip]',
                 'errors' => [
-                    'required' => '{field} Harus diisi',
                     'is_unique' => 'NIP sudah ada'
                 ]
             ],
             'nuptk' => [
-                'rules' => 'required|is_unique[guru.nuptk]',
+                'rules' => 'permit_empty|is_unique[guru.nuptk]',
                 'errors' => [
-                    'required' => '{field} Harus diisi',
                     'is_unique' => 'NUPTK sudah ada'
                 ]
             ],
             'npwp' => [
-                'rules' => 'required|is_unique[guru.npwp]',
+                'rules' => 'permit_empty|is_unique[guru.npwp]',
                 'errors' => [
-                    'required' => '{field} Harus diisi',
                     'is_unique' => 'NPWP sudah ada'
                 ]
             ],
@@ -114,28 +163,25 @@ class Guru extends BaseController
                     'required' => '{field} Harus diisi'
                 ]
             ],
+            'sk_cpns' => [
+                'rules' => 'permit_empty|is_unique[guru.sk_cpns]',
+                'errors' => [
+                    'is_unique' => 'SK-CPNS Harus diisi'
+                ]
+            ],
             'jurusan' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Harus diisi'
                 ]
-            ],
-            'mapel1' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'mapel2' => [
-                'rules' => 'permit_empty'
-            ],
-            'mapel3' => [
-                'rules' => 'permit_empty'
             ]
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
+
+        $data['jurusan'] = $this->jurusan->get();
+
 
         $this->guru->insert([
             'nik' => $this->request->getVar('nik'),
@@ -147,27 +193,27 @@ class Guru extends BaseController
             'alamat' => $this->request->getVar('alamat'),
             'email_guru' => $this->request->getVar('email'),
             'no_hp' => $this->request->getVar('no_hp'),
-            'nip' => $this->request->getVar('nip'),
-            'nuptk' => $this->request->getVar('nuptk'),
-            'npwp' => $this->request->getVar('npwp'),
+            'nip' => $nip,
+            'nuptk' => $nuptk,
+            'npwp' => $npwp,
             'status_kepegawaian' => $this->request->getVar('status'),
-            'sk_cpns' => $this->request->getVar('sk-cpns'),
-            'guru_jurusan' => $this->request->getVar('jurusan'),
-            'mapel1' => $this->request->getVar('mapel1'),
-            'mapel2' => $this->request->getVar('mapel2'),
-            'mapel3' => $this->request->getVar('mapel3')
+            'sk_cpns' => $sk_cpns,
+            'jurusan' => $this->request->getVar('jurusan'),
         ]);
+
         session()->setFlashdata('message', 'Berhasil Menambahkan Data Guru Baru');
         return redirect()->to(base_url("operator/guru/list"));
     }
 
     public function edit($id)
     {
+
         $dataGuru = $this->guru->find($id);
         if (empty($dataGuru)) {
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Data Guru tidak ditemukan!');
         }
         $data['guru'] = $dataGuru;
+        $data['jurusan'] = $this->jurusan->findAll();
         return view('operator/guru/edit', $data);
     }
 
@@ -184,13 +230,33 @@ class Guru extends BaseController
 
     public function update($id)
     {
+        $nip = $this->request->getVar('nip');
+        if ($nip == '') {
+            $nip = NULL;
+        }
+
+        $nuptk = $this->request->getVar('nuptk');
+        if ($nuptk == '') {
+            $nuptk = NULL;
+        }
+
+        $npwp = $this->request->getVar('npwp');
+        if ($npwp == '') {
+            $npwp = NULL;
+        }
+
+        $sk_cpns = $this->request->getVar('sk-cpns');
+        if ($sk_cpns == '') {
+            $sk_cpns = NULL;
+        }
+
         $this->guru->delete($id);
         if (!$this->validate([
             'nik' => [
                 'rules' => 'required|is_unique[guru.nik]',
                 'errors' => [
                     'required' => '{field} Harus diisi',
-                    //'is_unique' => 'NIK sudah ada'
+                    'is_unique' => 'NIK sudah ada'
                 ]
             ],
             'nama' => [
@@ -234,7 +300,7 @@ class Guru extends BaseController
                 'errors' => [
                     'required' => '{field} Harus diisi',
                     'valid_email' => 'Email harus valid',
-                    //'is_unique' => 'Email sudah ada'
+                    'is_unique' => 'Email sudah ada'
                 ]
             ],
             'no_hp' => [
@@ -244,24 +310,21 @@ class Guru extends BaseController
                 ]
             ],
             'nip' => [
-                'rules' => 'required|is_unique[guru.nip]',
+                'rules' => 'permit_empty|is_unique[guru.nip]',
                 'errors' => [
-                    'required' => '{field} Harus diisi',
-                    //'is_unique' => 'NIP sudah ada'
+                    'is_unique' => 'NIP sudah ada'
                 ]
             ],
             'nuptk' => [
-                'rules' => 'required|is_unique[guru.nuptk]',
+                'rules' => 'permit_empty|is_unique[guru.nuptk]',
                 'errors' => [
-                    'required' => '{field} Harus diisi',
-                    //'is_unique' => 'NUPTK sudah ada'
+                    'is_unique' => 'NUPTK sudah ada'
                 ]
             ],
             'npwp' => [
-                'rules' => 'required|is_unique[guru.npwp]',
+                'rules' => 'permit_empty|is_unique[guru.npwp]',
                 'errors' => [
-                    'required' => '{field} Harus diisi',
-                    //'is_unique' => 'NPWP sudah ada'
+                    'is_unique' => 'NPWP sudah ada'
                 ]
             ],
             'status' => [
@@ -270,23 +333,17 @@ class Guru extends BaseController
                     'required' => '{field} Harus diisi'
                 ]
             ],
+            'sk_cpns' => [
+                'rules' => 'permit_empty|is_unique[guru.sk_cpns]',
+                'errors' => [
+                    'is_unique' => 'SK-CPNS Harus diisi'
+                ]
+            ],
             'jurusan' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} Harus diisi'
                 ]
-            ],
-            'mapel1' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'mapel2' => [
-                'rules' => 'permit_empty'
-            ],
-            'mapel3' => [
-                'rules' => 'permit_empty'
             ]
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
@@ -303,15 +360,12 @@ class Guru extends BaseController
             'alamat' => $this->request->getVar('alamat'),
             'email_guru' => $this->request->getVar('email'),
             'no_hp' => $this->request->getVar('no_hp'),
-            'nip' => $this->request->getVar('nip'),
-            'nuptk' => $this->request->getVar('nuptk'),
-            'npwp' => $this->request->getVar('npwp'),
+            'nip' => $nip,
+            'nuptk' => $nuptk,
+            'npwp' => $npwp,
             'status_kepegawaian' => $this->request->getVar('status'),
-            'sk_cpns' => $this->request->getVar('sk-cpns'),
-            'guru_jurusan' => $this->request->getVar('jurusan'),
-            'mapel1' => $this->request->getVar('mapel1'),
-            'mapel2' => $this->request->getVar('mapel2'),
-            'mapel3' => $this->request->getVar('mapel3')
+            'sk_cpns' => $sk_cpns,
+            'jurusan' => $this->request->getVar('jurusan'),
         ]);
         session()->setFlashdata('message', 'Berhasil Mengubah Data Guru');
         return redirect()->to(base_url("operator/guru/list"));

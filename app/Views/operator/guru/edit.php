@@ -93,7 +93,7 @@
                             </button>
                         </div>
                     <?php endif; ?>
-                    <form method="post" action="<?= base_url('operator/guru/update/' . $guru->nip . '') ?>">
+                    <form method="post" action="<?= base_url('operator/guru/update/' . $guru->nik . '') ?>">
                         <?= csrf_field(); ?>
                         <h6 class="heading-small text-muted mb-3">User Information</h6>
                         <div class="ml-3">
@@ -177,15 +177,15 @@
                             <div class="form-row my-0">
                                 <div class="form-group col-4">
                                     <label for="nip" class="form-control-label">NIP :</label>
-                                    <input class="form-control" type="numeric" name="nip" id="nip" placeholder="NIP" value="<?= $guru->nip; ?>" required>
+                                    <input class="form-control" type="numeric" name="nip" id="nip" placeholder="NIP" value="<?= $guru->nip; ?>">
                                 </div>
                                 <div class="form-group col-4">
                                     <label for="nuptk" class="form-control-label">NUPTK :</label>
-                                    <input class="form-control" type="numeric" name="nuptk" id="nuptk" placeholder="NUPTK" value="<?= $guru->nuptk; ?>" required>
+                                    <input class="form-control" type="numeric" name="nuptk" id="nuptk" placeholder="NUPTK" value="<?= $guru->nuptk; ?>">
                                 </div>
                                 <div class="form-group col-4">
                                     <label for="npwp" class="form-control-label">NPWP :</label>
-                                    <input class="form-control" type="numeric" name="npwp" id="npwp" placeholder="NPWP" value="<?= $guru->npwp; ?>" required>
+                                    <input class="form-control" type="numeric" name="npwp" id="npwp" placeholder="NPWP" value="<?= $guru->npwp; ?>">
                                 </div>
                             </div>
                             <div class="form-row my-0">
@@ -222,45 +222,10 @@
                                     <label for="jurusan" class="form-control-label">Jurusan :</label>
                                     <select class="form-control" name="jurusan" id="jurusan" required>
                                         <option value="">Pilih Jurusan</option>
-                                        <option value="umum" <?= ($guru->guru_jurusan == "umum" ? "selected" : ""); ?>>Umum</option>
-                                        <option value="1" <?= ($guru->guru_jurusan == "1" ? "selected" : ""); ?>>Teknik Komputer dan Informatika</option>
-                                        <option value="2" <?= ($guru->guru_jurusan == "2" ? "selected" : ""); ?>>Teknik Kendarangan Ringan</option>
-                                        <option value="3" <?= ($guru->guru_jurusan == "3" ? "selected" : ""); ?>>Teknik Pemesinan</option>
-                                        <option value="4" <?= ($guru->guru_jurusan == "4" ? "selected" : ""); ?>>Teknik Pengelasan</option>
-                                        <option value="5" <?= ($guru->guru_jurusan == "5" ? "selected" : ""); ?>>Teknik Audio Video</option>
-                                        <option value="6" <?= ($guru->guru_jurusan == "6" ? "selected" : ""); ?>>Tata Busana</option>
-                                        <option value="7" <?= ($guru->guru_jurusan == "7" ? "selected" : ""); ?>>Teknik Instalasi Tenaga Listrik</option>
-                                        <option value="8" <?= ($guru->guru_jurusan == "8" ? "selected" : ""); ?>>Teknik Elektronika Industri</option>
+                                        <?php foreach ($jurusan as $key => $data) { ?>
+                                            <option value="<?= $data->id_jurusan; ?>" <?= ($guru->jurusan == $data->id_jurusan ? "selected" : ""); ?>><?= $data->nama_jurusan; ?></option>
+                                        <?php } ?>
                                     </select>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group mb-3 my-0">
-                                        <label for="mapel1" class="form-control-label">Mata Pelajaran 1 :</label>
-                                        <select class="form-control" name="mapel1" id="mapel1" required>
-                                            <option value="">Pilih Mata Pelajaran</option>
-                                            <option value="1" <?= ($guru->mapel1 == "1" ? "selected" : ""); ?>>Pemrograman Web</option>
-                                            <option value="2" <?= ($guru->mapel1 == "2" ? "selected" : ""); ?>>Jaringan Komputer</option>
-                                            <option value="3" <?= ($guru->mapel1 == "3" ? "selected" : ""); ?>>XII</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mb-3 my-0">
-                                        <label for="mapel2" class="form-control-label">Mata Pelajaran 2 :</label>
-                                        <select class="form-control" name="mapel2" id="mapel2">
-                                            <option value="">Pilih Mata Pelajaran</option>
-                                            <option value="1">Pemrograman Web</option>
-                                            <option value="1">Jaringan Komputer</option>
-                                            <option value="1">XII</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group mb-3 my-0">
-                                        <label for="mapel3" class="form-control-label">Mata Pelajaran 3 :</label>
-                                        <select class="form-control" name="mapel3" id="mapel3">
-                                            <option value="">Pilih Mata Pelajaran</option>
-                                            <option value="1">Pemrograman Web</option>
-                                            <option value="1">Jaringan Komputer</option>
-                                            <option value="1">XII</option>
-                                        </select>
-                                    </div>
                                 </div>
                             </div>
                         </div>
