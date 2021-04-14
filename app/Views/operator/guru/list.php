@@ -100,7 +100,9 @@
             <div class="card">
                 <div class="card-header border-0">
                     <div class="row align-items-left">
+                        <!--==============================================================-->
                         <!-- Filter Jurusan -->
+                        <!--==============================================================-->
                         <div class="col-3 pl-2 pr-0">
                             <?php
                             echo form_dropdown('jurusan', $jurusans, $jurusan, ['class' => 'form-control', 'id' => 'jurusan']);
@@ -124,14 +126,22 @@
                                 }
                             });
                         </script>
+                        <!--==============================================================-->
                         <!-- End of Filter Jurusan -->
+                        <!--==============================================================-->
                         <div class="col-3 pl-2 pr-0">
                         </div>
                         <div class="col-6 pl-2 text-right">
                             <ul class="nav justify-content-end">
+                                <li class="mr-2">
+                                    <small><span id='message'></span></small>
+                                    <button class="btn btn-icon btn-danger pl-3 pr-3" type="button" data-toggle="sweet-alert" data-sweet-alert="warning" id="delete" value='Delete'>
+                                        <span><i class="far fa-trash-alt"></i></span>
+                                    </button>
+                                </li>
                                 <li>
                                     <button class="btn btn-icon btn-outline-secondary" type="button">
-                                        <span class="btn-inner--text">Jumlah : 67</span>
+                                        <span class="btn-inner--text">Jumlah : <?= $jumlah ?></span>
                                     </button>
                                 </li>
                             </ul>
@@ -143,23 +153,22 @@
                     <table id="myTable" class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">NIP</th>
+                                <th scope="col"><input type="checkbox" id="checkall" value="1" class="mt-1"></th>
+                                <th scope="col">Action</th>
                                 <th scope="col">Nama</th>
-                                <th scope="col">Jenis Kelamin</th>
-                                <th scope="col">Tempat Lahir</th>
-                                <th scope="col">Tanggal Lahir</th>
+                                <th scope="col">JK</th>
+                                <th scope="col">TTL</th>
                                 <th scope="col">Kecamatan</th>
-                                <th scope="col">Alamat</th>
+                                <th scope="col">Alamat Lengkap</th>
+                                <th scope="col">Jurusan</th>
                                 <th scope="col">No HP</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">PNS/Non-PNS</th>
                                 <th scope="col">SK CPNS</th>
+                                <th scope="col">NIP</th>
                                 <th scope="col">NUPTK</th>
-                                <th scope="col">Jurusan</th>
                                 <th scope="col">NPWP</th>
                                 <th scope="col">NIK</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -167,67 +176,152 @@
                             foreach ($guru as $row) {
                             ?>
                                 <tr>
-                                    <td><?= $no++; ?></td>
-                                    <td><?= $row->nip; ?></td>
+                                    <td><input type="checkbox" class="checkbox" id="checkbox" name="delete" value="<?= $row->nik; ?>" /></td>
+                                    <!-- <td><?= $no++; ?></td> -->
+                                    <td class="text-center">
+                                        <a title="Edit" href="<?= base_url('/operator/guru/edit/' . $row->nik . '') ?>" type="button" class="btn btn-warning btn-sm">
+                                            <span><i class="fas fa-pencil-alt"></i></span>
+                                        </a>
+                                    </td>
                                     <td><?= $row->nama_guru; ?></td>
                                     <td><?= $row->jenis_kelamin; ?></td>
-                                    <td><?= $row->tempat_lahir; ?></td>
-                                    <td><?= $row->tanggal_lahir; ?></td>
+                                    <td><?= $row->tempat_lahir ?>, <?= $row->tanggal_lahir ?></td>
+                                    <!-- <td><?= $row->tanggal_lahir; ?></td> -->
                                     <td><?= $row->kecamatan; ?></td>
                                     <td><?= $row->alamat; ?></td>
+                                    <td><?= $row->akronim_jurusan; ?></td>
                                     <td><?= $row->no_hp; ?></td>
                                     <td><?= $row->email_guru; ?></td>
                                     <td><?= $row->status_kepegawaian; ?></td>
                                     <td><?= $row->sk_cpns; ?></td>
+                                    <td><?= $row->nip; ?></td>
                                     <td><?= $row->nuptk; ?></td>
-                                    <td><?= $row->akronim_jurusan; ?></td>
                                     <td><?= $row->npwp; ?></td>
                                     <td><?= $row->nik; ?></td>
-                                    <td>
-                                        <a title="Edit" href="<?= base_url('/operator/guru/edit/' . $row->nik . '') ?>" class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                            <span><i class="far fa-edit"></i></span>
-                                        </a>
-                                        <a onclick="deleteConfirm('<?php echo base_url('operator/guru/delete/' . $row->nik . '') ?>')" title="Delete" class="icon icon-shape bg-gradient-red text-white rounded-circle shadow" href="#!" class="btn btn-circle btn-danger">
-                                            <span><i class="far fa-trash-alt"></i></span>
-                                        </a>
-                                    </td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                     </table>
+                    <!--==============================================================-->
+                    <!-- Multiple Select Row -->
+                    <!--==============================================================-->
+                    <script>
+                        $(document).ready(function() {
+
+                            //Check all;
+                            $("#checkall").change(function() {
+
+                                var checked = $(this).is(':checked');
+                                if (checked) {
+                                    $(".checkbox").each(function() {
+                                        $(this).prop("checked", true);
+                                    });
+                                } else {
+                                    $(".checkbox").each(function() {
+                                        $(this).prop("checked", false);
+                                    });
+                                }
+                            });
+
+                            //Changing state of CheckAll Checkbox
+                            $(".checkbox").click(function() {
+
+                                if ($(".checkbox").length == $(".checkbox:checked").length) {
+                                    $("#checkall").prop("checked", true);
+                                } else {
+                                    $("#checkall").prop("checked", false);
+                                }
+                            });
+
+                            //Delete button clicked
+                            $('#delete').click(function() {
+
+                                //Confirm alert
+                                Swal.fire({
+                                    html: '<div class="py-0 px-1 text-center"><i class="fas fa-exclamation-triangle ni-4x mt-0 text-white"></i><h4 class = "heading mt-4 text-white mb-2">DATA YANG SUDAH DIHAPUS TIDAK BISA DIKEMBALIKAN!</h4><p class="text-white mb-0">Anda yakin ingin menghapus data ini?</p>',
+                                    //type: 'warning',
+                                    background: 'linear-gradient(87deg, #fb6340 0, #fbb140 100%)',
+                                    showCancelButton: true,
+                                    cancelButtonClass: 'btn btn-secondary mb-1',
+                                    cancelButtonText: 'Kembali',
+                                    buttonsStyling: false,
+                                    confirmButtonText: 'Ya',
+                                    confirmButtonClass: 'btn btn-link text-white ml-auto mb-1 mt-0'
+                                }).then((result) => {
+
+                                    if (result.value) {
+
+                                        //Get id_guru from checed checkboxes
+                                        var guru_arr = [];
+                                        $(".checkbox:checked").each(function() {
+                                            var id_guru = $(this).val();
+                                            guru_arr.push(id_guru);
+                                        });
+
+                                        //array length
+                                        var length = guru_arr.length;
+
+                                        if (length > 0) {
+
+                                            //AJAX request
+                                            $.ajax({
+                                                url: '<?= base_url("operator/guru/deleteuser") ?>',
+                                                type: 'POST',
+                                                data: {
+                                                    id_gurus: guru_arr
+                                                },
+                                                success: function(response) {
+                                                    $('#MultipleDelete').modal({
+                                                        backdrop: 'static',
+                                                    });
+                                                }
+                                            });
+
+                                        } else {
+                                            $('#MinimalAlert').modal()
+                                        }
+                                    }
+                                })
+                            });
+                        });
+                    </script>
+                    <!--==============================================================-->
+                    <!-- End of Multiple Select Row -->
+                    <!--==============================================================-->
                 </div>
                 <div class="card-footer">
+                    <!--==============================================================-->
+                    <!-- Custom Pagination - File that you can find on  /pagination.php -->
+                    <!--==============================================================-->
+
                     <?= $pager->links('guru', 'pagination') ?>
+
+                    <!--==============================================================-->
+                    <!-- End of Custom Pagination - File that you can find on  /pagination.php -->
+                    <!--==============================================================-->
                 </div>
             </div>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Footer - File that you can find on __partial/footer.php -->
-        <!-- ============================================================== -->
+        <!--==============================================================-->
+        <!-- End Page Content-->
+        <!--==============================================================-->
+        <!--==============================================================-->
+        <!--Footer - File that you can find on __partial/footer.php-->
+        <!--==============================================================-->
 
         <?= $this->include('operator/__partial/footer') ?>
 
-        <!-- ============================================================== -->
-        <!-- End of Footer - File that you can find on __partial/footer.php -->
-        <!-- ============================================================== -->
+        <!--==============================================================-->
+        <!--End of Footer - File that you can find on __partial / footer.php-->
+        <!--==============================================================-->
     </div>
-    <!-- ============================================================== -->
-    <!-- Modal - File that you can find on __partial/modal.php -->
-    <!-- ============================================================== -->
+    <!--==============================================================-->
+    <!--Modal - File that you can find on __partial/modal.php-->
+    <!--==============================================================-->
 
     <?= $this->include('operator/__partial/modal') ?>
 
-    <script>
-        function deleteConfirm(url) {
-            $('#btn-delete').attr('href', url);
-            $('#deleteModal').modal();
-        }
-    </script>
-
-    <!-- ============================================================== -->
+    <!--============================================================== -->
     <!-- End of Modal - File that you can find on __partial/modal.php -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->

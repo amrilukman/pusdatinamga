@@ -6,5 +6,4 @@
     <script src="<?= base_url('../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') ?>"></script>
     <!-- Argon JS -->
     <script src="<?= base_url('../assets/js/argon.js?v=1.2.0') ?>"></script>
-    <!-- DataTable -->
-    <script src="<?= base_url('../assets/DataTables/datatables.min.js') ?>"></script>
+    <script src="<?= base_url('../assets/vendor/sweetalert2/dist/sweetalert2.min.js') ?>"></script>

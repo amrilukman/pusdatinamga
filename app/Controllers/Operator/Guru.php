@@ -14,6 +14,7 @@ class Guru extends BaseController
     function __construct()
     {
         helper('form');
+        helper('url');
         $this->guru = new GuruModel();
         $this->jurusan = new JurusanModel();
     }
@@ -41,13 +42,21 @@ class Guru extends BaseController
 
         if (!empty($keyword)) {
             $like = ['guru.nama_guru' => $keyword];
-            $or_like = ['guru.nip' => $keyword];
+            $or_like = [
+                'guru.nip' => $keyword,
+                'guru.nuptk' => $keyword,
+                'guru.nik' => $keyword,
+                'guru.npwp' => $keyword,
+                'guru.sk_cpns' => $keyword,
+                'guru.email_guru' => $keyword,
+            ];
         }
 
         //end filter
 
         //pagination
-        $data['guru'] = $this->guru->join('jurusan', 'jurusan.id_jurusan = guru.jurusan')->where($where)->like($like)->orLike($or_like)->orderBy('nip', 'ASC')->paginate(25, 'guru');
+        $data['guru'] = $this->guru->join('jurusan', 'jurusan.id_jurusan = guru.jurusan')->where($where)->like($like)->orLike($or_like)->orderBy('nama_guru', 'ASC')->paginate(25, 'guru');
+        $data['jumlah'] = $this->guru->countAll();
         $data['pager'] = $this->guru->pager;
         return view('operator/guru/list', $data);
     }
@@ -217,14 +226,24 @@ class Guru extends BaseController
         return view('operator/guru/edit', $data);
     }
 
-    public function delete($id = null)
+    public function deleteuser()
     {
-        $dataGuru = $this->guru->find($id);
-        if (empty($dataGuru)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Data guru Tidak ditemukan !');
+        // $dataGuru = $this->guru->find($id);
+        // if (empty($dataGuru)) {
+        //     throw new \CodeIgniter\Exceptions\PageNotFoundException('Data guru Tidak ditemukan !');
+        // }
+        // $this->guru->delete($id);
+        // session()->setFlashdata('message', 'Berhasil Menghapus Data Guru');
+        // return redirect()->to('/operator/guru/list');
+        $request = \Config\Services::request();
+        $id_gurus = $request->getPost('id_gurus');
+
+        foreach ($id_gurus as $id_guru) {
+            $where = ['nik' => $id_guru];
+            $this->guru->where($where)->delete($id_guru);
         }
-        $this->guru->delete($id);
-        session()->setFlashdata('message', 'Berhasil Menghapus Data Guru');
+
+        session()->setFlashdata('message', 'Berhasil Menghapus Data');
         return redirect()->to('/operator/guru/list');
     }
 

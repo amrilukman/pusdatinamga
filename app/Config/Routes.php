@@ -64,6 +64,7 @@ $routes->post('operator/guru/edit/(:segment)', 'Operator/Guru::edit/$1', ['filte
 $routes->post('operator/guru/edit/update/(:segment)', 'Operator/Guru::update/$1', ['filter' => 'authoperator']);
 $routes->get('operator/guru/list/delete/(:segment)', 'Operator/Guru::delete/$1', ['filter' => 'authoperator']);
 
+
 $routes->get('operator/pegawai/list', 'Operator/Pegawai::index', ['filter' => 'authoperator']);
 $routes->get('operator/pegawai/add', 'Operator/Pegawai::add', ['filter' => 'authoperator']);
 $routes->get('operator/pegawai/edit', 'Operator/Pegawai::edit', ['filter' => 'authoperator']);

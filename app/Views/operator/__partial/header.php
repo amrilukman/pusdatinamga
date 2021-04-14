@@ -16,11 +16,11 @@
     <link rel="stylesheet" href="<?= base_url('../assets/vendor/nucleo/css/nucleo.css') ?>" type="text/css">
     <link rel="stylesheet" href="<?= base_url('../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') ?>" type="text/css">
     <!-- Page plugins -->
-    <link rel="stylesheet" href="<?= base_url('../../assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('../../assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('../../assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') ?>">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="<?= base_url('../assets/css/argon.css?v=1.2.0') ?>" type="text/css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Sweetalert -->
+    <link rel="stylesheet" href="<?= base_url('../assets/vendor/sweetalert2/dist/sweetalert2.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('../../assets/vendor/animate.css/animate.min.css') ?>">
 </head>
