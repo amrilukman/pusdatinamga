@@ -69,9 +69,11 @@
                                     </form>
                                 </li>
                                 <li class="pl-1 mr-1">
-                                    <a href="#" class="btn bg-white btn-icon pl-3 pr-3" data-toggle="tooltip" data-placement="top" title="Download data">
-                                        <span class="btn-inner--icon"><i class="far fa-save"></i></span>
-                                    </a>
+                                    <form action="<?= base_url('operator/guru/exportexcel') ?>" method="POST">
+                                        <button type="submit" class="btn bg-white btn-icon pl-3 pr-3" data-toggle="tooltip" data-placement="top" title="Download data">
+                                            <span class="btn-inner--icon"><i class="far fa-save"></i></span>
+                                        </button>
+                                    </form>
                                 </li>
                                 <li>
                                     <a href="<?= base_url('operator/guru/add') ?>" class="btn btn-icon bg-white pl-3 pr-3" type="button" style="margin-left: 3pt;" data-toggle="tooltip" data-placement="top" title="Tambah data">
@@ -135,7 +137,7 @@
                             <ul class="nav justify-content-end">
                                 <li class="mr-2">
                                     <small><span id='message'></span></small>
-                                    <button class="btn btn-icon btn-danger pl-3 pr-3" type="button" data-toggle="sweet-alert" data-sweet-alert="warning" id="delete" value='Delete'>
+                                    <button class="btn btn-icon btn-danger pl-3 pr-3" type="button" data-sweet-alert="warning" id="delete" value='Delete' data-toggle="tooltip" data-placement="top" title="Hapus Data">
                                         <span><i class="far fa-trash-alt"></i></span>
                                     </button>
                                 </li>
@@ -179,14 +181,13 @@
                                     <td><input type="checkbox" class="checkbox" id="checkbox" name="delete" value="<?= $row->nik; ?>" /></td>
                                     <!-- <td><?= $no++; ?></td> -->
                                     <td class="text-center">
-                                        <a title="Edit" href="<?= base_url('/operator/guru/edit/' . $row->nik . '') ?>" type="button" class="btn btn-warning btn-sm">
+                                        <a title="Edit" href="<?= base_url('/operator/guru/edit/' . $row->nik . '') ?>" type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Edit data">
                                             <span><i class="fas fa-pencil-alt"></i></span>
                                         </a>
                                     </td>
                                     <td><?= $row->nama_guru; ?></td>
                                     <td><?= $row->jenis_kelamin; ?></td>
                                     <td><?= $row->tempat_lahir ?>, <?= $row->tanggal_lahir ?></td>
-                                    <!-- <td><?= $row->tanggal_lahir; ?></td> -->
                                     <td><?= $row->kecamatan; ?></td>
                                     <td><?= $row->alamat; ?></td>
                                     <td><?= $row->akronim_jurusan; ?></td>
