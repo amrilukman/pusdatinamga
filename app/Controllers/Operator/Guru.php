@@ -94,7 +94,7 @@ class Guru extends BaseController
             $npwp = NULL;
         }
 
-        $sk_cpns = $this->request->getVar('sk-cpns');
+        $sk_cpns = $this->request->getVar('sk_cpns');
         if ($sk_cpns == '') {
             $sk_cpns = NULL;
         }
@@ -183,7 +183,7 @@ class Guru extends BaseController
             'sk_cpns' => [
                 'rules' => 'permit_empty|is_unique[guru.sk_cpns]',
                 'errors' => [
-                    'is_unique' => 'SK-CPNS Harus diisi'
+                    'is_unique' => 'sk_cpns Harus diisi'
                 ]
             ],
             'jurusan' => [
@@ -265,7 +265,7 @@ class Guru extends BaseController
             $npwp = NULL;
         }
 
-        $sk_cpns = $this->request->getVar('sk-cpns');
+        $sk_cpns = $this->request->getVar('sk_cpns');
         if ($sk_cpns == '') {
             $sk_cpns = NULL;
         }
@@ -356,7 +356,7 @@ class Guru extends BaseController
             'sk_cpns' => [
                 'rules' => 'permit_empty|is_unique[guru.sk_cpns]',
                 'errors' => [
-                    'is_unique' => 'SK-CPNS Harus diisi'
+                    'is_unique' => 'sk_cpns Harus diisi'
                 ]
             ],
             'jurusan' => [
@@ -467,7 +467,7 @@ class Guru extends BaseController
             ->setCellValue('I' . 5, 'No Telepon/HP')
             ->setCellValue('J' . 5, 'Email')
             ->setCellValue('K' . 5, 'Status Kepegawaian')
-            ->setCellValue('L' . 5, 'SK-CPNS')
+            ->setCellValue('L' . 5, 'sk_cpns')
             ->setCellValue('M' . 5, 'NIP')
             ->setCellValue('N' . 5, 'NUPTK')
             ->setCellValue('O' . 5, 'NPWP')

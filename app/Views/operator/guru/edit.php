@@ -99,17 +99,17 @@
                         <div class="ml-3">
                             <div class="form-row my-0">
                                 <div class="form-group col-4">
-                                    <label for="nik" class="form-control-label">NIK :</label>
+                                    <label for="nik" class="form-control-label">NIK : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="nik" id="nik" placeholder="NIK" value="<?= $guru->nik; ?>" required>
                                 </div>
                                 <div class="form-group col-4">
-                                    <label for="nama" class="form-control-label">Nama :</label>
+                                    <label for="nama" class="form-control-label">Nama : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="nama" id="nama" placeholder="Nama" value="<?= $guru->nama_guru; ?>" required>
                                 </div>
                             </div>
                             <div class="form-row my-0">
                                 <div class="form-group col-4">
-                                    <label for="tempat_lahir" class="form-control-label">Tempat Lahir :</label>
+                                    <label for="tempat_lahir" class="form-control-label">Tempat Lahir : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" value="<?= $guru->tempat_lahir; ?>" required>
                                 </div>
                                 <script>
@@ -130,13 +130,13 @@
                                     });
                                 </script>
                                 <div class="form-group col-4">
-                                    <label for="tanggal_lahir" class="form-control-label">Tanggal Lahir :</label>
+                                    <label for="tanggal_lahir" class="form-control-label">Tanggal Lahir : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="date" name="tanggal_lahir" id="tanggal_lahir" value="<?= $guru->tanggal_lahir; ?>" required>
                                     <small><span id='message'></span><small>
                                 </div>
                             </div>
                             <div class="form-group mb-3 my-0" required>
-                                <label for="jenis_kelamin" class="form-control-label">Jenis Kelamin :</label>
+                                <label for="jenis_kelamin" class="form-control-label">Jenis Kelamin : <span class="text-danger">*</span></label>
                                 <div class="custom-control custom-radio">
                                     <input type="radio" id="lakilaki" name="jenis_kelamin" class="custom-control-input" value="L" <?= ($guru->jenis_kelamin == "L" ? "checked" : ""); ?>>
                                     <label class="custom-control-label" for="lakilaki">Laki-laki</label>
@@ -148,11 +148,11 @@
                             </div>
                             <div class="form-row mb-3 my-0">
                                 <div class="form-group col-4">
-                                    <label for="kecamatan" class="form-control-label">Kecamatan :</label>
+                                    <label for="kecamatan" class="form-control-label">Kecamatan : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="kecamatan" id="kecamatan" placeholder="Kecamatan" value="<?= $guru->kecamatan; ?>" required>
                                 </div>
                                 <div class="form-group col-8">
-                                    <label class="form-control-label" for="alamat">Alamat Lengkap : <small>(Nama Jalan, RT/RW, Desa/Kelurahan, Kode Post)</small></label>
+                                    <label class="form-control-label" for="alamat">Alamat Lengkap : <small>(Nama Jalan, RT/RW, Desa/Kelurahan, Kode Post)</small> <span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="alamat" id="alamat" rows="3" required maxlength=50><?= $guru->alamat; ?></textarea>
                                 </div>
                             </div>
@@ -162,11 +162,11 @@
                         <div class="ml-3">
                             <div class="form-row mb-3 my-0">
                                 <div class="form-group col-4">
-                                    <label for="email" class="form-control-label">Email :</label>
+                                    <label for="email" class="form-control-label">Email : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="email" name="email" id="email" placeholder="Email" value="<?= $guru->email_guru; ?>" required>
                                 </div>
                                 <div class="form-group col-4">
-                                    <label for="no_hp" class="form-control-label">No Telepon :</label>
+                                    <label for="no_hp" class="form-control-label">No Telepon : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="no_hp" id="no_hp" placeholder="No Telepon/Whatsapp" value="<?= $guru->no_hp; ?>" required>
                                 </div>
                             </div>
@@ -175,9 +175,53 @@
                         <h6 class="heading-small text-muted mb-3">Kepegawaian</h6>
                         <div class="ml-3">
                             <div class="form-row my-0">
+                                <div class="form-group mb-3 my-0 col-4" required>
+                                    <label for="status" class="form-control-label">Status Kepegawaian : <span class="text-danger">*</span></label>
+                                    <div class="custom-control custom-radio mb-3 mt-2 pl-0">
+                                        <input type="radio" id="status" name="status" value="PNS" onchange="showhideForm(this.value);" <?= ($guru->status_kepegawaian == "PNS" ? "checked" : ""); ?> required>
+                                        <label class="text-sm ml-2 mr-3" for="status">PNS</label>
+                                        <input type="radio" id="status" name="status" value="Non-PNS" onchange="showhideForm(this.value);" <?= ($guru->status_kepegawaian == "Non-PNS" ? "checked" : ""); ?> required>
+                                        <label class="text-sm ml-2" for="status">Non-PNS</label>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    function showhideForm(status) {
+                                        if (status == "PNS") {
+                                            //document.getElementById("div1").style.display = 'block';
+                                            document.getElementById("sk_cpns").required = true;
+                                            document.getElementById("sk_cpns").disabled = false;
+                                            document.getElementById("nip").required = true;
+                                            document.getElementById("nip").disabled = false;
+                                        }
+                                        if (status == "Non-PNS") {
+                                            //document.getElementById("div1").style.display = 'none';
+                                            document.getElementById("sk_cpns").required = false;
+                                            document.getElementById("sk_cpns").disabled = true;
+                                            document.getElementById("sk_cpns").value = null;
+                                            document.getElementById("nip").required = false;
+                                            document.getElementById("nip").disabled = true;
+                                            document.getElementById("nip").value = null;
+                                        }
+                                    }
+                                </script>
+                                <div id="div1" class="form-group col-4" style="display: block" required>
+                                    <label for="sk_cpns" class="form-control-label">SK-CPNS : <span class="text-danger">**</span></label>
+                                    <input class="form-control" type="text" id="sk_cpns" name="sk_cpns" placeholder="SK-CPNS" value="<?= $guru->sk_cpns; ?>" required <?= ($guru->status_kepegawaian == "Non-PNS" ? "disabled" : ""); ?>>
+                                </div>
                                 <div class="form-group col-4">
-                                    <label for="nip" class="form-control-label">NIP :</label>
-                                    <input class="form-control" type="numeric" name="nip" id="nip" placeholder="NIP" value="<?= $guru->nip; ?>">
+                                    <label for="nip" class="form-control-label">NIP : <span class="text-danger">**</span></label>
+                                    <input class="form-control" type="numeric" name="nip" id="nip" placeholder="NIP" value="<?= $guru->nip; ?>" required <?= ($guru->status_kepegawaian == "Non-PNS" ? "disabled" : ""); ?>>
+                                </div>
+                            </div>
+                            <div class="form-row my-0 mb-3">
+                                <div class="form-group col-4">
+                                    <label for="jurusan" class="form-control-label">Jurusan : <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="jurusan" id="jurusan" required>
+                                        <option value="">Pilih Jurusan</option>
+                                        <?php foreach ($jurusan as $key => $data) { ?>
+                                            <option value="<?= $data->id_jurusan; ?>" <?= ($guru->jurusan == $data->id_jurusan ? "selected" : ""); ?>><?= $data->nama_jurusan; ?></option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group col-4">
                                     <label for="nuptk" class="form-control-label">NUPTK :</label>
@@ -188,49 +232,13 @@
                                     <input class="form-control" type="numeric" name="npwp" id="npwp" placeholder="NPWP" value="<?= $guru->npwp; ?>">
                                 </div>
                             </div>
-                            <div class="form-row my-0">
-                                <div class="form-group mb-3 my-0 col-4" required>
-                                    <label for="status" class="form-control-label">Status Kepegawaian :</label>
-                                    <div class="custom-control custom-radio mb-3 mt-2 pl-0">
-                                        <input type="radio" id="status" name="status" value="PNS" onchange="showhideForm(this.value);" <?= ($guru->status_kepegawaian == "PNS" ? "checked" : ""); ?>>
-                                        <label class="text-sm ml-2 mr-3" for="status">PNS</label>
-                                        <input type="radio" id="status" name="status" value="Non-PNS" onchange="showhideForm(this.value);" <?= ($guru->status_kepegawaian == "Non-PNS" ? "checked" : ""); ?>>
-                                        <label class="text-sm ml-2" for="status">Non-PNS</label>
-                                    </div>
-                                </div>
-                                <script type="text/javascript">
-                                    function showhideForm(status) {
-                                        if (status == "PNS") {
-                                            //document.getElementById("div1").style.display = 'block';
-                                            document.getElementById("sk-cpns").required = true;
-                                            document.getElementById("sk-cpns").disabled = false;
-                                        }
-                                        if (status == "Non-PNS") {
-                                            //document.getElementById("div1").style.display = 'none';
-                                            document.getElementById("sk-cpns").required = false;
-                                            document.getElementById("sk-cpns").disabled = true;
-                                        }
-                                    }
-                                </script>
-                                <div id="div1" class="form-group col-8" style="display: block" required>
-                                    <label for="sk-cpns" class="form-control-label">SK-CPNS :</label>
-                                    <input class="form-control" type="text" id="sk-cpns" placeholder="SK-CPNS" value="<?= $guru->sk_cpns; ?>" required disabled>
-                                </div>
-                            </div>
-                            <div class="form-row mb-3 my-0">
-                                <div class="form-group col-4">
-                                    <label for="jurusan" class="form-control-label">Jurusan :</label>
-                                    <select class="form-control" name="jurusan" id="jurusan" required>
-                                        <option value="">Pilih Jurusan</option>
-                                        <?php foreach ($jurusan as $key => $data) { ?>
-                                            <option value="<?= $data->id_jurusan; ?>" <?= ($guru->jurusan == $data->id_jurusan ? "selected" : ""); ?>><?= $data->nama_jurusan; ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="row">
+                            <div class="col text-left">
+                                <h5 class="text-danger mb-0">*) Harus Diisi</h5>
+                                <h5 class="text-danger">**) Harus Diisi Bagi PNS</h5>
+                            </div>
                             <div class="col text-right">
                                 <input class="btn btn-warning mr-2" type="reset" value="Reset">
                                 <input class="btn" type="submit" value="Update" style="color: white; background-color: #1174EF">

@@ -70,31 +70,11 @@
                     <li class="nav-item">
                         <a class="nav-link <?php
                                             $uri = service('uri');
-                                            if ($uri->getSegment(2) == 'jurusan') {
-                                                echo "active";
-                                            } ?>" href="<?php echo site_url('operator/jurusan/list') ?>">
-                            <i class="ni ni-atom text-default"></i>
-                            <span class="nav-link-text">Jurusan</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php
-                                            $uri = service('uri');
-                                            if ($uri->getSegment(2) == 'mapel') {
-                                                echo "active";
-                                            } ?>" href="<?php echo site_url('operator/mapel/list') ?>">
-                            <i class="ni ni-books text-default"></i>
-                            <span class="nav-link-text">Mata Pelajaran</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?php
-                                            $uri = service('uri');
                                             if ($uri->getSegment(2) == 'wali') {
                                                 echo "active";
                                             } ?>" href="<?php echo site_url('operator/wali/list') ?>">
-                            <i class="ni ni-single-02 text-default"></i>
-                            <span class="nav-link-text">Wali Kelas</span>
+                            <i class="ni ni-paper-diploma text-default"></i>
+                            <span class="nav-link-text">Kelulusan</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -104,18 +84,7 @@
                                                 echo "active";
                                             } ?>" href="<?php echo site_url('operator/alumni/list') ?>">
                             <i class="fas fa-user-graduate text-default"></i>
-                            <span class="nav-link-text">Alumni / Kelulusan</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- Divider -->
-                <hr class="my-3">
-                <!-- Navigation -->
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
-                            <i class="fas fa-print" style="color: #1174EF"></i>
-                            <span class="nav-link-text">Print Absen</span>
+                            <span class="nav-link-text">Alumni</span>
                         </a>
                     </li>
                 </ul>
