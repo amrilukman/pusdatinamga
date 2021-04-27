@@ -68,18 +68,25 @@ $routes->get('operator/guru/list/delete/(:segment)', 'Operator/Guru::delete/$1',
 $routes->get('operator/pegawai/list', 'Operator/Pegawai::index', ['filter' => 'authoperator']);
 $routes->get('operator/pegawai/add', 'Operator/Pegawai::add', ['filter' => 'authoperator']);
 $routes->get('operator/pegawai/edit', 'Operator/Pegawai::edit', ['filter' => 'authoperator']);
-$routes->get('operator/jurusan/list', 'Operator/Jurusan::index', ['filter' => 'authoperator']);
-$routes->get('operator/jurusan/add', 'Operator/Jurusan::add', ['filter' => 'authoperator']);
-$routes->get('operator/jurusan/edit', 'Operator/Jurusan::edit', ['filter' => 'authoperator']);
-$routes->get('operator/mapel/list', 'Operator/Mapel::index', ['filter' => 'authoperator']);
-$routes->get('operator/mapel/add', 'Operator/Mapel::add', ['filter' => 'authoperator']);
-$routes->get('operator/mapel/edit', 'Operator/Mapel::edit', ['filter' => 'authoperator']);
-$routes->get('operator/wali/list', 'Operator/Wali::index', ['filter' => 'authoperator']);
-$routes->get('operator/wali/add', 'Operator/Wali::add', ['filter' => 'authoperator']);
-$routes->get('operator/wali/edit', 'Operator/Wali::edit', ['filter' => 'authoperator']);
+
+$routes->get('operator/kelulusan/list', 'Operator/Kelulusan::index', ['filter' => 'authoperator']);
+$routes->get('operator/kelulusan/add', 'Operator/Kelulusan::add', ['filter' => 'authoperator']);
+$routes->get('operator/kelulusan/edit', 'Operator/Kelulusan::edit', ['filter' => 'authoperator']);
+
 $routes->get('operator/alumni/list', 'Operator/Alumni::index', ['filter' => 'authoperator']);
 $routes->get('operator/alumni/add', 'Operator/Alumni::add', ['filter' => 'authoperator']);
 $routes->get('operator/alumni/edit', 'Operator/Alumni::edit', ['filter' => 'authoperator']);
+
+$routes->get('operator/user/list', 'Operator/user::index', ['filter' => 'authoperator']);
+$routes->get('operator/user/edit', 'Operator/user::edit', ['filter' => 'authoperator']);
+
+$routes->get('operator/info/add', 'Operator/Info::add', ['filter' => 'authoperator']);
+$routes->get('operator/info/store', 'Operator/Info::store', ['filter' => 'authoperator']);
+$routes->post('operator/info/delete/(:segment)', 'Operator/Info::delete/$1', ['filter' => 'authoperator']);
+$routes->post('operator/info/edit/(:segment)', 'Operator/Info::edit/$1', ['filter' => 'authoperator']);
+$routes->get('operator/info/update/(:segment)', 'Operator/Info::update/$1', ['filter' => 'authoperator']);
+
+$routes->post('operator/perubahan/detail/(:segment)', 'operator/Perubahan::detail/$1', ['filter' => 'authoperator']);
 // ==============================================================
 // End of Operator's Router -->
 // ==============================================================
@@ -93,6 +100,15 @@ $routes->get('pimpinan/siswa/list', 'Pimpinan/Siswa::index', ['filter' => 'authp
 $routes->get('pimpinan/guru/list', 'Pimpinan/Guru::index', ['filter' => 'authpimpinan']);
 $routes->get('pimpinan/pegawai/list', 'Pimpinan/Pegawai::index', ['filter' => 'authpimpinan']);
 $routes->get('pimpinan/alumni/list', 'Pimpinan/Alumni::index', ['filter' => 'authpimpinan']);
+$routes->get('pimpinan/kelulusan/list', 'pimpinan/Kelulusan::index', ['filter' => 'authpimpinan']);
+
+$routes->get('pimpinan/info/add', 'pimpinan/Info::add', ['filter' => 'authpimpinan']);
+$routes->get('pimpinan/info/store', 'pimpinan/Info::store', ['filter' => 'authpimpinan']);
+$routes->post('pimpinan/info/delete/(:segment)', 'pimpinan/Info::delete/$1', ['filter' => 'authpimpinan']);
+$routes->post('pimpinan/info/edit/(:segment)', 'pimpinan/Info::edit/$1', ['filter' => 'authpimpinan']);
+$routes->get('pimpinan/info/update/(:segment)', 'pimpinan/Info::update/$1', ['filter' => 'authpimpinan']);
+
+$routes->get('pimpinan/perubahan/store', 'pimpinan/perubahan::store', ['filter' => 'authpimpinan']);
 // ==============================================================
 // End of Pimpinan's Router -->
 // ==============================================================
@@ -106,6 +122,7 @@ $routes->get('user/siswa/list', 'User/Siswa::index', ['filter' => 'authuser']);
 $routes->get('user/guru/list', 'User/Guru::index', ['filter' => 'authuser']);
 $routes->get('user/pegawai/list', 'User/Pegawai::index', ['filter' => 'authuser']);
 $routes->get('user/alumni/list', 'User/Alumni::index', ['filter' => 'authuser']);
+$routes->post('user/kelulusan/page', 'User/Dashboard::page', ['filter' => 'authuser']);
 // ==============================================================
 // End of Pimpinan's Router -->
 // ==============================================================

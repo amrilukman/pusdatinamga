@@ -43,25 +43,37 @@
             <div class="container-fluid">
                 <div class="header-body">
                     <div class="row align-items-center py-4">
-                        <div class="col-3">
+                        <div class="col-6">
                             <h6 class="h2 text-white d-inline-block mb-0">Data Siswa</h6>
                         </div>
-                        <div class="col-9 text-right">
+                        <div class="col-6 text-right">
                             <ul class="nav justify-content-end">
-                                <li class="mr-1">
-                                    <form class="search mb-1 toggler">
-                                        <div class="search__wrapper">
-                                            <div class="input-group-prepend input-group-merge">
-                                                <input type="text" class="form-control search__field" style="height: 44px;" placeholder="Search" aria-label="Search">
-                                                <span class="input-group-text search__icon" style="color: #525f7f;"><i class="fas fa-search"></i></span>
-                                            </div>
+                                <li class="pr-1">
+                                    <form class="search mb-1">
+                                        <div class="input-group input-group-merge">
+                                            <?php
+                                            $form_keyword = [
+                                                'type'  => 'text',
+                                                'name'  => 'keyword',
+                                                'id'    => 'keyword',
+                                                'value' => $keyword,
+                                                'class' => 'form-control search__field',
+                                                'placeholder' => 'Search',
+                                                'style' => 'height: 44px;',
+                                                'aria-label' => 'Search'
+                                            ];
+                                            echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
+                                            echo form_input($form_keyword);
+                                            ?>
                                         </div>
                                     </form>
                                 </li>
                                 <li class="pl-1 mr-1">
-                                    <a href="#" class="btn bg-white btn-icon pl-3 pr-3" data-toggle="tooltip" data-placement="top" title="Download data">
-                                        <span class="btn-inner--icon"><i class="far fa-save"></i></span>
-                                    </a>
+                                    <form action="<?= base_url('pimpinan/siswa/exportexcel') ?>" method="POST">
+                                        <button type="submit" class="btn bg-white btn-icon pl-3 pr-3" data-toggle="tooltip" data-placement="top" title="Download data">
+                                            <span class="btn-inner--icon"><i class="far fa-save"></i></span>
+                                        </button>
+                                    </form>
                                 </li>
                             </ul>
                         </div>
@@ -80,46 +92,66 @@
             <div class="card">
                 <div class="card-header border-0">
                     <div class="row align-items-left">
+                        <!--==============================================================-->
+                        <!-- Filter  -->
+                        <!--==============================================================-->
                         <div class="col-3 pl-2 pr-0">
-                            <select class="form-control" id="kelas">
-                                <option>Jurusan</option>
-                                <option>Teknik Komputer dan Informatika</option>
-                                <option>Teknik Kendarangan Ringan</option>
-                                <option>Teknik Pemesinan</option>
-                                <option>Teknik Pengelasan</option>
-                                <option>Teknik Audio Video</option>
-                                <option>Tata Busana</option>
-                                <option>Teknik Instalasi Tenaga Listrik</option>
-                                <option>Teknik Elektronika Industri</option>
-                            </select>
+                            <?php
+                            echo form_dropdown('jurusan', $jurusans, $jurusan, ['class' => 'form-control', 'id' => 'jurusan']);
+                            ?>
                         </div>
                         <div class="col-2 pl-2 pr-0">
-                            <select class="form-control" id="kelas">
-                                <option>Kelas</option>
-                                <option>X</option>
-                                <option>XI</option>
-                                <option>XII</option>
-                            </select>
+                            <?php
+                            echo form_dropdown('kelas', $kelass, $kelas, ['class' => 'form-control', 'id' => 'kelas']);
+                            ?>
                         </div>
                         <div class="col-2 pl-2 pr-0">
-                            <select class="form-control" id="kelas">
-                                <option>Rombel</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
+                            <?php
+                            echo form_dropdown('rombel', $rombels, $rombel, ['class' => 'form-control', 'id' => 'rombel', 'disabled' => true]);
+                            ?>
                         </div>
+                        <script>
+                            $(document).ready(function() {
+                                $("#jurusan").change(function() {
+                                    filter();
+                                });
+                                $("#kelas").change(function() {
+                                    filter();
+                                });
+                                $("#rombel").change(function() {
+                                    filter();
+                                });
+                                $("#keyword").keypress(function(event) {
+                                    if (event.keyCode == 13) {
+                                        filter();
+                                    }
+                                });
+
+                                var formRombel = document.getElementById('rombel');
+                                var formJurusan = document.getElementById('jurusan');
+                                if (formJurusan.value == '' || formJurusan.value == '1' || formJurusan.value == '8') {
+                                    formRombel.disabled = true;
+                                } else {
+                                    formRombel.disabled = false;
+                                }
+
+                                var filter = function() {
+                                    var jurusan = $("#jurusan").val();
+                                    var kelas = $("#kelas").val();
+                                    var rombel = $("#rombel").val();
+                                    var keyword = $("#keyword").val();
+                                    window.location.replace("/pimpinan/siswa/list?jurusan=" + jurusan + "&kelas=" + kelas + "&rombel=" + rombel + "&keyword=" + keyword);
+                                }
+                            });
+                        </script>
+                        <!--==============================================================-->
+                        <!-- End of Filter -->
+                        <!--==============================================================-->
                         <div class="col-5 text-right">
                             <ul class="nav justify-content-end">
-                                <li class="d-none d-lg-block">
-                                    <button class="btn btn-icon btn-outline-secondary" type="button">
-                                        <span class="btn-inner--text">Rohman Pujadi M.Kom</span>
-                                    </button>
-                                </li>
                                 <li>
                                     <button class="btn btn-icon btn-outline-secondary" type="button">
-                                        <span class="btn-inner--text">Jumlah : 40</span>
+                                        <span class="btn-inner--text">Jumlah : <?= $jumlah ?></span>
                                     </button>
                                 </li>
                             </ul>
@@ -128,95 +160,66 @@
                 </div>
                 <div class="table-responsive">
                     <!-- Projects table -->
-                    <table class="table align-items-center table-flush">
+                    <table id="myTable" class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
+                                <th scope="col">No</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">NISN</th>
-                                <th scope="col">Jenis Kelamin</th>
+                                <th scope="col">Kelas</th>
+                                <th scope="col">JK</th>
+                                <th scope="col">TTL</th>
+                                <th scope="col">Kecamatan</th>
+                                <th scope="col">Alamat Lengkap</th>
+                                <th scope="col">No HP</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Penerima KIP</th>
+                                <th scope="col">KIP</th>
+                                <th scope="col">Nomor Rekening</th>
+                                <th scope="col">NIK</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    Amri Lukman Muzaki
-                                </th>
-                                <td>
-                                    24060118140108
-                                </td>
-                                <td>
-                                    L
-                                </td>
-                            </tr>
+                            <?php $no = 1;
+                            foreach ($siswa as $row) {
+                            ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $row->nama_siswa; ?></td>
+                                    <td><?= $row->nisn; ?></td>
+                                    <td><?php if ($row->kelas == 1) {
+                                            echo 'X';
+                                        } elseif ($row->kelas == 2) {
+                                            echo 'XI';
+                                        } elseif ($row->kelas == 3) {
+                                            echo 'XII';
+                                        } ?> <?= $row->akronim_jurusan ?>
+                                        <?= $row->rombel ?></td>
+                                    <td><?= $row->jenis_kelamin; ?></td>
+                                    <td><?= $row->tempat_lahir; ?>, <?= $row->tanggal_lahir ?></td>
+                                    <td><?= $row->kecamatan; ?></td>
+                                    <td><?= $row->alamat; ?></td>
+                                    <td><?= $row->no_hp; ?></td>
+                                    <td><?= $row->email_siswa; ?></td>
+                                    <td><?= $row->penerima_kip; ?></td>
+                                    <td><?= $row->no_kip; ?></td>
+                                    <td><?= $row->no_rek; ?></td>
+                                    <td><?= $row->nik; ?></td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
                 <div class="card-footer">
-                    <nav aria-label="...">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">
-                                    <i class="fa fa-angle-left"></i>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#" style="background-color: #1174EF;">1</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">
-                                    <i class="fa fa-angle-right"></i>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <!--==============================================================-->
+                    <!-- Custom Pagination - File that you can find on  /pagination.php -->
+                    <!--==============================================================-->
+
+                    <?= $pager->links('siswa', 'pagination') ?>
+
+                    <!--==============================================================-->
+                    <!-- End of Custom Pagination - File that you can find on  /pagination.php -->
+                    <!--==============================================================-->
                 </div>
             </div>
         </div>

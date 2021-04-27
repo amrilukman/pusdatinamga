@@ -72,85 +72,118 @@
             <!-- ============================================================== -->
             <div class="card bg-white border-0 mb-0">
                 <div class="card-header bg-transparent">
-                    <div>
-                        <h3 class="mb-0 text-dark">Edit Profil</h3>
+                    <div class="row align-items-left">
+                        <div class="col-6 pl-3 pr-0 mt-2">
+                            <h3 class="mb-0 text-dark">Edit Profil</h3>
+                        </div>
+                        <div class="col-6 nav justify-content-end">
+                            <a href="<?= base_url('user/profil/resetpassword/' . $user->nik . '') ?>" class="btn btn-icon btn-danger" type="button">
+                                <span><i class="fas fa-unlock-alt"></i></span>
+                                <span class="btn-inner--text">Ganti Password</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body bg-white border-0">
-                    <form>
-                        <h6 class="heading-small text-muted mb-3">User Information</h6>
-                        <div class="ml-3">
-                            <div class="form-group form-row mb-3 my-0">
-                                <div class="col-4">
-                                    <label for="nisn" class="form-control-label">ID/NIP/NISN :</label>
-                                    <input class="form-control" type="numeric" id="nisn" placeholder="NISN" value="24060118140108">
+                    <?php if (!empty(session()->getFlashdata('error'))) : ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <h4 class="text-white">Periksa Entrian Form</h4>
+                            <hr class="my-3">
+                            <?php echo session()->getFlashdata('error'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php endif; ?>
+                    <?php if (session()->get('role') == 'guru' or session()->get('role') == 'pegawai') { ?>
+                        <form method="post" action="<?= base_url('user/profil/update/' . $user->nik . '') ?>">
+                        <?php } else if (session()->get('role') == 'siswa' or session()->get('role') == 'alumni') { ?>
+                            <form method="post" action="<?= base_url('user/profil/update/' . $user->nomor_induk . '') ?>">
+                            <?php } ?>
+                            <?= csrf_field(); ?>
+                            <h6 class="heading-small text-muted mb-3">User Information</h6>
+                            <div class="ml-3">
+                                <div class="form-row my-0">
+                                    <div class="form-group col-4">
+                                        <label for="nik" class="form-control-label">NIK : <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="numeric" name="nik" id="nik" placeholder="NIK" value="<?= $user->nik ?>" disabled>
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <label for="nama" class="form-control-label">Nama : <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="nama" id="nama" placeholder="Nama" value="<?= $user->nama ?>" disabled>
+                                    </div>
                                 </div>
-                                <div class="col-8">
-                                    <div class="form-group my-0">
-                                        <label for="nama" class="form-control-label">Nama :</label>
-                                        <input class="form-control" type="text" id="nama" placeholder="Nama Lengkap" value="Amri Lukman Muzaki">
+                                <div class="form-row mb-3 my-0">
+                                    <div class="form-group col-4">
+                                        <label for="kecamatan" class="form-control-label">Kecamatan : <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="kecamatan" id="kecamatan" placeholder="Kecamatan" value="<?= $profil->kecamatan ?>" required>
+                                    </div>
+                                    <div class="form-group col-8">
+                                        <label class="form-control-label" for="alamat">Alamat Lengkap : <small>(Nama Jalan, RT/RW, Desa/Kelurahan, Kode Post)</small> <span class="text-danger">*</span></label>
+                                        <textarea class="form-control" name="alamat" id="alamat" rows="3" required maxlength=100><?= $profil->alamat ?></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group form-row mb-3 my-0">
-                                <div class="col-4">
-                                    <label for="tempatlahir" class="form-control-label">Tempat Lahir :</label>
-                                    <input class="form-control" type="text" id="tempatlahir" placeholder="Tempat Lahir" value="Pemalang">
-                                </div>
-                                <div class="col-8">
-                                    <label for="tanggallahir" class="form-control-label">Tanggal Lahir</label>
-                                    <input class="form-control" type="date" id="tanggallahir" value="2000-09-20">
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 my-0">
-                                <label class="form-control-label">Jenis Kelamin :</label>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="lakilaki" name="jeniskelamin" class="custom-control-input" checked>
-                                    <label class="custom-control-label" for="lakilaki">Laki-laki</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" id="perempuan" name="jeniskelamin" class="custom-control-input">
-                                    <label class="custom-control-label" for="perempuan">Perempuan</label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="my-4">
-                        <h6 class="heading-small text-muted mb-3">User Contact</h6>
-                        <div class="ml-3">
-                            <div class="form-group form-row mb-3 my-0">
-                                <div class="col-4">
-                                    <label for="nisn" class="form-control-label">Kecamatan :</label>
-                                    <input class="form-control" type="numeric" id="nisn" placeholder="Kecamatan" value="Ulujami">
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group my-0">
-                                        <label for="nama" class="form-control-label">Email :</label>
-                                        <input class="form-control" type="text" id="nama" placeholder="Email" value="ampry.muzaki@gmail.com">
+                            <hr class="my-4">
+                            <h6 class="heading-small text-muted mb-3">User Contact</h6>
+                            <div class="ml-3">
+                                <div class="form-row mb-3 my-0">
+                                    <div class="form-group col-4">
+                                        <label for="email" class="form-control-label">Email : <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="email" name="email" id="email" placeholder="Email" value="<?= $user->email ?>" required>
                                     </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group my-0">
-                                        <label for="nama" class="form-control-label">No. Telp/WA :</label>
-                                        <input class="form-control" type="text" id="nama" placeholder="No. Telp/Whatsapp" value="085777617635">
+                                    <div class="form-group col-4">
+                                        <label for="no_hp" class="form-control-label">No Telepon : <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="numeric" name="no_hp" id="no_hp" placeholder="No Telepon/Whatsapp" value="<?= $profil->no_hp ?>" required>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <?php $message = ("Jl. Sukorejo Tumbal RT 02/09 Dk. Sumurlembu Ds. Sukorejo Kec. Ulujami Kab. Pemalang 52371"); ?>
-                                <label class="form-control-label" for="alamat">Alamat Lengkap</label>
-                                <textarea class="form-control" id="alamat" rows="3" placeholder="Alamat Lengkap"><?php echo htmlspecialchars($message); ?></textarea>
+                            <?php if (session()->get('role') == 'alumni') { ?>
+                                <hr class="my-4">
+                                <h6 class="heading-small text-muted mb-3">Post Graduate</h6>
+                                <div class="ml-3">
+                                    <div class="form-row mb-3 my-0">
+                                        <div class="col-4">
+                                            <label for="status" class="form-control-label">Status : <span class="text-danger">*</span></label>
+                                            <select class="form-control" name="status" id="status" required onchange="showhideForm1(this.value);">
+                                                <option value="">Pilih Status</option>
+                                                <option value="Belum Bekerja" <?= ($profil->status == "Belum Bekerja" ? "selected" : ""); ?>>Belum Bekerja</option>
+                                                <option value="Bekerja" <?= ($profil->status == "Bekerja" ? "selected" : ""); ?>>Bekerja</option>
+                                                <option value="Kuliah" <?= ($profil->status == "Kuliah" ? "selected" : ""); ?>>Kuliah</option>
+                                            </select>
+                                        </div>
+                                        <script type="text/javascript">
+                                            function showhideForm1(status) {
+                                                if (status == "Bekerja" || status == "Kuliah") {
+                                                    //document.getElementById("div1").style.display = 'block';
+                                                    document.getElementById("instansi").required = true;
+                                                    document.getElementById("instansi").disabled = false;
+                                                }
+                                                if (status == "Belum Bekerja") {
+                                                    //document.getElementById("div1").style.display = 'none';
+                                                    document.getElementById("instansi").required = false;
+                                                    document.getElementById("instansi").disabled = true;
+                                                    document.getElementById("instansi").value = null;
+                                                }
+                                            }
+                                        </script>
+                                        <div class="form-group col-8">
+                                            <label for="instansi" class="form-control-label">Instansi : <span class="text-danger">**</span></label>
+                                            <input class="form-control" type="text" name="instansi" id="instansi" placeholder="Instansi" value="<?= $profil->instansi ?>" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <div class="row">
+                                <div class="col text-left">
+                                    <h5 class="text-danger mb-0">*) Harus Diisi</h5>
+                                </div>
+                                <div class="col text-right">
+                                    <input class="btn btn-warning mr-2" type="reset" value="Reset">
+                                    <input class="btn" type="submit" value="Update" style="color: white; background-color: #1174EF">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col text-right">
-                                <input class="btn btn-warning mr-2" type="reset" value="Reset">
-                                <a onclick="editConfirm('<?php echo base_url('/user/profil') ?>')" href="#!" class="btn" type="button" style="color: white; background-color: #1174EF">
-                                    <span>Edit</span>
-                                </a>
-                            </div>
-                        </div>
-
-                    </form>
+                            </form>
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -179,13 +212,6 @@
     <!-- ============================================================== -->
 
     <?= $this->include('user/__partial/modal') ?>
-
-    <script>
-        function editConfirm(url) {
-            $('#btn-edit').attr('href', url);
-            $('#editModal').modal();
-        }
-    </script>
 
     <!-- ============================================================== -->
     <!-- End of Modal - File that you can find on __partial/modal.php -->

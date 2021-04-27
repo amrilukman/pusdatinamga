@@ -61,7 +61,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Siswa</h5>
-                                            <span class="h2 font-weight-bold mb-0">7320</span>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_siswa ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -79,7 +79,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Guru</h5>
-                                            <span class="h2 font-weight-bold mb-0">65</span>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_guru ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -97,7 +97,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Pegawai</h5>
-                                            <span class="h2 font-weight-bold mb-0">45</span>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_pegawai ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -114,8 +114,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Rombel/Kelas</h5>
-                                            <span class="h2 font-weight-bold mb-0">32</span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Kelas</h5>
+                                            <span class="h2 font-weight-bold mb-0">60</span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -172,10 +172,10 @@
                                             Teknik Komputer Jaringan
                                         </th>
                                         <td>
-                                            108
+                                            <?= $jumlah_siswa_tkj ?>
                                         </td>
                                         <td>
-                                            4
+                                            <?= $jumlah_guru_tkj ?>
                                         </td>
                                         <td>
                                             3
@@ -186,10 +186,10 @@
                                             Teknik Kendaraan Ringan Otomotif
                                         </th>
                                         <td>
-                                            432
+                                            <?= $jumlah_siswa_tkr ?>
                                         </td>
                                         <td>
-                                            6
+                                            <?= $jumlah_guru_tkr ?>
                                         </td>
                                         <td>
                                             12
@@ -200,10 +200,10 @@
                                             Teknik Pemesinan
                                         </th>
                                         <td>
-                                            216
+                                            <?= $jumlah_siswa_tpm ?>
                                         </td>
                                         <td>
-                                            4
+                                            <?= $jumlah_guru_tpm ?>
                                         </td>
                                         <td>
                                             6
@@ -214,10 +214,10 @@
                                             Teknik Pengelasan
                                         </th>
                                         <td>
-                                            216
+                                            <?= $jumlah_siswa_las ?>
                                         </td>
                                         <td>
-                                            4
+                                            <?= $jumlah_guru_las ?>
                                         </td>
                                         <td>
                                             6
@@ -228,10 +228,10 @@
                                             Teknik Audio Video
                                         </th>
                                         <td>
-                                            324
+                                            <?= $jumlah_siswa_tav ?>
                                         </td>
                                         <td>
-                                            6
+                                            <?= $jumlah_guru_tav ?>
                                         </td>
                                         <td>
                                             9
@@ -242,10 +242,10 @@
                                             Tata Busana
                                         </th>
                                         <td>
-                                            324
+                                            <?= $jumlah_siswa_tb ?>
                                         </td>
                                         <td>
-                                            6
+                                            <?= $jumlah_guru_tb ?>
                                         </td>
                                         <td>
                                             9
@@ -256,10 +256,10 @@
                                             Desain Pemodelan dan Informasi Bangunan
                                         </th>
                                         <td>
-                                            216
+                                            <?= $jumlah_siswa_dpib ?>
                                         </td>
                                         <td>
-                                            6
+                                            <?= $jumlah_guru_dpib ?>
                                         </td>
                                         <td>
                                             6
@@ -270,10 +270,10 @@
                                             Teknik Instalasi Tenaga Listrik
                                         </th>
                                         <td>
-                                            108
+                                            <?= $jumlah_siswa_titl ?>
                                         </td>
                                         <td>
-                                            4
+                                            <?= $jumlah_guru_titl ?>
                                         </td>
                                         <td>
                                             3
@@ -284,10 +284,10 @@
                                             Teknik Elektronika Industri
                                         </th>
                                         <td>
-                                            216
+                                            <?= $jumlah_siswa_elin ?>
                                         </td>
                                         <td>
-                                            7
+                                            <?= $jumlah_guru_elin ?>
                                         </td>
                                         <td>
                                             6
@@ -312,57 +312,29 @@
                                     <h3 class="mb-0">Notifikasi Perubahan Data</h3>
                                 </div>
                                 <div class="col-2 text-right justify-content-end">
-                                    <span class="badge badge-md badge-circle badge-floating badge-danger border-white">3</span>
+                                    <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><?= $jumlah_perubahan ?></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body pt-0 pr-2 pl-2 pb-1">
+                        <div class="card-body pt-0 pr-2 pl-2 pb-0">
                             <div class="list-group list-group-flush">
-                                <a class="list-group-item list-group-item-action" onclick="notifModal('<?php echo base_url('operator/dashboard') ?>')" href="#!">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
-                                                <i class="ni ni-hat-3"></i>
+                                <?php foreach ($perubahan as $perubahan) { ?>
+                                    <a class="list-group-item list-group-item-action" href="<?= base_url('operator/perubahan/detail/' . $perubahan->id_perubahan . '') ?>">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                                    <i class="ni ni-bell-55"></i>
+                                                </div>
+                                            </div>
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm"><?= $perubahan->nama ?></h4>
+                                                </div>
+                                                <p class="text-sm mb-0">PERUBAHAN DATA <?= strtoupper($perubahan->kategori_perubahan) ?></p>
                                             </div>
                                         </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h4 class="mb-0 text-sm">Amri Lukman Muzaki</h4>
-                                            </div>
-                                            <p class="text-sm mb-0">Perubahan data NISN</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                                <i class="fas fa-chalkboard-teacher"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h4 class="mb-0 text-sm">Rohman Pujadi</h4>
-                                            </div>
-                                            <p class="text-sm mb-0">Perubahan Tanggal Lahir</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="row align-items-center">
-                                        <div class="col-auto">
-                                            <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
-                                                <i class="fas fa-chalkboard-teacher"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col ml--2">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h4 class="mb-0 text-sm">Syukron Jamil</h4>
-                                            </div>
-                                            <p class="text-sm mb-0">Perubahan NIP</p>
-                                        </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                <?php } ?>
                             </div>
                             <!-- <small class="text-center">Tidak ada permintaan perubahan data</small> -->
                         </div>
@@ -373,14 +345,22 @@
                     <!-- ============================================================== -->
                     <!-- Informasi dan Pengumuman -->
                     <!-- ============================================================== -->
-                    <div class="card bg-white pb-2">
+                    <?php if (!empty(session()->getFlashdata('message'))) : ?>
+                        <div class="alert alert-success alert-dismissible fade show mb-3 mt-0" role="alert">
+                            <?php echo session()->getFlashdata('message'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php endif ?>
+                    <div class="card bg-white pb-0">
                         <div class="card-header bg-transparent border-0">
                             <div class="row align-items-center">
                                 <div class="col">
                                     <h3 class="mb-0">Informasi dan Pengumuman</h3>
                                 </div>
                                 <div class="col-2 text-right justify-content-end">
-                                    <a data-toggle="tooltip" data-placement="top" title="Tambah" onclick="addInfoForm('<?php echo base_url('operator/dashboard') ?>')" href="#!">
+                                    <a data-toggle="tooltip" data-placement="top" title="Tambah" href="<?= base_url('/operator/info/add') ?>">
                                         <button class="btn btn-icon pl-1 pr-1 pt-0 pb-0" type="button" style="border-radius: 100%; background-color: #1174EF">
                                             <span class="btn-inner--icon"><i class="text-white ni ni-fat-add"></i></span>
                                         </button>
@@ -392,48 +372,29 @@
                             <div class="table-responsive">
                                 <table class="table align-items-center list-group-flush">
                                     <tbody class="list">
-                                        <tr>
-                                            <td class="pl-2 pt-0 pr-2 pb-0">
-                                                <a href="https://smkn1amga.sch.id" target="_blank" class="list-group-item list-group-item-action">
-                                                    <div class="d-flex">
-                                                        <h4 class="mb-0 text-sm">Jadwal Ujian Akhir Semester</h4>
-                                                    </div>
-                                                    <p class="text-sm mb-0 ">Tahun Ajaran 2021/2022</p>
-                                                </a>
-                                            </td>
-                                            <td class="pl-0 pr-0">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
+                                        <?php foreach ($info as $info) { ?>
+                                            <tr>
+                                                <td class="pl-2 pt-0 pr-2 pb-0">
+                                                    <a href="<?= $info->link_info ?>" target="_blank" class="list-group-item list-group-item-action" type=>
+                                                        <div class="d-flex">
+                                                            <h4 class="mb-0 text-sm"><?= $info->judul_info ?></h4>
+                                                        </div>
+                                                        <p class="text-sm mb-0 "><?= $info->deskripsi_info ?></p>
                                                     </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" onclick="editInfoForm('<?php echo base_url('operator/dashboard') ?>')" href="#!">Edit</a>
-                                                        <a class="dropdown-item text-danger" onclick="deleteConfirm('<?php echo base_url('operator/dashboard') ?>')" href="#!">Hapus</a>
+                                                </td>
+                                                <td class="pl-0 pr-0">
+                                                    <div class="dropdown">
+                                                        <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </a>
+                                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                            <a class="dropdown-item" href="<?= base_url('operator/info/edit/' . $info->id_info . '') ?>">Edit</a>
+                                                            <a class="dropdown-item text-danger" onclick="deleteConfirm('<?= base_url('operator/info/delete/' . $info->id_info . '') ?>')" href="#!">Hapus</a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pl-2 pt-0 pr-2 pb-0">
-                                                <a href="#!" class="list-group-item list-group-item-action">
-                                                    <div class="d-flex">
-                                                        <h4 class="mb-0 text-sm">Pendaftaran POLMAN Astra</h4>
-                                                    </div>
-                                                    <p class="text-sm mb-0 ">Periode 2021/2022</p>
-                                                </a>
-                                            </td>
-                                            <td class="pl-0 pr-0">
-                                                <div class="dropdown">
-                                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        <i class="fas fa-ellipsis-v"></i>
-                                                    </a>
-                                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                        <a class="dropdown-item" href="#">Edit</a>
-                                                        <a class="dropdown-item text-danger" href="#">Hapus</a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -465,39 +426,12 @@
     <!-- Modal - File that you can find on __partial/modal.php -->
     <!-- ============================================================== -->
 
-    <?= $this->include('operator/info') ?>
-    <?= $this->include('operator/notif') ?>
     <?= $this->include('operator/__partial/modal') ?>
 
-    <!-- Add Info -->
-    <script>
-        function addInfoForm(url) {
-            $('#btn-add').attr('href', url);
-            $('#addModal').modal();
-        }
-    </script>
-
-    <!-- Edit Info -->
-    <script>
-        function editInfoForm(url) {
-            $('#btn-edit').attr('href', url);
-            $('#editModal').modal();
-        }
-    </script>
-
-    <!-- Add Info -->
     <script>
         function deleteConfirm(url) {
             $('#btn-delete').attr('href', url);
             $('#deleteModal').modal();
-        }
-    </script>
-
-    <!-- Notif Modul -->
-    <script>
-        function notifModal(url) {
-            $('#btn-notif').attr('href', url);
-            $('#notifModal').modal();
         }
     </script>
 

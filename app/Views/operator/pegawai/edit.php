@@ -153,7 +153,7 @@
                                 </div>
                                 <div class="form-group col-8">
                                     <label class="form-control-label" for="alamat">Alamat Lengkap : <small>(Nama Jalan, RT/RW, Desa/Kelurahan, Kode Post)</small> <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="alamat" id="alamat" rows="3" required maxlength=50><?= $pegawai->alamat ?></textarea>
+                                    <textarea class="form-control" name="alamat" id="alamat" rows="3" required maxlength=100><?= $pegawai->alamat ?></textarea>
                                 </div>
                             </div>
                         </div>

@@ -70,9 +70,9 @@
                     <li class="nav-item">
                         <a class="nav-link <?php
                                             $uri = service('uri');
-                                            if ($uri->getSegment(2) == 'wali') {
+                                            if ($uri->getSegment(2) == 'kelulusan') {
                                                 echo "active";
-                                            } ?>" href="<?php echo site_url('operator/wali/list') ?>">
+                                            } ?>" href="<?php echo site_url('operator/kelulusan/list') ?>">
                             <i class="ni ni-paper-diploma text-default"></i>
                             <span class="nav-link-text">Kelulusan</span>
                         </a>
@@ -85,6 +85,20 @@
                                             } ?>" href="<?php echo site_url('operator/alumni/list') ?>">
                             <i class="fas fa-user-graduate text-default"></i>
                             <span class="nav-link-text">Alumni</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Divider -->
+                <hr class="my-3">
+                <ul class="navbar-nav mb-md-3">
+                    <li class="nav-item">
+                        <a class="nav-link <?php
+                                            $uri = service('uri');
+                                            if ($uri->getSegment(2) == 'user') {
+                                                echo "active";
+                                            } ?>" href="<?php echo site_url('operator/user/list') ?>">
+                            <i class="fas fa-user"></i>
+                            <span class="nav-link-text">User</span>
                         </a>
                     </li>
                 </ul>

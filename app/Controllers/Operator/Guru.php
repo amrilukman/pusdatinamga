@@ -100,7 +100,7 @@ class Guru extends BaseController
         }
         if (!$this->validate([
             'nik' => [
-                'rules' => 'required|is_unique[guru.nik]',
+                'rules' => 'required|is_unique[user.nik]',
                 'errors' => [
                     'required' => '{field} Harus diisi',
                     'is_unique' => 'NIK sudah ada'
@@ -143,7 +143,7 @@ class Guru extends BaseController
                 ]
             ],
             'email' => [
-                'rules' => 'required|valid_email|is_unique[guru.email_guru]',
+                'rules' => 'required|valid_email|is_unique[user.email]',
                 'errors' => [
                     'required' => '{field} Harus diisi',
                     'valid_email' => 'Email harus valid',
@@ -157,7 +157,7 @@ class Guru extends BaseController
                 ]
             ],
             'nip' => [
-                'rules' => 'permit_empty|is_unique[guru.nip]',
+                'rules' => 'permit_empty|is_unique[user.nomor_induk]',
                 'errors' => [
                     'is_unique' => 'NIP sudah ada'
                 ]
@@ -270,107 +270,61 @@ class Guru extends BaseController
             $sk_cpns = NULL;
         }
 
-        $this->guru->delete($id);
+        // <!--==============================================================-->
+        // <!-- Validation -->
+        // <!--==============================================================-->
+        $validation =  \Config\Services::validation();
         if (!$this->validate([
             'nik' => [
-                'rules' => 'required|is_unique[guru.nik]',
+                'rules' => 'required|is_unique[user.nik,nik,' . $id . ']',
                 'errors' => [
-                    'required' => '{field} Harus diisi',
+                    'required' => 'NIK Harus diisi',
                     'is_unique' => 'NIK sudah ada'
                 ]
             ],
-            'nama' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'tempat_lahir' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'tanggal_lahir' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'jenis_kelamin' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'kecamatan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'alamat' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
             'email' => [
-                'rules' => 'required|valid_email|is_unique[guru.email_guru]',
+                'rules' => 'required|valid_email|is_unique[user.email,nik,' . $id . ']',
                 'errors' => [
-                    'required' => '{field} Harus diisi',
+                    'required' => 'Email Harus diisi',
                     'valid_email' => 'Email harus valid',
                     'is_unique' => 'Email sudah ada'
                 ]
             ],
-            'no_hp' => [
-                'rules' => 'required',
+            'sk_cpns' => [
+                'rules' => 'permit_empty|is_unique[guru.sk_cpns,nik,' . $id . ']',
                 'errors' => [
-                    'required' => '{field} Harus diisi'
+                    'is_unique' => 'SK-CPNS Sudah Ada'
                 ]
             ],
             'nip' => [
-                'rules' => 'permit_empty|is_unique[guru.nip]',
+                'rules' => 'permit_empty|is_unique[guru.nip,nik,' . $id . ']',
                 'errors' => [
                     'is_unique' => 'NIP sudah ada'
                 ]
             ],
-            'nuptk' => [
-                'rules' => 'permit_empty|is_unique[guru.nuptk]',
+            'sk_cpns' => [
+                'rules' => 'permit_empty|is_unique[guru.sk_cpns,nik,' . $id . ']',
                 'errors' => [
-                    'is_unique' => 'NUPTK sudah ada'
+                    'is_unique' => 'SK-CPNS Sudah Ada'
                 ]
             ],
             'npwp' => [
-                'rules' => 'permit_empty|is_unique[guru.npwp]',
+                'rules' => 'permit_empty|is_unique[guru.npwp,nik,' . $id . ']',
                 'errors' => [
                     'is_unique' => 'NPWP sudah ada'
                 ]
             ],
-            'status' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'sk_cpns' => [
-                'rules' => 'permit_empty|is_unique[guru.sk_cpns]',
-                'errors' => [
-                    'is_unique' => 'sk_cpns Harus diisi'
-                ]
-            ],
-            'jurusan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ]
         ])) {
-            session()->setFlashdata('error', $this->validator->listErrors());
+            session()->setFlashdata('error', $validation->listErrors());
             return redirect()->back()->withInput();
         }
+        // <!--==============================================================-->
+        // <!-- End of Validation -->
+        // <!--==============================================================-->
 
-        $this->guru->insert([
+        $data['jurusan'] = $this->jurusan->get();
+
+        $this->guru->update($id, [
             'nik' => $this->request->getVar('nik'),
             'nama_guru' => $this->request->getVar('nama'),
             'tempat_lahir' => strtoupper($this->request->getVar('tempat_lahir')),

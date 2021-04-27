@@ -97,11 +97,11 @@
                                 }
                             </script>
 
-                            <form method="post" action="<?= base_url('operator/profil/reset/' . $user->id . '') ?>" role="form">
+                            <form method="post" action="<?= base_url('operator/profil/reset/' . $user->nik . '') ?>" role="form">
                                 <?php csrf_field(); ?>
                                 <div class="form-group mb-3">
                                     <label for="id" class="form-control-label">ID/NIP/NISN :</label>
-                                    <input class="form-control" id="id" name="id" value="<?= $user->id ?>" type="text" readonly>
+                                    <input class="form-control" id="id" name="id" value="<?= $user->nik ?>" type="text" readonly>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="password" class="form-control-label">Password Lama :</label>

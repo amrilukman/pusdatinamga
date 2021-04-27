@@ -43,25 +43,7 @@
             <div class="container-fluid">
                 <div class="header-body">
                     <div class="row align-items-center py-4">
-                        <div class="col-lg-6 col-7">
-                            <a href="<?= base_url('/operator/wali/list') ?>" class="btn bg-white btn-icon">
-                                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
-                                <span class="btn-inner--text">Kembali</span>
-                            </a>
-                        </div>
-                        <div class="col text-right">
-                            <h6 class="h2 text-white d-inline-block mb-0">Form Data Wali Kelas</h6>
-                        </div>
                     </div>
-                    <!-- ============================================================== -->
-                    <!-- Rangkuman data -->
-                    <!-- ============================================================== -->
-                    <div class="row">
-
-                    </div>
-                    <!-- ============================================================== -->
-                    <!-- End of Rangkuman data -->
-                    <!-- ============================================================== -->
                 </div>
             </div>
         </div>
@@ -74,69 +56,67 @@
         <!-- ============================================================== -->
         <div class="container-fluid mt--6">
             <!-- ============================================================== -->
-            <!-- Data Jurusan -->
+            <!-- Form Reset Password -->
             <!-- ============================================================== -->
-            <div class="card bg-white border-0 mb-0">
-                <div class="card-header bg-transparent">
-                    <div>
-                        <h3 class="mb-0 text-dark">Edit Data Wali Kelas</h3>
-                    </div>
-                </div>
-                <div class="card-body bg-white border-0">
-                    <form>
-                        <div class="form-group mb-3 my-0">
-                            <label for="nisn" class="form-control-label">Nama :</label>
-                            <input class="form-control" type="numeric" id="nisn" placeholder="Nama Wali Kelas" value="Rohman Pujadi">
-                        </div>
-                        <div class="form-group mb-3 my-0">
-                            <label for="nama" class="form-control-label">NIP:</label>
-                            <input class="form-control" type="text" id="nama" placeholder="NIP" value="24060118140108">
-                        </div>
-                        <div class="form-group form-row mb-3 my-0">
-                            <div class="col-4">
-                                <label for="jurusan" class="form-control-label">Jurusan :</label>
-                                <select class="form-control" id="jurusan">
-                                    <option>Pilih Jurusan</option>
-                                    <option>Umum</option>
-                                    <option selected>Teknik Komputer dan Informatika</option>
-                                    <option>Teknik Kendarangan Ringan</option>
-                                    <option>Teknik Pemesinan</option>
-                                    <option>Teknik Pengelasan</option>
-                                    <option>Teknik Audio Video</option>
-                                    <option>Tata Busana</option>
-                                    <option>Teknik Instalasi Tenaga Listrik</option>
-                                    <option>Teknik Elektronika Industri</option>
-                                </select>
-                            </div>
-                            <div class="col-4">
-                                <div class="form-group mb-3 my-0">
-                                    <label for="kelas" class="form-control-label">Kelas :</label>
-                                    <select class="form-control" id="kelas">
-                                        <option>Pilih Kelas</option>
-                                        <option>Pemrograman Web</option>
-                                        <option>Jaringan Komputer</option>
-                                        <option selected>X</option>
-                                    </select>
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card bg-white border-0">
+                        <div class="card-header bg-transparent pb-3">
+                            <div class="row">
+                                <div class="col-2">
+                                    <a href="<?= base_url('/operator/user/list') ?>" class="btn bg-white btn-sm btn-icon" data-toggle="tooltip" data-placement="top" title="Kembali">
+                                        <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+                                    </a>
+                                </div>
+                                <div class="col-8 justify-content-center text-muted text-center mt-1">
+                                    <h3>Edit Role</h3>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col text-right">
-                                <input class="btn btn-warning mr-2" type="reset" value="Reset">
-                                <a onclick="editConfirm('<?php echo base_url('/operator/wali/edit') ?>')" href="#!" class="btn" type="button" style="color: white; background-color: #1174EF">
-                                    <span>Edit</span>
-                                </a>
-                            </div>
+                        <div class="card-body px-lg-4 py-lg-4 mb-3">
+                            <?php if (!empty(session()->getFlashdata('error'))) : ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <?= session()->getFlashdata('error'); ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php endif ?>
+
+                            <form method="post" action="<?= base_url('operator/user/update/' . $user->nik . '') ?>" role="form">
+                                <?php csrf_field(); ?>
+                                <div class="form-group mb-3">
+                                    <label for="nik" class="form-control-label">NIK :</label>
+                                    <input class="form-control" id="nik" name="nik" value="<?= $user->nik ?>" type="text" readonly>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="nama" class="form-control-label">Nama :</label>
+                                    <input class="form-control" id="nama" name="nama" placeholder="Nama" type="text" value="<?= $user->nama ?>" readonly>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="role" class="form-control-label">Role :</label>
+                                    <select class="form-control" name="role" id="role">
+                                        <option value="">Pilih Role</option>
+                                        <option id="role1" value="operator" <?= ($user->role == 'operator' ? "selected" : ""); ?>>Operator</option>
+                                        <option id="role2" value="pimpinan" <?= ($user->role == 'pimpinan' ? "selected" : ""); ?>>Pimpinan</option>
+                                        <option id="role3" value="user" <?= ($user->role == 'pegawai' ? "selected" : ""); ?> <?= ($user->role == 'guru' ? "selected" : ""); ?>>User</option>
+                                    </select>
+                                </div>
+                                <div class="text-center pt-3">
+                                    <button type="submit" id="submit" class="btn" style="color: white; background-color: #1174EF">Update</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
             <!-- ============================================================== -->
-            <!-- End of Data Jurusan -->
+            <!-- End of Form Reset Password -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
             <!-- End of Page Content -->
             <!-- ============================================================== -->
+
         </div>
         <!-- ============================================================== -->
         <!-- End Page Content -->
@@ -156,13 +136,6 @@
     <!-- ============================================================== -->
 
     <?= $this->include('operator/__partial/modal') ?>
-
-    <script>
-        function editConfirm(url) {
-            $('#btn-edit').attr('href', url);
-            $('#editModal').modal();
-        }
-    </script>
 
     <!-- ============================================================== -->
     <!-- End of Modal - File that you can find on __partial/modal.php -->

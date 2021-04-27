@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Sidenav toggler -->
-            <div class="pr-3 sidenav-toggler sidenav-toggler-dark nav-item d-xl-none" data-action="sidenav-hide" data-target="#sidenav-main">
+            <div class="pr-3 sidenav-toggler sidenav-toggler-dark d-xl-none" data-action="sidenav-pin" data-target="#sidenav-main">
                 <div class="sidenav-toggler-inner">
                     <i class="sidenav-toggler-line"></i>
                     <i class="sidenav-toggler-line"></i>
@@ -11,10 +11,10 @@
                 </div>
             </div>
             <!-- Default password alert -->
-            <?php if (session()->get('password') == md5('12345678') and current_url() == base_url('operator/dashboard')) : ?>
+            <?php if (session()->get('password') == md5('12345678') and current_url() == base_url('user/dashboard')) : ?>
                 <div class="alert alert-danger inline alert-dismissible fade show mb-0 mt-0" role="alert">
                     <span class="alert-text">Anda masih menggunakan default password!</span>
-                    <a href="<?= base_url('operator/profil/resetpassword') ?>" class="btn btn-icon btn-secondary btn-sm ml-4 mr-0" type="button">
+                    <a href="<?= base_url('user/profil/resetpassword') ?>" class="btn btn-icon btn-secondary btn-sm ml-4 mr-0" type="button">
                         <span class="btn-inner--text">Reset Password</span>
                     </a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

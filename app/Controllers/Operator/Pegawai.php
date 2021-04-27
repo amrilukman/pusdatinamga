@@ -99,7 +99,7 @@ class Pegawai extends BaseController
         }
         if (!$this->validate([
             'nik' => [
-                'rules' => 'required|is_unique[pegawai.nik]',
+                'rules' => 'required|is_unique[user.nik]',
                 'errors' => [
                     'required' => '{field} Harus diisi',
                     'is_unique' => 'NIK sudah ada'
@@ -142,7 +142,7 @@ class Pegawai extends BaseController
                 ]
             ],
             'email' => [
-                'rules' => 'required|valid_email|is_unique[pegawai.email_pegawai]',
+                'rules' => 'required|valid_email|is_unique[user.email]',
                 'errors' => [
                     'required' => '{field} Harus diisi',
                     'valid_email' => 'Email harus valid',
@@ -156,7 +156,7 @@ class Pegawai extends BaseController
                 ]
             ],
             'nip' => [
-                'rules' => 'permit_empty|is_unique[pegawai.nip]',
+                'rules' => 'permit_empty|is_unique[user.nip]',
                 'errors' => [
                     'is_unique' => 'NIP sudah ada'
                 ]
@@ -203,7 +203,6 @@ class Pegawai extends BaseController
         }
 
         $data['kategori'] = $this->kategori->get();
-
 
         $this->pegawai->insert([
             'nik' => $this->request->getVar('nik'),
@@ -261,107 +260,46 @@ class Pegawai extends BaseController
             $sk_cpns = NULL;
         }
 
-        $this->pegawai->delete($id);
         if (!$this->validate([
             'nik' => [
-                'rules' => 'required|is_unique[pegawai.nik]',
+                'rules' => 'required|is_unique[user.nik,nik,' . $id . ']',
                 'errors' => [
                     'required' => '{field} Harus diisi',
                     'is_unique' => 'NIK sudah ada'
                 ]
             ],
-            'nama' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'tempat_lahir' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'tanggal_lahir' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'jenis_kelamin' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'kecamatan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
-            'alamat' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
             'email' => [
-                'rules' => 'required|valid_email|is_unique[pegawai.email_pegawai]',
+                'rules' => 'required|valid_email|is_unique[user.email,nik,' . $id . ']',
                 'errors' => [
                     'required' => '{field} Harus diisi',
                     'valid_email' => 'Email harus valid',
                     'is_unique' => 'Email sudah ada'
                 ]
             ],
-            'no_hp' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
             'nip' => [
-                'rules' => 'permit_empty|is_unique[pegawai.nip]',
+                'rules' => 'permit_empty|is_unique[user.nip,nik,' . $id . ']',
                 'errors' => [
                     'is_unique' => 'NIP sudah ada'
                 ]
             ],
             'nuptk' => [
-                'rules' => 'permit_empty|is_unique[pegawai.nuptk]',
+                'rules' => 'permit_empty|is_unique[pegawai.nuptk,nik,' . $id . ']',
                 'errors' => [
                     'is_unique' => 'NUPTK sudah ada'
                 ]
             ],
             'npwp' => [
-                'rules' => 'permit_empty|is_unique[pegawai.npwp]',
+                'rules' => 'permit_empty|is_unique[pegawai.npwp,nik,' . $id . ']',
                 'errors' => [
                     'is_unique' => 'NPWP sudah ada'
                 ]
             ],
-            'status' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ],
             'sk_cpns' => [
-                'rules' => 'permit_empty|is_unique[pegawai.sk_cpns]',
+                'rules' => 'permit_empty|is_unique[pegawai.sk_cpns,nik,' . $id . ']',
                 'errors' => [
                     'is_unique' => 'SK-CPNS Harus diisi'
                 ]
             ],
-            'sk_pengangkatan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'SK-Pengangkatan Harus diisi'
-                ]
-            ],
-            'kategori' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Harus diisi'
-                ]
-            ]
         ])) {
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
@@ -370,7 +308,7 @@ class Pegawai extends BaseController
         $data['kategori'] = $this->kategori->get();
 
 
-        $this->pegawai->insert([
+        $this->pegawai->update($id, [
             'nik' => $this->request->getVar('nik'),
             'nama_pegawai' => $this->request->getVar('nama'),
             'tempat_lahir' => strtoupper($this->request->getVar('tempat_lahir')),

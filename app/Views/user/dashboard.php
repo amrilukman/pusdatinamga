@@ -61,7 +61,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Siswa</h5>
-                                            <span class="h2 font-weight-bold mb-0">7320</span>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_siswa ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
@@ -79,7 +79,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Guru</h5>
-                                            <span class="h2 font-weight-bold mb-0">65</span>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_guru ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
@@ -97,7 +97,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <h5 class="card-title text-uppercase text-muted mb-0">Pegawai</h5>
-                                            <span class="h2 font-weight-bold mb-0">45</span>
+                                            <span class="h2 font-weight-bold mb-0"><?= $jumlah_pegawai ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
@@ -114,8 +114,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="card-title text-uppercase text-muted mb-0">Rombel/Kelas</h5>
-                                            <span class="h2 font-weight-bold mb-0">32</span>
+                                            <h5 class="card-title text-uppercase text-muted mb-0">Kelas</h5>
+                                            <span class="h2 font-weight-bold mb-0">60</span>
                                         </div>
                                         <div class="col-auto">
                                             <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
@@ -146,6 +146,36 @@
                 <!-- Data Jurusan -->
                 <!-- ============================================================== -->
                 <div class="col-xl-8">
+                    <!-- ============================================================== -->
+                    <!-- Form Informasi Kelulusan -->
+                    <!-- ============================================================== -->
+                    <?php if ($jumlah_kelulusan > 0) { ?>
+                        <div class="card">
+                            <div class="card-header bg-transparent">
+                                <h3 class="mb-0">Informasi Kelulusan</h3>
+                                <h6 class="text-muted text-uppercase ls-1 mb-0">Tahun Ajaran 2021/2022</h6>
+                            </div>
+                            <div class="card-body pt-2 pb-2">
+                                <form method="post" action="<?= base_url('user/kelulusan/page') ?>">
+                                    <div class="form-group mb-4 mt-2">
+                                        <label for="nisn" class="form-control-label">NISN / Nama :</label>
+                                        <input class="form-control" type="text" id="nisn" name="nisn" placeholder="NISN / Nama" required>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col text-right">
+                                            <input class="btn btn-warning mr-2" type="reset" value="Reset">
+                                            <input class="btn" type="submit" value="Submit" style="color: white; background-color: #1174EF">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <div></div>
+                    <?php } ?>
+                    <!-- ============================================================== -->
+                    <!-- End of Informasi dan Pengumuman -->
+                    <!-- ============================================================== -->
                     <div class="card bg-default pb-2">
                         <div class="card-header bg-transparent border-0">
                             <div class="row align-items-center">
@@ -172,10 +202,10 @@
                                             Teknik Komputer Jaringan
                                         </th>
                                         <td>
-                                            108
+                                            <?= $jumlah_siswa_tkj ?>
                                         </td>
                                         <td>
-                                            4
+                                            <?= $jumlah_guru_tkj ?>
                                         </td>
                                         <td>
                                             3
@@ -186,10 +216,10 @@
                                             Teknik Kendaraan Ringan Otomotif
                                         </th>
                                         <td>
-                                            432
+                                            <?= $jumlah_siswa_tkr ?>
                                         </td>
                                         <td>
-                                            6
+                                            <?= $jumlah_guru_tkr ?>
                                         </td>
                                         <td>
                                             12
@@ -200,10 +230,10 @@
                                             Teknik Pemesinan
                                         </th>
                                         <td>
-                                            216
+                                            <?= $jumlah_siswa_tpm ?>
                                         </td>
                                         <td>
-                                            4
+                                            <?= $jumlah_guru_tpm ?>
                                         </td>
                                         <td>
                                             6
@@ -214,10 +244,10 @@
                                             Teknik Pengelasan
                                         </th>
                                         <td>
-                                            216
+                                            <?= $jumlah_siswa_las ?>
                                         </td>
                                         <td>
-                                            4
+                                            <?= $jumlah_guru_las ?>
                                         </td>
                                         <td>
                                             6
@@ -228,10 +258,10 @@
                                             Teknik Audio Video
                                         </th>
                                         <td>
-                                            324
+                                            <?= $jumlah_siswa_tav ?>
                                         </td>
                                         <td>
-                                            6
+                                            <?= $jumlah_guru_tav ?>
                                         </td>
                                         <td>
                                             9
@@ -242,10 +272,10 @@
                                             Tata Busana
                                         </th>
                                         <td>
-                                            324
+                                            <?= $jumlah_siswa_tb ?>
                                         </td>
                                         <td>
-                                            6
+                                            <?= $jumlah_guru_tb ?>
                                         </td>
                                         <td>
                                             9
@@ -256,10 +286,10 @@
                                             Desain Pemodelan dan Informasi Bangunan
                                         </th>
                                         <td>
-                                            216
+                                            <?= $jumlah_siswa_dpib ?>
                                         </td>
                                         <td>
-                                            6
+                                            <?= $jumlah_guru_dpib ?>
                                         </td>
                                         <td>
                                             6
@@ -270,10 +300,10 @@
                                             Teknik Instalasi Tenaga Listrik
                                         </th>
                                         <td>
-                                            108
+                                            <?= $jumlah_siswa_titl ?>
                                         </td>
                                         <td>
-                                            4
+                                            <?= $jumlah_guru_titl ?>
                                         </td>
                                         <td>
                                             3
@@ -284,10 +314,10 @@
                                             Teknik Elektronika Industri
                                         </th>
                                         <td>
-                                            216
+                                            <?= $jumlah_siswa_elin ?>
                                         </td>
                                         <td>
-                                            7
+                                            <?= $jumlah_guru_elin ?>
                                         </td>
                                         <td>
                                             6
@@ -309,55 +339,276 @@
                     <!-- End of Notifikasi Perubahan Data -->
                     <!-- ============================================================== -->
                     <!-- ============================================================== -->
-                    <!-- Informasi dan Pengumuman -->
+                    <!-- Data Anda => Guru -->
                     <!-- ============================================================== -->
+                    <?php if (!empty(session()->getFlashdata('message'))) : ?>
+                        <div class="alert alert-success alert-dismissible fade show mb-3 mt-0" role="alert">
+                            <?php echo session()->getFlashdata('message'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php endif ?>
                     <div class="card">
                         <div class="card-header bg-transparent">
-                            <h3 class="mb-0">Informasi dan Pengumuman</h3>
-                        </div>
-                        <div class="card-body pt-0 pr-2 pl-2 pb-1">
-                            <div class="list-group list-group-flush">
-                                <a href="https://smkn1amga.sch.id" target="_blank" class="list-group-item list-group-item-action">
-                                    <div class="d-flex">
-                                        <h4 class="mb-0 text-sm">Jadwal Ujian Akhir Semester</h4>
-                                    </div>
-                                    <p class="text-sm mb-0 ">Tahun Ajaran 2021/2022</p>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action">
-                                    <div class="d-flex">
-                                        <h4 class="mb-0 text-sm">Pendaftaran POLMAN Astra</h4>
-                                    </div>
-                                    <p class="text-sm mb-0 ">Periode 2021/2022</p>
-                                </a>
+                            <div class="row">
+                                <div class="col">
+                                    <h3 class="mb-0">Data Anda</h3>
+                                </div>
+                                <div class="col-2 text-right justify-content-end">
+                                    <a href="<?= base_url('/user/perubahan/add') ?>" type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Request Perubahan Data">
+                                        <span><i class="fas fa-pencil-alt"></i></span>
+                                    </a>
+                                </div>
                             </div>
-                            <!-- <small class="text-center">Tidak ada pengumuman</small> -->
+                        </div>
+                        <div class="card-body pt-2 pb-2">
+                            <h6 class="heading-small text-muted mb-2">Data Diri</h6>
+                            <div class="ml-3">
+                                <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                    <div class="row align-items-center">
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4 class="mb-0 text-sm">NIK</h4>
+                                            </div>
+                                            <p class="text-sm mb-0"><?= $data->nik ?></p>
+                                        </div>
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4 class="mb-0 text-sm">Nama</h4>
+                                            </div>
+                                            <p class="text-sm mb-0"><?= $user->nama ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                    <div class="row align-items-center">
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4 class="mb-0 text-sm">Jenis Kelamin</h4>
+                                            </div>
+                                            <p class="text-sm mb-0"><?php if ($data->jenis_kelamin == 'L') {
+                                                                        echo 'Laki-Laki';
+                                                                    } else if ($data->jenis_kelamin == 'P') {
+                                                                        echo 'Perempuan';
+                                                                    }; ?></p>
+                                        </div>
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h4 class="mb-0 text-sm">TTL</h4>
+                                            </div>
+                                            <p class="text-sm mb-0"><?= $data->tempat_lahir ?>, <?= $data->tanggal_lahir ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="my-3">
+                            <?php if (session()->get('role') == 'pegawai' or session()->get('role') == 'guru') { ?>
+                                <h6 class="heading-small text-muted mb-2">Kepegawaian</h6>
+                                <div class="ml-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                        <div class="row align-items-center">
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">Status Kepegawaian</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->status_kepegawaian ?></p>
+                                            </div>
+                                            <?php if (session()->get('role') == 'guru') { ?>
+                                                <div class="col ml--2">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h4 class="mb-0 text-sm">Jurusan</h4>
+                                                    </div>
+                                                    <p class="text-sm mb-0"><?= $data->akronim_jurusan ?></p>
+                                                </div>
+                                            <?php } else if (session()->get('role') == 'pegawai') { ?>
+                                                <div class="col ml--2">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <h4 class="mb-0 text-sm">Kategori</h4>
+                                                    </div>
+                                                    <p class="text-sm mb-0"><?= $data->nama_kategori ?></p>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                        <div class="row align-items-center">
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">SK-CPNS</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->sk_cpns ?></p>
+                                            </div>
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">NIP</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->nip ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                        <div class="row align-items-center">
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">NUPTK</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->nuptk ?></p>
+                                            </div>
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">NPWP</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->npwp ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } else if (session()->get('role') == 'siswa') { ?>
+                                <h6 class="heading-small text-muted mb-2">Kesiswaan</h6>
+                                <div class="ml-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                        <div class="row align-items-center">
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">NISN</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->nisn ?></p>
+                                            </div>
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">Kelas</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?php if ($data->kelas == 1) {
+                                                                            echo 'X';
+                                                                        } elseif ($data->kelas == 2) {
+                                                                            echo 'XI';
+                                                                        } elseif ($data->kelas == 3) {
+                                                                            echo 'XII';
+                                                                        } ?> <?= $data->akronim_jurusan ?>
+                                                    <?= $data->rombel ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-3">
+                                <h6 class="heading-small text-muted mb-2">Kartu Indonesia Pintar</h6>
+                                <div class="ml-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                        <div class="row align-items-center">
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">Penerima KIP</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->penerima_kip ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                        <div class="row align-items-center">
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">No. KIP</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->no_kip ?></p>
+                                            </div>
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">No. Rekening</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"> <?= $data->no_rek ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } else if (session()->get('role') == 'alumni') { ?>
+                                <h6 class="heading-small text-muted mb-2">Kesiswaan</h6>
+                                <div class="ml-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">NISN</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->nisn ?></p>
+                                            </div>
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">Kelas</h4>
+                                                </div>
+                                                <p class="text-sm mb-0">
+                                                    <?= $data->akronim_jurusan ?>
+                                                    <?= $data->rombel ?>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center">
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">Tahun Lulus</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->tahun_lulus ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-3">
+                                <h6 class="heading-small text-muted mb-2">Post Graduate</h6>
+                                <div class="ml-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                        <div class="row align-items-center">
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">Status</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"><?= $data->status ?></p>
+                                            </div>
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h4 class="mb-0 text-sm">Instansi</h4>
+                                                </div>
+                                                <p class="text-sm mb-0"> <?= $data->instansi ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <!-- ============================================================== -->
-                    <!-- End of Informasi dan Pengumuman -->
+                    <!-- End of Data Anda => Guru -->
                     <!-- ============================================================== -->
                     <!-- ============================================================== -->
-                    <!-- Form Informasi Kelulusan -->
+                    <!-- Informasi dan Pengumuman -->
                     <!-- ============================================================== -->
-                    <div class="card">
-                        <div class="card-header bg-transparent">
-                            <h3 class="mb-0">Informasi Kelulusan</h3>
-                            <h6 class="text-muted text-uppercase ls-1 mb-0">Tahun Ajaran 2021/2022</h6>
+                    <div class="card bg-white pb-0">
+                        <div class="card-header bg-transparent border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="mb-0">Informasi dan Pengumuman</h3>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body pt-2 pb-2">
-                            <form>
-                                <div class="form-group mb-4 mt-2">
-                                    <label for="nisn" class="form-control-label">NISN / Nama :</label>
-                                    <input class="form-control" type="numeric" id="nisn" placeholder="NISN / Nama" required>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col text-right">
-                                        <a onclick="lulusModal('<?php echo base_url('/user/dashboard') ?>')" href="#!" class="btn" type="submit" style="color: white; background-color: #1174EF">
-                                            <span>Cari</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="card-body pl-0 pr-0 pt-0 pb-0">
+                            <div class="table-responsive">
+                                <table class="table align-items-center list-group-flush">
+                                    <tbody class="list">
+                                        <?php foreach ($info as $info) { ?>
+                                            <tr>
+                                                <td class="pl-2 pt-0 pr-2 pb-0">
+                                                    <a href="<?= $info->link_info ?>" target="_blank" class="list-group-item list-group-item-action" type=>
+                                                        <div class="d-flex">
+                                                            <h4 class="mb-0 text-sm"><?= $info->judul_info ?></h4>
+                                                        </div>
+                                                        <p class="text-sm mb-0 "><?= $info->deskripsi_info ?></p>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <!-- ============================================================== -->
@@ -381,23 +632,6 @@
     </div>
     <!-- ============================================================== -->
     <!-- End Page Content -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Modal - File that you can find on __partial/modal.php -->
-    <!-- ============================================================== -->
-
-    <?= $this->include('user/lulus') ?>
-
-    <!-- Kelulusan Modul -->
-    <script>
-        function lulusModal(url) {
-            $('#btn-lulus').attr('href', url);
-            $('#lulusModal').modal();
-        }
-    </script>
-
-    <!-- ============================================================== -->
-    <!-- End of Modal - File that you can find on __partial/modal.php -->
     <!-- ============================================================== -->
     <!-- ============================================================== -->
     <!-- jQuery - File that you can find on __partial/js.php -->

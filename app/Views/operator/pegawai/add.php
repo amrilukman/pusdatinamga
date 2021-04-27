@@ -138,11 +138,11 @@
                             <div class="form-group mb-3 my-0" required>
                                 <label for="jenis_kelamin" class="form-control-label">Jenis Kelamin : <span class="text-danger">*</span></label>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="lakilaki" name="jenis_kelamin" class="custom-control-input" value="L">
+                                    <input type="radio" id="lakilaki" name="jenis_kelamin" class="custom-control-input" value="L" <?= (old("jenis_kelamin") == "L" ? "checked" : ""); ?>>
                                     <label class="custom-control-label" for="lakilaki">Laki-laki</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="perempuan" name="jenis_kelamin" class="custom-control-input" value="P">
+                                    <input type="radio" id="perempuan" name="jenis_kelamin" class="custom-control-input" value="P" <?= (old("jenis_kelamin") == "P" ? "checked" : ""); ?>>
                                     <label class="custom-control-label" for="perempuan">Perempuan</label>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@
                                 </div>
                                 <div class="form-group col-8">
                                     <label class="form-control-label" for="alamat">Alamat Lengkap : <small>(Nama Jalan, RT/RW, Desa/Kelurahan, Kode Post)</small> <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="alamat" id="alamat" rows="3" required maxlength=50><?= old('alamat'); ?></textarea>
+                                    <textarea class="form-control" name="alamat" id="alamat" rows="3" required maxlength=100><?= old('alamat'); ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -178,9 +178,9 @@
                                 <div class="form-group mb-0 my-0 col-4" required>
                                     <label for="status" class="form-control-label">Status Kepegawaian : <span class="text-danger">*</span></label>
                                     <div class="custom-control custom-radio mb-3 mt-2 pl-0">
-                                        <input type="radio" id="status" name="status" value="PNS" onchange="showhideForm(this.value);" required>
+                                        <input type="radio" id="status" name="status" value="PNS" onchange="showhideForm(this.value);" required <?= (old("status") == "PNS" ? "checked" : ""); ?>>
                                         <label class="text-sm ml-2 mr-3" for="status">PNS</label>
-                                        <input type="radio" id="status" name="status" value="Non-PNS" onchange="showhideForm(this.value);" required>
+                                        <input type="radio" id="status" name="status" value="Non-PNS" onchange="showhideForm(this.value);" required <?= (old("status") == "Non-PNS" ? "checked" : ""); ?>>
                                         <label class="text-sm ml-2" for="status">Non-PNS</label>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@
                                     <select class="form-control" name="kategori" id="kategori" required>
                                         <option value="">Pilih kategori</option>
                                         <?php foreach ($kategori as $key => $data) { ?>
-                                            <option value="<?= $data->id_kategori; ?>"><?= $data->nama_kategori; ?></option>
+                                            <option value="<?= $data->id_kategori; ?>" <?= (old("kategori") == $data->id_kategori ? "selected" : ""); ?>><?= $data->nama_kategori; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>

@@ -64,9 +64,6 @@
 									<button type="submit" class="btn my-4" style="color: white; background-color: #1174EF">Sign in</button>
 								</div>
 							</form>
-							<div class="text-center">
-								<a href="<?php echo site_url('signup') ?>" class="text-light"><small>Create new account</small></a>
-							</div>
 						</div>
 					</div>
 				</div>

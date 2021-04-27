@@ -7,6 +7,21 @@ use App\Models\UserModel;
 
 class Login extends BaseController
 {
+    /**
+     * Instance of the main Request object.
+     *
+     * @var HTTP\IncomingRequest
+     */
+    protected $request;
+    protected $user;
+
+    function __construct()
+    {
+        helper('form');
+        helper('url');
+        $this->user = new UserModel();
+    }
+
     public function index()
     {
         return view("login");
@@ -21,7 +36,7 @@ class Login extends BaseController
         if ($datauser) {
             if ($password == $datauser->password) {
                 session()->set([
-                    'id' => $datauser->id,
+                    'nik' => $datauser->nik,
                     'email' => $datauser->email,
                     'password' => $datauser->password,
                     'nama' => $datauser->nama,

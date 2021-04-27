@@ -2,10 +2,20 @@
 <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
     <div class="scrollbar-inner">
         <!-- Brand -->
-        <div class="sidenav-header  align-items-center">
+        <div class="sidenav-header d-flex align-items-center">
             <a class="navbar-brand" href="<?php echo site_url('pimpinan/dashboard') ?>">
                 <img src="<?= base_url('../assets/img/brand/pusdatin.png') ?>" class="navbar-brand-img" alt="...">
             </a>
+            <div class="ml-auto">
+                <!-- Sidenav toggler -->
+                <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main">
+                    <div class="sidenav-toggler-inner">
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                        <i class="sidenav-toggler-line"></i>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="navbar-inner">
             <!-- Collapse -->
@@ -60,22 +70,21 @@
                     <li class="nav-item">
                         <a class="nav-link <?php
                                             $uri = service('uri');
+                                            if ($uri->getSegment(2) == 'kelulusan') {
+                                                echo "active";
+                                            } ?>" href="<?php echo site_url('pimpinan/kelulusan/list') ?>">
+                            <i class="ni ni-paper-diploma text-default"></i>
+                            <span class="nav-link-text">Kelulusan</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php
+                                            $uri = service('uri');
                                             if ($uri->getSegment(2) == 'alumni') {
                                                 echo "active";
                                             } ?>" href="<?php echo site_url('pimpinan/alumni/list') ?>">
                             <i class="fas fa-user-graduate text-default"></i>
-                            <span class="nav-link-text">Alumni / Kelulusan</span>
-                        </a>
-                    </li>
-                </ul>
-                <!-- Divider -->
-                <hr class="my-3">
-                <!-- Navigation -->
-                <ul class="navbar-nav mb-md-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://demos.creative-tim.com/argon-dashboard/docs/getting-started/overview.html" target="_blank">
-                            <i class="fas fa-print" style="color: #1174EF"></i>
-                            <span class="nav-link-text">Print Absen</span>
+                            <span class="nav-link-text">Alumni</span>
                         </a>
                     </li>
                 </ul>
