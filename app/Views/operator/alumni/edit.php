@@ -44,9 +44,13 @@
                 <div class="header-body">
                     <div class="row align-items-center py-4">
                         <div class="col-lg-6 col-7">
-                            <a href="<?= base_url('/operator/alumni/list') ?>" class="btn bg-white btn-icon">
-                                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
-                                <span class="btn-inner--text">Kembali</span>
+                            <a href="<?= base_url('operator/alumni/list') ?>" class="btn bg-white btn-icon">
+                                <div class="media align-items-center">
+                                    <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+                                    <div class="media-body ml-0 d-none d-lg-block">
+                                        <span class="pl-2 btn-inner--text">Kembali</span>
+                                    </div>
+                                </div>
                             </a>
                         </div>
                         <div class="col text-right">
@@ -97,17 +101,17 @@
                         <?= csrf_field(); ?>
                         <div class="ml-3">
                             <div class="form-row my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="nik" class="form-control-label">NIK : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="nik" id="nik" placeholder="NIK" value="<?= $alumni->nik ?>" required>
                                 </div>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="nama" class="form-control-label">Nama : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="nama" id="nama" placeholder="Nama" value="<?= $alumni->nama_alumni ?>" required>
                                 </div>
                             </div>
                             <div class="form-row my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="tempat_lahir" class="form-control-label">Tempat Lahir : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" value="<?= $alumni->tempat_lahir ?>" required>
                                 </div>
@@ -128,7 +132,7 @@
                                         $('#tanggal_lahir').attr('max', maxDate);
                                     });
                                 </script>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="tanggal_lahir" class="form-control-label">Tanggal Lahir : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="date" name="tanggal_lahir" id="tanggal_lahir" value="<?= $alumni->tanggal_lahir ?>" required>
                                     <small><span id='message'></span><small>
@@ -146,11 +150,11 @@
                                 </div>
                             </div>
                             <div class="form-row mb-3 my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="kecamatan" class="form-control-label">Kecamatan : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="kecamatan" id="kecamatan" placeholder="Kecamatan" value="<?= $alumni->kecamatan ?>" required>
                                 </div>
-                                <div class="form-group col-8">
+                                <div class="form-group col-lg-8">
                                     <label class="form-control-label" for="alamat">Alamat Lengkap : <small>(Nama Jalan, RT/RW, Desa/Kelurahan, Kode Post)</small> <span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="alamat" id="alamat" rows="3" required maxlength=100><?= $alumni->alamat ?></textarea>
                                 </div>
@@ -160,11 +164,11 @@
                         <h6 class="heading-small text-muted mb-3">User Contact</h6>
                         <div class="ml-3">
                             <div class="form-row mb-3 my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="email" class="form-control-label">Email : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="email" name="email" id="email" placeholder="Email" value="<?= $alumni->email_alumni ?>" required>
                                 </div>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="no_hp" class="form-control-label">No Telepon : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="no_hp" id="no_hp" placeholder="No Telepon/Whatsapp" value="<?= $alumni->no_hp ?>" required>
                                 </div>
@@ -173,11 +177,11 @@
                         <h6 class="heading-small text-muted mb-3">Kealumnian</h6>
                         <div class="ml-3">
                             <div class="form-row my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="nisn" class="form-control-label">NISN : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="nisn" id="nisn" placeholder="NISN" value="<?= $alumni->nisn ?>" required>
                                 </div>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="tahun_lulus" class="form-control-label">Tahun Lulus : <span class="text-danger">*</span></label>
                                     <select class="form-control" id="tahun_lulus" name="tahun_lulus">
                                         <option value="">Pilih Tahun Lulus</option>
@@ -188,7 +192,7 @@
                                 </div>
                             </div>
                             <div class="form-row my-0 mb-3">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="jurusan" class="form-control-label">Jurusan : <span class="text-danger">*</span></label>
                                     <select class="form-control" name="jurusan" id="jurusan" onchange="showhideForm(this.value);" required>
                                         <option value="">Pilih Jurusan</option>
@@ -197,7 +201,7 @@
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-lg-4">
                                     <label for="rombel" class="form-control-label">Rombel : <span class="text-danger">*</span></label>
                                     <select class="form-control" name="rombel" id="rombel" required disabled>
                                         <option value="">Pilih Rombel</option>
@@ -237,7 +241,7 @@
                         <h6 class="heading-small text-muted mb-3">Post Graduate</h6>
                         <div class="ml-3">
                             <div class="form-row my-0 mb-3">
-                                <div class="col-4">
+                                <div class="col-lg-4">
                                     <label for="status" class="form-control-label">Status : <span class="text-danger">*</span></label>
                                     <select class="form-control" name="status" id="status" required onchange="showhideForm1(this.value);">
                                         <option value="">Pilih Status</option>
@@ -261,17 +265,17 @@
                                         }
                                     }
                                 </script>
-                                <div class="form-group col-8">
+                                <div class="form-group col-lg-8">
                                     <label for="instansi" class="form-control-label">Instansi : <span class="text-danger">**</span></label>
                                     <input class="form-control" type="text" name="instansi" id="instansi" placeholder="Instansi" value="<?= $alumni->instansi ?>" disabled>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col text-left">
+                                <div class="col text-left mb-3">
                                     <h5 class="text-danger mb-0">*) Harus Diisi</h5>
                                     <h5 class="text-danger">**) Harus Diisi Bagi yang Sudah Bekerja/Kuliah</h5>
                                 </div>
-                                <div class="col text-right">
+                                <div class="col-lg-7 text-right">
                                     <input class="btn btn-warning mr-2" type="reset" value="Reset">
                                     <input class="btn" type="submit" value="Update" style="color: white; background-color: #1174EF">
                                 </div>

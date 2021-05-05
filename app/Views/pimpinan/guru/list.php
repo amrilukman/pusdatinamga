@@ -43,32 +43,12 @@
             <div class="container-fluid">
                 <div class="header-body">
                     <div class="row align-items-center py-4">
-                        <div class="col-3">
+                        <div class="col">
                             <h6 class="h2 text-white d-inline-block mb-0">Data Guru</h6>
                         </div>
-                        <div class="col-9 text-right">
+                        <div class="col text-right pt-2">
                             <ul class="nav justify-content-end">
-                                <li class="pr-1">
-                                    <form class="search mb-1">
-                                        <div class="input-group input-group-merge">
-                                            <?php
-                                            $form_keyword = [
-                                                'type'  => 'text',
-                                                'name'  => 'keyword',
-                                                'id'    => 'keyword',
-                                                'value' => $keyword,
-                                                'class' => 'form-control search__field',
-                                                'placeholder' => 'Search',
-                                                'style' => 'height: 44px;',
-                                                'aria-label' => 'Search'
-                                            ];
-                                            echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
-                                            echo form_input($form_keyword);
-                                            ?>
-                                        </div>
-                                    </form>
-                                </li>
-                                <li class="pl-1 mr-1">
+                                <li class="pl-1">
                                     <form action="<?= base_url('pimpinan/guru/exportexcel') ?>" method="POST">
                                         <button type="submit" class="btn bg-white btn-icon pl-3 pr-3" data-toggle="tooltip" data-placement="top" title="Download data">
                                             <span class="btn-inner--icon"><i class="far fa-save"></i></span>
@@ -76,6 +56,26 @@
                                     </form>
                                 </li>
                             </ul>
+                        </div>
+                        <div class="col-lg-3 ml-0 text-right pt-2">
+                            <form class="search">
+                                <div class="input-group input-group-merge">
+                                    <?php
+                                    $form_keyword = [
+                                        'type'  => 'text',
+                                        'name'  => 'keyword',
+                                        'id'    => 'keyword',
+                                        'value' => $keyword,
+                                        'class' => 'form-control search__field',
+                                        'placeholder' => 'Search',
+                                        'style' => 'height: 44px;',
+                                        'aria-label' => 'Search'
+                                    ];
+                                    echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
+                                    echo form_input($form_keyword);
+                                    ?>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -92,45 +92,43 @@
             <div class="card">
                 <div class="card-header border-0">
                     <div class="row align-items-left">
-                        <!--==============================================================-->
-                        <!-- Filter Jurusan -->
-                        <!--==============================================================-->
-                        <div class="col-3 pl-2 pr-0">
-                            <?php
-                            echo form_dropdown('jurusan', $jurusans, $jurusan, ['class' => 'form-control', 'id' => 'jurusan']);
-                            ?>
-                        </div>
-                        <script>
-                            $(document).ready(function() {
-                                $("#jurusan").change(function() {
-                                    filter();
-                                });
-                                $("#keyword").keypress(function(event) {
-                                    if (event.keyCode == 13) {
-                                        filter();
-                                    }
-                                });
+                        <div class="col-lg-7 pr-4">
+                            <!--==============================================================-->
+                            <!-- Filter Jurusan -->
+                            <!--==============================================================-->
+                            <div class="row align-items-left">
+                                <div class="col-lg-6 pl-2 pr-0">
+                                    <?php
+                                    echo form_dropdown('jurusan', $jurusans, $jurusan, ['class' => 'form-control', 'id' => 'jurusan']);
+                                    ?>
+                                </div>
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#jurusan").change(function() {
+                                            filter();
+                                        });
+                                        $("#keyword").keypress(function(event) {
+                                            if (event.keyCode == 13) {
+                                                filter();
+                                            }
+                                        });
 
-                                var filter = function() {
-                                    var jurusan = $("#jurusan").val();
-                                    var keyword = $("#keyword").val();
-                                    window.location.replace("/pimpinan/guru/list?jurusan=" + jurusan + "&keyword=" + keyword);
-                                }
-                            });
-                        </script>
+                                        var filter = function() {
+                                            var jurusan = $("#jurusan").val();
+                                            var keyword = $("#keyword").val();
+                                            window.location.replace("/pimpinan/guru/list?jurusan=" + jurusan + "&keyword=" + keyword);
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
                         <!--==============================================================-->
                         <!-- End of Filter Jurusan -->
                         <!--==============================================================-->
-                        <div class="col-3 pl-2 pr-0">
-                        </div>
-                        <div class="col-6 pl-2 text-right">
-                            <ul class="nav justify-content-end">
-                                <li>
-                                    <button class="btn btn-icon btn-outline-secondary" type="button">
-                                        <span class="btn-inner--text">Jumlah : <?= $jumlah ?></span>
-                                    </button>
-                                </li>
-                            </ul>
+                        <div class="col d-none d-lg-block text-right">
+                            <button class="btn btn-icon btn-outline-secondary" type="button">
+                                <span class="btn-inner--text">Jumlah : <?= $jumlah ?></span>
+                            </button>
                         </div>
                     </div>
                 </div>

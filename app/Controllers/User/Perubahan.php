@@ -49,16 +49,28 @@ class Perubahan extends BaseController
         }
 
         $databerkas = $this->request->getFile('berkas');
-        $fileName = $databerkas->getName();
+        $randomname = $databerkas->getRandomName();
+        $filename = session()->get('nik') . '-' . $this->request->getVar('kategori') . '-' . $randomname;
         $this->perubahan->insert([
             'nik' => session()->get('nik'),
             'kategori_perubahan' => $this->request->getVar('kategori'),
             'deskripsi_perubahan' => $this->request->getVar('deskripsi'),
-            'berkas' => $fileName,
+            'berkas' => $filename,
+            'status' => 'processed',
+            'tgl_input' => date("Y-m-d"),
         ]);
 
-        $databerkas->move(WRITEPATH . 'uploads\berkas', $fileName);
-        session()->setFlashdata('message', 'Permintaan Perubahan Data Akan Diterima Operator');
+        $databerkas->move(WRITEPATH . 'uploads\berkas', $filename);
+        session()->setFlashdata('message', 'Permintaan Perubahan Data Akan Diproses Operator');
+        return redirect()->to(base_url('user/dashboard'));
+    }
+
+    public function selesai($id)
+    {
+        $this->perubahan->update($id, [
+            'status' => 'done'
+        ]);
+
         return redirect()->to(base_url('user/dashboard'));
     }
 }

@@ -64,7 +64,6 @@ $routes->post('operator/guru/edit/(:segment)', 'Operator/Guru::edit/$1', ['filte
 $routes->post('operator/guru/edit/update/(:segment)', 'Operator/Guru::update/$1', ['filter' => 'authoperator']);
 $routes->get('operator/guru/list/delete/(:segment)', 'Operator/Guru::delete/$1', ['filter' => 'authoperator']);
 
-
 $routes->get('operator/pegawai/list', 'Operator/Pegawai::index', ['filter' => 'authoperator']);
 $routes->get('operator/pegawai/add', 'Operator/Pegawai::add', ['filter' => 'authoperator']);
 $routes->get('operator/pegawai/edit', 'Operator/Pegawai::edit', ['filter' => 'authoperator']);
@@ -86,7 +85,7 @@ $routes->post('operator/info/delete/(:segment)', 'Operator/Info::delete/$1', ['f
 $routes->post('operator/info/edit/(:segment)', 'Operator/Info::edit/$1', ['filter' => 'authoperator']);
 $routes->get('operator/info/update/(:segment)', 'Operator/Info::update/$1', ['filter' => 'authoperator']);
 
-$routes->post('operator/perubahan/detail/(:segment)', 'operator/Perubahan::detail/$1', ['filter' => 'authoperator']);
+$routes->post('operator/perubahan/detail/(:segment)', 'Operator/Perubahan::index/$1', ['filter' => 'authoperator']);
 // ==============================================================
 // End of Operator's Router -->
 // ==============================================================

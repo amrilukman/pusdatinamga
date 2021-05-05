@@ -41,8 +41,8 @@ class Dashboard extends BaseController
 
         $data['info'] = $this->info->findAll();
 
-        $data['jumlah_perubahan'] = $this->perubahan->countAll();
-        $data['perubahan'] = $this->perubahan->join('user', 'user.nik = perubahan.nik')->findAll();
+        $data['jumlah_perubahan'] = count($this->perubahan->where('status', 'processed')->findAll());
+        $data['perubahan'] = $this->perubahan->join('user', 'user.nik = perubahan.nik')->where('status', 'processed')->findAll();
 
 
         $data['jumlah_siswa'] = $this->siswa->countAll();

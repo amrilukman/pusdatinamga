@@ -60,8 +60,15 @@
                 <div class="col-lg-5 col-md-7">
                     <div class="card bg-white border-0">
                         <div class="card-header bg-transparent pb-3">
-                            <div class="text-muted text-center mt-1">
-                                <h3>Reset Password</h3>
+                            <div class="row">
+                                <div class="col-2">
+                                    <a href="<?= base_url('user/profil') ?>" class="btn bg-white btn-sm btn-icon" data-toggle="tooltip" data-placement="top" title="Kembali">
+                                        <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+                                    </a>
+                                </div>
+                                <div class="col-8 justify-content-center text-muted text-center mt-1">
+                                    <h3>Ganti Password</h3>
+                                </div>
                             </div>
                         </div>
                         <div class="card-body px-lg-4 py-lg-4 mb-3">

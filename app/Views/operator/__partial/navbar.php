@@ -13,10 +13,16 @@
             <!-- Default password alert -->
             <?php if (session()->get('password') == md5('12345678') and current_url() == base_url('operator/dashboard')) : ?>
                 <div class="alert alert-danger inline alert-dismissible fade show mb-0 mt-0" role="alert">
-                    <span class="alert-text">Anda masih menggunakan default password!</span>
-                    <a href="<?= base_url('operator/profil/resetpassword/' . $user->nik . '') ?>" class="btn btn-icon btn-secondary btn-sm ml-4 mr-0" type="button">
-                        <span class="btn-inner--text">Reset Password</span>
-                    </a>
+                    <div class="row">
+                        <div class="col-8 pr-0">
+                            <span class="alert-text">Anda masih menggunakan default password!</span>
+                        </div>
+                        <div class="col-4 my-auto pr-0">
+                            <a href="<?= base_url('operator/profil/resetpassword/' . $user->nik . '') ?>" class="btn btn-secondary btn-sm mr-0" type="button">
+                                <span class="btn-inner--text">Ganti Password</span>
+                            </a>
+                        </div>
+                    </div>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

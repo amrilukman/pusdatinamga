@@ -44,7 +44,7 @@
                 <div class="header-body">
                     <div class="row align-items-center py-4">
                         <div class="col">
-                            <h6 class="h2 text-white d-inline-block mb-0">Halo, Amri Lukman</h6>
+                            <h6 class="h2 text-white d-inline-block mb-0">Halo, <?= session()->get('nama') ?></h6>
                         </div>
                     </div>
                     <!-- ============================================================== -->
@@ -73,13 +73,20 @@
             <div class="card bg-white border-0 mb-0">
                 <div class="card-header bg-transparent">
                     <div class="row align-items-left">
-                        <div class="col-6 pl-3 pr-0 mt-2">
+                        <div class="col pl-3 pr-0 mt-2">
                             <h3 class="mb-0 text-dark">Edit Profil</h3>
                         </div>
-                        <div class="col-6 nav justify-content-end">
-                            <a href="<?= base_url('pimpinan/profil/resetpassword/' . $user->nik . '') ?>" class="btn btn-icon btn-danger" type="button">
-                                <span><i class="fas fa-unlock-alt"></i></span>
-                                <span class="btn-inner--text">Ganti Password</span>
+                        <div class="col text-right">
+                            <a href="<?= base_url('user/profil/resetpassword/' . $user->nik . '') ?>" class="btn btn-icon btn-danger pl-3 pr-3" type="button" data-toggle="tooltip" data-placement="top" title="Ganti Password">
+                                <div class="media align-items-center">
+                                    <span class="btn-inner--icon"><i class="fas fa-unlock-alt"></i></span>
+                                    <div class="media-body ml-0 d-none d-lg-block">
+                                        <span class="btn-inner--text pl-2">Ganti Password</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="<?= base_url('/pimpinan/perubahan/add') ?>" type="button" class="btn btn-warning pl-3 pr-3" data-toggle="tooltip" data-placement="top" title="Request Perubahan Data">
+                                <span><i class="fas fa-pencil-alt"></i></span>
                             </a>
                         </div>
                     </div>
@@ -100,21 +107,21 @@
                         <h6 class="heading-small text-muted mb-3">User Information</h6>
                         <div class="ml-3">
                             <div class="form-row my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="nik" class="form-control-label">NIK : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="nik" id="nik" placeholder="NIK" value="<?= $user->nik ?>" disabled>
                                 </div>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="nama" class="form-control-label">Nama : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="nama" id="nama" placeholder="Nama" value="<?= $user->nama ?>" disabled>
                                 </div>
                             </div>
                             <div class="form-row mb-3 my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="kecamatan" class="form-control-label">Kecamatan : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="kecamatan" id="kecamatan" placeholder="Kecamatan" value="<?= $profil->kecamatan ?>" required>
                                 </div>
-                                <div class="form-group col-8">
+                                <div class="form-group col-lg-8">
                                     <label class="form-control-label" for="alamat">Alamat Lengkap : <small>(Nama Jalan, RT/RW, Desa/Kelurahan, Kode Post)</small> <span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="alamat" id="alamat" rows="3" required maxlength=100><?= $profil->alamat ?></textarea>
                                 </div>
@@ -124,21 +131,21 @@
                         <h6 class="heading-small text-muted mb-3">User Contact</h6>
                         <div class="ml-3">
                             <div class="form-row mb-3 my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="email" class="form-control-label">Email : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="email" name="email" id="email" placeholder="Email" value="<?= $user->email ?>" required>
                                 </div>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="no_hp" class="form-control-label">No Telepon : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="no_hp" id="no_hp" placeholder="No Telepon/Whatsapp" value="<?= $profil->no_hp ?>" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col text-left">
+                            <div class="col text-left mb-3">
                                 <h5 class="text-danger mb-0">*) Harus Diisi</h5>
                             </div>
-                            <div class="col text-right">
+                            <div class="col-lg-7 text-right">
                                 <input class="btn btn-warning mr-2" type="reset" value="Reset">
                                 <input class="btn" type="submit" value="Update" style="color: white; background-color: #1174EF">
                             </div>

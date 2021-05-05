@@ -11,6 +11,7 @@ use App\Models\AlumniModel;
 use App\Models\JurusanModel;
 use App\Models\InfoModel;
 use App\Models\KategoriModel;
+use App\Models\PerubahanModel;
 
 class Dashboard extends BaseController
 {
@@ -33,6 +34,7 @@ class Dashboard extends BaseController
         $this->jurusan = new JurusanModel();
         $this->kategori = new KategoriModel();
         $this->info = new InfoModel();
+        $this->perubahan = new PerubahanModel();
     }
 
     public function index()
@@ -52,6 +54,9 @@ class Dashboard extends BaseController
         $data['user'] = $this->user->where(['nik' => session()->get('nik')])->first();
 
         $data['info'] = $this->info->findAll();
+
+        $data['jumlah_perubahan'] = count($this->perubahan->where('nik', session()->get('nik'))->findAll());
+        $data['perubahan'] = $this->perubahan->join('user', 'user.nik = perubahan.nik')->where('perubahan.nik', session()->get('nik'))->findAll();
 
         $data['jumlah_siswa'] = $this->siswa->countAll();
         $data['jumlah_guru'] = $this->guru->countAll();

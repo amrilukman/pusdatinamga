@@ -44,9 +44,13 @@
                 <div class="header-body">
                     <div class="row align-items-center py-4">
                         <div class="col-lg-6 col-7">
-                            <a href="<?= base_url('/operator/siswa/list') ?>" class="btn bg-white btn-icon">
-                                <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
-                                <span class="btn-inner--text">Kembali</span>
+                            <a href="<?= base_url('operator/siswa/list') ?>" class="btn bg-white btn-icon">
+                                <div class="media align-items-center">
+                                    <span class="btn-inner--icon"><i class="ni ni-bold-left"></i></span>
+                                    <div class="media-body ml-0 d-none d-lg-block">
+                                        <span class="pl-2 btn-inner--text">Kembali</span>
+                                    </div>
+                                </div>
                             </a>
                         </div>
                         <div class="col text-right">
@@ -97,17 +101,17 @@
                         <?= csrf_field(); ?>
                         <div class="ml-3">
                             <div class="form-row my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="nik" class="form-control-label">NIK : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="nik" id="nik" placeholder="NIK" value="<?= $siswa->nik ?>" required>
                                 </div>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="nama" class="form-control-label">Nama : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="nama" id="nama" placeholder="Nama" value="<?= $siswa->nama_siswa ?>" required>
                                 </div>
                             </div>
                             <div class="form-row my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="tempat_lahir" class="form-control-label">Tempat Lahir : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" value="<?= $siswa->tempat_lahir ?>" required>
                                 </div>
@@ -128,7 +132,7 @@
                                         $('#tanggal_lahir').attr('max', maxDate);
                                     });
                                 </script>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="tanggal_lahir" class="form-control-label">Tanggal Lahir : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="date" name="tanggal_lahir" id="tanggal_lahir" value="<?= $siswa->tanggal_lahir ?>" required>
                                     <small><span id='message'></span><small>
@@ -146,11 +150,11 @@
                                 </div>
                             </div>
                             <div class="form-row mb-3 my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="kecamatan" class="form-control-label">Kecamatan : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="text" name="kecamatan" id="kecamatan" placeholder="Kecamatan" value="<?= $siswa->kecamatan ?>" required>
                                 </div>
-                                <div class="form-group col-8">
+                                <div class="form-group col-lg-8">
                                     <label class="form-control-label" for="alamat">Alamat Lengkap : <small>(Nama Jalan, RT/RW, Desa/Kelurahan, Kode Post)</small> <span class="text-danger">*</span></label>
                                     <textarea class="form-control" name="alamat" id="alamat" rows="3" required maxlength=100><?= $siswa->alamat ?></textarea>
                                 </div>
@@ -160,11 +164,11 @@
                         <h6 class="heading-small text-muted mb-3">User Contact</h6>
                         <div class="ml-3">
                             <div class="form-row mb-3 my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="email" class="form-control-label">Email : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="email" name="email" id="email" placeholder="Email" value="<?= $siswa->email_siswa ?>" required>
                                 </div>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="no_hp" class="form-control-label">No Telepon : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="no_hp" id="no_hp" placeholder="No Telepon/Whatsapp" value="<?= $siswa->no_hp ?>" required>
                                 </div>
@@ -174,11 +178,11 @@
                         <h6 class="heading-small text-muted mb-3">Kesiswaan</h6>
                         <div class="ml-3">
                             <div class="form-row my-0">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="nisn" class="form-control-label">NISN : <span class="text-danger">*</span></label>
                                     <input class="form-control" type="numeric" name="nisn" id="nisn" placeholder="NISN" value="<?= $siswa->nisn ?>" required>
                                 </div>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="kelas" class="form-control-label">Kelas : <span class="text-danger">*</span></label>
                                     <select class="form-control" id="kelas" name="kelas">
                                         <option value="">Pilih Kelas</option>
@@ -189,7 +193,7 @@
                                 </div>
                             </div>
                             <div class="form-row my-0 mb-3">
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="jurusan" class="form-control-label">Jurusan : <span class="text-danger">*</span></label>
                                     <select class="form-control" name="jurusan" id="jurusan" onchange="showhideForm(this.value);" required>
                                         <option value="">Pilih Jurusan</option>
@@ -198,7 +202,7 @@
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-lg-4">
                                     <label for="rombel" class="form-control-label">Rombel : <span class="text-danger">*</span></label>
                                     <select class="form-control" name="rombel" id="rombel" required disabled>
                                         <option value="">Pilih Rombel</option>
@@ -238,7 +242,7 @@
                         <h6 class="heading-small text-muted mb-3">Kartu Indonesiap Pintar</h6>
                         <div class="ml-3">
                             <div class="form-row my-0 mb-3">
-                                <div class="form-group mb-0 my-0 col-4" required>
+                                <div class="form-group mb-0 my-0 col-lg-4" required>
                                     <label for="kip" class="form-control-label">Penerima KIP : <span class="text-danger">*</span></label>
                                     <div class="custom-control custom-radio mb-3 mt-2 pl-0">
                                         <input type="radio" id="kip" name="kip" value="Ya" onchange="showhideForm1(this.value);" required <?= ($siswa->penerima_kip == "Ya" ? "checked" : ""); ?>>
@@ -267,21 +271,21 @@
                                         }
                                     }
                                 </script>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="no_kip" class="form-control-label">No. KIP : <span class="text-danger">**</span></label>
                                     <input class="form-control" type="numeric" name="no_kip" id="no_kip" placeholder="No. KIP" value="<?= $siswa->no_kip ?>" disabled>
                                 </div>
-                                <div class="form-group col-4">
+                                <div class="form-group col-lg-4">
                                     <label for="no_rek" class="form-control-label">No. Reknening : <span class="text-danger">**</span></label>
                                     <input class="form-control" type="numeric" name="no_rek" id="no_rek" placeholder="No. Rekening" value="<?= $siswa->no_rek ?>" disabled>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col text-left">
+                                <div class="col text-left mb-3">
                                     <h5 class="text-danger mb-0">*) Harus Diisi</h5>
                                     <h5 class="text-danger">**) Harus Diisi Bagi Penerima KIP</h5>
                                 </div>
-                                <div class="col text-right">
+                                <div class="col-lg-9 text-right">
                                     <input class="btn btn-warning mr-2" type="reset" value="Reset">
                                     <input class="btn" type="submit" value="Update" style="color: white; background-color: #1174EF">
                                 </div>

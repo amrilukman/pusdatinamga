@@ -43,32 +43,28 @@
             <div class="container-fluid">
                 <div class="header-body">
                     <div class="row align-items-center py-4">
-                        <div class="col-3">
+                        <div class="col-9 mb-2">
                             <h6 class="h2 text-white d-inline-block mb-0">Data User</h6>
                         </div>
-                        <div class="col-9 text-right">
-                            <ul class="nav justify-content-end">
-                                <li class="pr-1">
-                                    <form class="search mb-1">
-                                        <div class="input-group input-group-merge">
-                                            <?php
-                                            $form_keyword = [
-                                                'type'  => 'text',
-                                                'name'  => 'keyword',
-                                                'id'    => 'keyword',
-                                                'value' => $keyword,
-                                                'class' => 'form-control search__field',
-                                                'placeholder' => 'Search',
-                                                'style' => 'height: 44px;',
-                                                'aria-label' => 'Search'
-                                            ];
-                                            echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
-                                            echo form_input($form_keyword);
-                                            ?>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul>
+                        <div class="col-lg-3 ml-0 text-right pt-2">
+                            <form class="search">
+                                <div class="input-group input-group-merge">
+                                    <?php
+                                    $form_keyword = [
+                                        'type'  => 'text',
+                                        'name'  => 'keyword',
+                                        'id'    => 'keyword',
+                                        'value' => $keyword,
+                                        'class' => 'form-control search__field',
+                                        'placeholder' => 'Search',
+                                        'style' => 'height: 44px;',
+                                        'aria-label' => 'Search'
+                                    ];
+                                    echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
+                                    echo form_input($form_keyword);
+                                    ?>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -88,7 +84,7 @@
                         <!--==============================================================-->
                         <!-- Filter  -->
                         <!--==============================================================-->
-                        <div class="col-3 pl-2 pr-0">
+                        <div class="col-6 pl-2">
                             <?php
                             echo form_dropdown('role', $roles, $role, ['class' => 'form-control', 'id' => 'role']);
                             ?>
@@ -114,21 +110,24 @@
                         <!--==============================================================-->
                         <!-- End of Filter -->
                         <!--==============================================================-->
-                        <div class="col-4"></div>
-                        <div class="col-5 text-right">
-                            <ul class="nav justify-content-end">
-                                <li class="mr-2">
+                        <div class="col pl-2 text-right">
+                            <div class="row text-right">
+                                <div class="col pr-auto">
                                     <button class="btn btn-icon btn-danger pl-3 pr-3" type="button" data-sweet-alert="warning" id="resetpassword" value='Update' data-toggle="tooltip" data-placement="top" title="Reset Password">
-                                        <span><i class="fas fa-unlock-alt"></i></span>
-                                        <b class="pl-2 text-white">Reset Password</b>
+                                        <div class="media align-items-center">
+                                            <span><i class="fas fa-unlock-alt"></i></span>
+                                            <div class="media-body ml-0 d-none d-lg-block">
+                                                <spam class="pl-2 btn-inner--text">Reset Password</span>
+                                            </div>
+                                        </div>
                                     </button>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="col-auto d-none d-lg-block">
                                     <button class="btn btn-icon btn-outline-secondary" type="button">
                                         <span class="btn-inner--text">Jumlah : <?= $jumlah ?></span>
                                     </button>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -321,13 +321,68 @@
                     <?php endif ?>
                     <div class="card">
                         <div class="card-header bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col-10">
+                                    <h3 class="mb-0">Notifikasi Perubahan Data</h3>
+                                </div>
+                                <div class="col-2 text-right justify-content-end">
+                                    <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><?= $jumlah_perubahan ?></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0 pr-2 pl-2 pb-0">
+                            <div class="table-responsive">
+                                <table class="table align-items-center list-group-flush">
+                                    <tbody class="list pl-4 pt-2 pb-2">
+                                        <?php foreach ($perubahan as $perubahan) { ?>
+                                            <?php if ($perubahan->status == 'done') { ?>
+                                                <tr></tr>
+                                            <?php } else { ?>
+                                                <tr>
+                                                    <td class="pl-3">
+                                                        <div>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <?php if ($perubahan->status == 'processed') { ?>
+                                                                    <h4 class="mb-0 text-sm"><?= ucfirst($perubahan->status) ?></h4>
+                                                                <?php } else if ($perubahan->status == 'approved') { ?>
+                                                                    <h4 class="mb-0 text-sm text-success"><?= ucfirst($perubahan->status) ?></h4>
+                                                                <?php } else if ($perubahan->status == 'rejected') { ?>
+                                                                    <h4 class="mb-0 text-sm text-danger"><?= ucfirst($perubahan->status) ?></h4>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <p class="text-sm mb-0">PERUBAHAN <?= strtoupper($perubahan->kategori_perubahan) ?></p>
+                                                        </div>
+                                                    </td>
+                                                    <?php if ($perubahan->status == 'approved' || $perubahan->status == 'rejected') { ?>
+                                                        <td class="pl-0 pr-3">
+                                                            <a class="btn btn-sm btn-icon-only text-light" href="<?= base_url('user/perubahan/selesai/' . $perubahan->id_perubahan . '') ?>" role="button" data-toggle="tooltip" data-placement="top" title="Tandai Selesai">
+                                                                <i class="fas fa-times"></i>
+                                                            </a>
+                                                        </td>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End of Notifikasi Perubahan Data -->
+                    <!-- ============================================================== -->
+                    <div class="card">
+                        <div class="card-header bg-transparent">
                             <div class="row">
                                 <div class="col">
                                     <h3 class="mb-0">Data Anda</h3>
                                 </div>
-                                <div class="col-2 text-right justify-content-end">
+                                <div class="col-4 text-right justify-content-end">
                                     <a href="<?= base_url('/pimpinan/perubahan/add') ?>" type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Request Perubahan Data">
                                         <span><i class="fas fa-pencil-alt"></i></span>
+                                    </a>
+                                    <a href="<?= base_url('/pimpinan/profil') ?>" type="button" style="color: white; background-color: #1174EF" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                        <span><i class="fas fa-user"></i></span>
                                     </a>
                                 </div>
                             </div>
@@ -335,15 +390,15 @@
                         <div class="card-body pt-2 pb-2">
                             <h6 class="heading-small text-muted mb-2">Data Diri</h6>
                             <div class="ml-3">
-                                <div class="list-group list-group-flush ml-2 mt-1 mb-3">
-                                    <div class="row align-items-center">
-                                        <div class="col ml--2">
+                                <div class="list-group list-group-flush ml--2 mt-1 mb-3">
+                                    <div class="row align-items-center ">
+                                        <div class="col-6">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">NIK</h4>
                                             </div>
                                             <p class="text-sm mb-0"><?= $data->nik ?></p>
                                         </div>
-                                        <div class="col ml--2">
+                                        <div class="col-6">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">Nama</h4>
                                             </div>
@@ -351,9 +406,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                <div class="list-group list-group-flush  ml--2 mt-1 mb-3">
                                     <div class="row align-items-center">
-                                        <div class="col ml--2">
+                                        <div class="col">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">Jenis Kelamin</h4>
                                             </div>
@@ -363,7 +418,7 @@
                                                                         echo 'Perempuan';
                                                                     }; ?></p>
                                         </div>
-                                        <div class="col ml--2">
+                                        <div class="col">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">TTL</h4>
                                             </div>
@@ -375,9 +430,9 @@
                             <hr class="my-3">
                             <h6 class="heading-small text-muted mb-2">Kepegawaian</h6>
                             <div class="ml-3">
-                                <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                <div class="list-group list-group-flush  ml--2 mt-1 mb-3">
                                     <div class="row align-items-center">
-                                        <div class="col ml--2">
+                                        <div class="col">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">Status Kepegawaian</h4>
                                             </div>
@@ -385,15 +440,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                <div class="list-group list-group-flush  ml--2 mt-1 mb-3">
                                     <div class="row align-items-center">
-                                        <div class="col ml--2">
+                                        <div class="col">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">SK-CPNS</h4>
                                             </div>
                                             <p class="text-sm mb-0"><?= $data->sk_cpns ?></p>
                                         </div>
-                                        <div class="col ml--2">
+                                        <div class="col ">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">NIP</h4>
                                             </div>
@@ -401,15 +456,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                <div class="list-group list-group-flush  ml--2 mt-1 mb-3">
                                     <div class="row align-items-center">
-                                        <div class="col ml--2">
+                                        <div class="col ">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">NUPTK</h4>
                                             </div>
                                             <p class="text-sm mb-0"><?= $data->nuptk ?></p>
                                         </div>
-                                        <div class="col ml--2">
+                                        <div class="col">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">NPWP</h4>
                                             </div>

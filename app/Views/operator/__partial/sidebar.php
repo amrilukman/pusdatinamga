@@ -97,7 +97,7 @@
                                             if ($uri->getSegment(2) == 'user') {
                                                 echo "active";
                                             } ?>" href="<?php echo site_url('operator/user/list') ?>">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-user text-default"></i>
                             <span class="nav-link-text">User</span>
                         </a>
                     </li>

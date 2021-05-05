@@ -43,31 +43,11 @@
             <div class="container-fluid">
                 <div class="header-body">
                     <div class="row align-items-center py-4">
-                        <div class="col-3 ">
+                        <div class="col text-left">
                             <h6 class="h2 text-white d-inline-block mb-0">Data Pegawai</h6>
                         </div>
-                        <div class="col-9 text-right">
+                        <div class="col text-right pt-2">
                             <ul class="nav justify-content-end">
-                                <li class="pr-1">
-                                    <form class="search mb-1">
-                                        <div class="input-group input-group-merge">
-                                            <?php
-                                            $form_keyword = [
-                                                'type'  => 'text',
-                                                'name'  => 'keyword',
-                                                'id'    => 'keyword',
-                                                'value' => $keyword,
-                                                'class' => 'form-control search__field',
-                                                'placeholder' => 'Search',
-                                                'style' => 'height: 44px;',
-                                                'aria-label' => 'Search'
-                                            ];
-                                            echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
-                                            echo form_input($form_keyword);
-                                            ?>
-                                        </div>
-                                    </form>
-                                </li>
                                 <li class="pl-1 mr-1">
                                     <form action="<?= base_url('operator/pegawai/exportexcel') ?>" method="POST">
                                         <button type="submit" class="btn bg-white btn-icon pl-3 pr-3" data-toggle="tooltip" data-placement="top" title="Download data">
@@ -87,6 +67,26 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="col-lg-3 ml-0 text-right pt-2">
+                            <form class="search">
+                                <div class="input-group input-group-merge">
+                                    <?php
+                                    $form_keyword = [
+                                        'type'  => 'text',
+                                        'name'  => 'keyword',
+                                        'id'    => 'keyword',
+                                        'value' => $keyword,
+                                        'class' => 'form-control search__field',
+                                        'placeholder' => 'Search',
+                                        'style' => 'height: 44px;',
+                                        'aria-label' => 'Search'
+                                    ];
+                                    echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
+                                    echo form_input($form_keyword);
+                                    ?>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
                         <!--==============================================================-->
                         <!-- Filter Kategori -->
                         <!--==============================================================-->
-                        <div class="col-3 pl-2 pr-0">
+                        <div class="col-6 pl-2">
                             <?php
                             echo form_dropdown('kategori', $kategoris, $kategori, ['class' => 'form-control', 'id' => 'kategori']);
                             ?>
@@ -131,22 +131,19 @@
                         <!--==============================================================-->
                         <!-- End of Filter kategori -->
                         <!--==============================================================-->
-                        <div class="col-3 pl-2 pr-0">
-                        </div>
                         <div class="col-6 pl-2 text-right">
-                            <ul class="nav justify-content-end">
-                                <li class="mr-2">
-                                    <small><span id='message'></span></small>
+                            <div class="row text-right">
+                                <div class="col pr-auto">
                                     <button class="btn btn-icon btn-danger pl-3 pr-3" type="button" data-sweet-alert="warning" id="delete" value='Delete' data-toggle="tooltip" data-placement="top" title="Hapus Data">
                                         <span><i class="far fa-trash-alt"></i></span>
                                     </button>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="col-auto d-none d-lg-block">
                                     <button class="btn btn-icon btn-outline-secondary" type="button">
                                         <span class="btn-inner--text">Jumlah : <?= $jumlah ?></span>
                                     </button>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

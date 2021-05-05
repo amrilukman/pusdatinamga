@@ -305,11 +305,19 @@
                 <!-- Notifikasi Perubahan Data -->
                 <!-- ============================================================== -->
                 <div class="col-xl-4">
+                    <?php if (!empty(session()->getFlashdata('message'))) : ?>
+                        <div class="alert alert-success alert-dismissible fade show mb-3 mt-0" role="alert">
+                            <?php echo session()->getFlashdata('message'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php endif ?>
                     <div class="card">
                         <div class="card-header bg-transparent">
                             <div class="row align-items-center">
                                 <div class="col-10">
-                                    <h3 class="mb-0">Notifikasi Perubahan Data</h3>
+                                    <h3 class="mb-0">Notifikasi Permintaan Perubahan</h3>
                                 </div>
                                 <div class="col-2 text-right justify-content-end">
                                     <span class="badge badge-md badge-circle badge-floating badge-danger border-white"><?= $jumlah_perubahan ?></span>
@@ -345,14 +353,6 @@
                     <!-- ============================================================== -->
                     <!-- Informasi dan Pengumuman -->
                     <!-- ============================================================== -->
-                    <?php if (!empty(session()->getFlashdata('message'))) : ?>
-                        <div class="alert alert-success alert-dismissible fade show mb-3 mt-0" role="alert">
-                            <?php echo session()->getFlashdata('message'); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    <?php endif ?>
                     <div class="card bg-white pb-0">
                         <div class="card-header bg-transparent border-0">
                             <div class="row align-items-center">

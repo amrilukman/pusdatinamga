@@ -42,32 +42,12 @@
         <div class="header bg-gradient-info pb-6">
             <div class="container-fluid">
                 <div class="header-body">
-                    <div class="row align-items-center py-4">
-                        <div class="col-3">
+                    <div class="row align-items-center py-4 pt-2">
+                        <div class="col text-left">
                             <h6 class="h2 text-white d-inline-block mb-0">Data Siswa</h6>
                         </div>
-                        <div class="col-9 text-right">
+                        <div class="col text-right pt-2">
                             <ul class="nav justify-content-end">
-                                <li class="pr-1">
-                                    <form class="search mb-1">
-                                        <div class="input-group input-group-merge">
-                                            <?php
-                                            $form_keyword = [
-                                                'type'  => 'text',
-                                                'name'  => 'keyword',
-                                                'id'    => 'keyword',
-                                                'value' => $keyword,
-                                                'class' => 'form-control search__field',
-                                                'placeholder' => 'Search',
-                                                'style' => 'height: 44px;',
-                                                'aria-label' => 'Search'
-                                            ];
-                                            echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
-                                            echo form_input($form_keyword);
-                                            ?>
-                                        </div>
-                                    </form>
-                                </li>
                                 <li class="pl-1 mr-1">
                                     <form action="<?= base_url('operator/siswa/exportexcel') ?>" method="POST">
                                         <button type="submit" class="btn bg-white btn-icon pl-3 pr-3" data-toggle="tooltip" data-placement="top" title="Download data">
@@ -87,6 +67,26 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="col-lg-3 ml-0 text-right pt-2">
+                            <form class="search">
+                                <div class="input-group input-group-merge">
+                                    <?php
+                                    $form_keyword = [
+                                        'type'  => 'text',
+                                        'name'  => 'keyword',
+                                        'id'    => 'keyword',
+                                        'value' => $keyword,
+                                        'class' => 'form-control search__field',
+                                        'placeholder' => 'Search',
+                                        'style' => 'height: 44px;',
+                                        'aria-label' => 'Search'
+                                    ];
+                                    echo '<div class="input-group-prepend"><span class="input-group-text" style="color: #525f7f;"><i class="fas fa-search"></i></span></div>';
+                                    echo form_input($form_keyword);
+                                    ?>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,92 +102,84 @@
             <div class="card">
                 <div class="card-header border-0">
                     <div class="row align-items-left">
-                        <!--==============================================================-->
-                        <!-- Filter  -->
-                        <!--==============================================================-->
-                        <div class="col-3 pl-2 pr-0">
-                            <?php
-                            echo form_dropdown('jurusan', $jurusans, $jurusan, ['class' => 'form-control', 'id' => 'jurusan']);
-                            ?>
-                        </div>
-                        <div class="col-2 pl-2 pr-0">
-                            <?php
-                            echo form_dropdown('kelas', $kelass, $kelas, ['class' => 'form-control', 'id' => 'kelas']);
-                            ?>
-                        </div>
-                        <div class="col-2 pl-2 pr-0">
-                            <?php
-                            echo form_dropdown('rombel', $rombels, $rombel, ['class' => 'form-control', 'id' => 'rombel', 'disabled' => true]);
-                            ?>
-                        </div>
-                        <script>
-                            $(document).ready(function() {
-                                $("#jurusan").change(function() {
-                                    filter();
-                                });
-                                $("#kelas").change(function() {
-                                    filter();
-                                });
-                                $("#rombel").change(function() {
-                                    filter();
-                                });
-                                $("#keyword").keypress(function(event) {
-                                    if (event.keyCode == 13) {
-                                        filter();
-                                    }
-                                });
+                        <div class="col-lg-7 pr-4 mb-3">
+                            <!--==============================================================-->
+                            <!-- Filter  -->
+                            <!--==============================================================-->
+                            <div class="row align-items-left">
+                                <div class="col-6 pl-2 pr-0">
+                                    <?php
+                                    echo form_dropdown('jurusan', $jurusans, $jurusan, ['class' => 'form-control', 'id' => 'jurusan']);
+                                    ?>
+                                </div>
+                                <div class="col-3 pl-2 pr-0">
+                                    <?php
+                                    echo form_dropdown('kelas', $kelass, $kelas, ['class' => 'form-control', 'id' => 'kelas']);
+                                    ?>
+                                </div>
+                                <div class="col-3 pl-2 pr-0">
+                                    <?php
+                                    echo form_dropdown('rombel', $rombels, $rombel, ['class' => 'form-control', 'id' => 'rombel', 'disabled' => true]);
+                                    ?>
+                                </div>
+                                <script>
+                                    $(document).ready(function() {
+                                        $("#jurusan").change(function() {
+                                            filter();
+                                        });
+                                        $("#kelas").change(function() {
+                                            filter();
+                                        });
+                                        $("#rombel").change(function() {
+                                            filter();
+                                        });
+                                        $("#keyword").keypress(function(event) {
+                                            if (event.keyCode == 13) {
+                                                filter();
+                                            }
+                                        });
 
-                                var formRombel = document.getElementById('rombel');
-                                var formJurusan = document.getElementById('jurusan');
-                                if (formJurusan.value == '' || formJurusan.value == '1' || formJurusan.value == '8') {
-                                    formRombel.disabled = true;
-                                } else {
-                                    formRombel.disabled = false;
-                                }
+                                        var formRombel = document.getElementById('rombel');
+                                        var formJurusan = document.getElementById('jurusan');
+                                        if (formJurusan.value == '' || formJurusan.value == '1' || formJurusan.value == '8') {
+                                            formRombel.disabled = true;
+                                        } else {
+                                            formRombel.disabled = false;
+                                        }
 
-                                var filter = function() {
-                                    var jurusan = $("#jurusan").val();
-                                    var kelas = $("#kelas").val();
-                                    var rombel = $("#rombel").val();
-                                    var keyword = $("#keyword").val();
-                                    window.location.replace("/operator/siswa/list?jurusan=" + jurusan + "&kelas=" + kelas + "&rombel=" + rombel + "&keyword=" + keyword);
-                                }
-                            });
-                        </script>
+                                        var filter = function() {
+                                            var jurusan = $("#jurusan").val();
+                                            var kelas = $("#kelas").val();
+                                            var rombel = $("#rombel").val();
+                                            var keyword = $("#keyword").val();
+                                            window.location.replace("/operator/siswa/list?jurusan=" + jurusan + "&kelas=" + kelas + "&rombel=" + rombel + "&keyword=" + keyword);
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
                         <!--==============================================================-->
                         <!-- End of Filter -->
                         <!--==============================================================-->
-                        <div class="col-5 text-right">
-                            <ul class="nav justify-content-end">
-                                <li class="mr-2">
+                        <div class="col-lg-5 pr-2 text-right">
+                            <div class="row text-right">
+                                <div class="col pr-auto">
                                     <button class="btn btn-icon btn-warning pl-3 pr-3" type="button" data-sweet-alert="warning" id="turunkelas" value='Update' data-toggle="tooltip" data-placement="top" title="Turun Kelas">
                                         <span><i class="fas fa-arrow-circle-down"></i></span>
                                     </button>
-                                </li>
-                                <li class="mr-2">
                                     <button class="btn btn-icon btn-success pl-3 pr-3" type="button" data-sweet-alert="warning" id="naikkelas" value='Update' data-toggle="tooltip" data-placement="top" title="Naik Kelas">
                                         <span><i class="fas fa-arrow-circle-up"></i></span>
                                     </button>
-                                </li>
-                                <!-- Divider -->
-                                <style>
-                                    .vl {
-                                        border-left: 1px solid darkgrey;
-                                        height: 25px;
-                                    }
-                                </style>
-                                <div class="vl mt-2 mr-2 my-0"></div>
-                                <li class="mr-2">
-                                    <button class="btn btn-icon btn-danger pl-3 pr-3" type="button" data-sweet-alert="warning" id="delete" value='Delete' data-toggle="tooltip" data-placement="top" title="Hapus Data">
+                                    <button class="btn btn-icon btn-danger pl-3 pr-3 mr-0" type="button" data-sweet-alert="warning" id="delete" value='Delete' data-toggle="tooltip" data-placement="top" title="Hapus Data">
                                         <span><i class="far fa-trash-alt"></i></span>
                                     </button>
-                                </li>
-                                <li>
+                                </div>
+                                <div class="col-auto d-none d-lg-block">
                                     <button class="btn btn-icon btn-outline-secondary" type="button">
                                         <span class="btn-inner--text">Jumlah : <?= $jumlah ?></span>
                                     </button>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

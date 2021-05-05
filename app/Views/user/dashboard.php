@@ -142,9 +142,6 @@
         <!-- ============================================================== -->
         <div class="container-fluid mt--6">
             <div class="row">
-                <!-- ============================================================== -->
-                <!-- Data Jurusan -->
-                <!-- ============================================================== -->
                 <div class="col-xl-8">
                     <!-- ============================================================== -->
                     <!-- Form Informasi Kelulusan -->
@@ -174,190 +171,20 @@
                         <div></div>
                     <?php } ?>
                     <!-- ============================================================== -->
-                    <!-- End of Informasi dan Pengumuman -->
-                    <!-- ============================================================== -->
-                    <div class="card bg-default pb-2">
-                        <div class="card-header bg-transparent border-0">
-                            <div class="row align-items-center">
-                                <div class="col">
-                                    <h6 class="text-light text-uppercase ls-1 mb-0">Rangkuman</h6>
-                                    <h3 class="mb-0 text-white">Data Jurusan</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="table-responsive">
-                            <!-- Projects table -->
-                            <table class="table align-items-center table-dark table-flush">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">Jurusan</th>
-                                        <th scope="col">Siswa</th>
-                                        <th scope="col">Guru</th>
-                                        <th scope="col">Rombel/Kelas</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="list">
-                                    <tr>
-                                        <th scope="row">
-                                            Teknik Komputer Jaringan
-                                        </th>
-                                        <td>
-                                            <?= $jumlah_siswa_tkj ?>
-                                        </td>
-                                        <td>
-                                            <?= $jumlah_guru_tkj ?>
-                                        </td>
-                                        <td>
-                                            3
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Teknik Kendaraan Ringan Otomotif
-                                        </th>
-                                        <td>
-                                            <?= $jumlah_siswa_tkr ?>
-                                        </td>
-                                        <td>
-                                            <?= $jumlah_guru_tkr ?>
-                                        </td>
-                                        <td>
-                                            12
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Teknik Pemesinan
-                                        </th>
-                                        <td>
-                                            <?= $jumlah_siswa_tpm ?>
-                                        </td>
-                                        <td>
-                                            <?= $jumlah_guru_tpm ?>
-                                        </td>
-                                        <td>
-                                            6
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Teknik Pengelasan
-                                        </th>
-                                        <td>
-                                            <?= $jumlah_siswa_las ?>
-                                        </td>
-                                        <td>
-                                            <?= $jumlah_guru_las ?>
-                                        </td>
-                                        <td>
-                                            6
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Teknik Audio Video
-                                        </th>
-                                        <td>
-                                            <?= $jumlah_siswa_tav ?>
-                                        </td>
-                                        <td>
-                                            <?= $jumlah_guru_tav ?>
-                                        </td>
-                                        <td>
-                                            9
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Tata Busana
-                                        </th>
-                                        <td>
-                                            <?= $jumlah_siswa_tb ?>
-                                        </td>
-                                        <td>
-                                            <?= $jumlah_guru_tb ?>
-                                        </td>
-                                        <td>
-                                            9
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Desain Pemodelan dan Informasi Bangunan
-                                        </th>
-                                        <td>
-                                            <?= $jumlah_siswa_dpib ?>
-                                        </td>
-                                        <td>
-                                            <?= $jumlah_guru_dpib ?>
-                                        </td>
-                                        <td>
-                                            6
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Teknik Instalasi Tenaga Listrik
-                                        </th>
-                                        <td>
-                                            <?= $jumlah_siswa_titl ?>
-                                        </td>
-                                        <td>
-                                            <?= $jumlah_guru_titl ?>
-                                        </td>
-                                        <td>
-                                            3
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            Teknik Elektronika Industri
-                                        </th>
-                                        <td>
-                                            <?= $jumlah_siswa_elin ?>
-                                        </td>
-                                        <td>
-                                            <?= $jumlah_guru_elin ?>
-                                        </td>
-                                        <td>
-                                            6
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <!-- ============================================================== -->
-                <!-- End of Data Jurusan -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Notifikasi Perubahan Data -->
-                <!-- ============================================================== -->
-                <div class="col-xl-4">
-                    <!-- ============================================================== -->
-                    <!-- End of Notifikasi Perubahan Data -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
                     <!-- Data Anda => Guru -->
                     <!-- ============================================================== -->
-                    <?php if (!empty(session()->getFlashdata('message'))) : ?>
-                        <div class="alert alert-success alert-dismissible fade show mb-3 mt-0" role="alert">
-                            <?php echo session()->getFlashdata('message'); ?>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                    <?php endif ?>
                     <div class="card">
                         <div class="card-header bg-transparent">
                             <div class="row">
                                 <div class="col">
                                     <h3 class="mb-0">Data Anda</h3>
                                 </div>
-                                <div class="col-2 text-right justify-content-end">
+                                <div class="col-4 text-right justify-content-end">
                                     <a href="<?= base_url('/user/perubahan/add') ?>" type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Request Perubahan Data">
                                         <span><i class="fas fa-pencil-alt"></i></span>
+                                    </a>
+                                    <a href="<?= base_url('/user/profil') ?>" type="button" style="color: white; background-color: #1174EF" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Edit Data">
+                                        <span><i class="fas fa-user"></i></span>
                                     </a>
                                 </div>
                             </div>
@@ -365,15 +192,15 @@
                         <div class="card-body pt-2 pb-2">
                             <h6 class="heading-small text-muted mb-2">Data Diri</h6>
                             <div class="ml-3">
-                                <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                <div class="list-group list-group-flush ml-2 mt-1">
                                     <div class="row align-items-center">
-                                        <div class="col ml--2">
+                                        <div class="col-lg-6 ml--2 mb-3">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">NIK</h4>
                                             </div>
                                             <p class="text-sm mb-0"><?= $data->nik ?></p>
                                         </div>
-                                        <div class="col ml--2">
+                                        <div class="col-lg-6 ml--2 mb-3">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">Nama</h4>
                                             </div>
@@ -381,9 +208,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                <div class="list-group list-group-flush ml-2 mt-1">
                                     <div class="row align-items-center">
-                                        <div class="col ml--2">
+                                        <div class="col-lg-6 ml--2 mb-3">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">Jenis Kelamin</h4>
                                             </div>
@@ -393,7 +220,7 @@
                                                                         echo 'Perempuan';
                                                                     }; ?></p>
                                         </div>
-                                        <div class="col ml--2">
+                                        <div class="col-lg-6 ml--2 mb-3">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h4 class="mb-0 text-sm">TTL</h4>
                                             </div>
@@ -406,23 +233,23 @@
                             <?php if (session()->get('role') == 'pegawai' or session()->get('role') == 'guru') { ?>
                                 <h6 class="heading-small text-muted mb-2">Kepegawaian</h6>
                                 <div class="ml-3">
-                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1">
                                         <div class="row align-items-center">
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">Status Kepegawaian</h4>
                                                 </div>
                                                 <p class="text-sm mb-0"><?= $data->status_kepegawaian ?></p>
                                             </div>
                                             <?php if (session()->get('role') == 'guru') { ?>
-                                                <div class="col ml--2">
+                                                <div class="col-lg-6 ml--2 mb-3">
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <h4 class="mb-0 text-sm">Jurusan</h4>
                                                     </div>
                                                     <p class="text-sm mb-0"><?= $data->akronim_jurusan ?></p>
                                                 </div>
                                             <?php } else if (session()->get('role') == 'pegawai') { ?>
-                                                <div class="col ml--2">
+                                                <div class="col-lg-6 ml--2 mb-3">
                                                     <div class="d-flex justify-content-between align-items-center">
                                                         <h4 class="mb-0 text-sm">Kategori</h4>
                                                     </div>
@@ -431,15 +258,15 @@
                                             <?php } ?>
                                         </div>
                                     </div>
-                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1">
                                         <div class="row align-items-center">
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">SK-CPNS</h4>
                                                 </div>
                                                 <p class="text-sm mb-0"><?= $data->sk_cpns ?></p>
                                             </div>
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">NIP</h4>
                                                 </div>
@@ -447,15 +274,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1">
                                         <div class="row align-items-center">
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">NUPTK</h4>
                                                 </div>
                                                 <p class="text-sm mb-0"><?= $data->nuptk ?></p>
                                             </div>
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">NPWP</h4>
                                                 </div>
@@ -467,15 +294,15 @@
                             <?php } else if (session()->get('role') == 'siswa') { ?>
                                 <h6 class="heading-small text-muted mb-2">Kesiswaan</h6>
                                 <div class="ml-3">
-                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1">
                                         <div class="row align-items-center">
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">NISN</h4>
                                                 </div>
                                                 <p class="text-sm mb-0"><?= $data->nisn ?></p>
                                             </div>
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">Kelas</h4>
                                                 </div>
@@ -495,9 +322,9 @@
                                 <hr class="my-3">
                                 <h6 class="heading-small text-muted mb-2">Kartu Indonesia Pintar</h6>
                                 <div class="ml-3">
-                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1">
                                         <div class="row align-items-center">
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">Penerima KIP</h4>
                                                 </div>
@@ -505,15 +332,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1">
                                         <div class="row align-items-center">
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">No. KIP</h4>
                                                 </div>
                                                 <p class="text-sm mb-0"><?= $data->no_kip ?></p>
                                             </div>
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">No. Rekening</h4>
                                                 </div>
@@ -525,15 +352,15 @@
                             <?php } else if (session()->get('role') == 'alumni') { ?>
                                 <h6 class="heading-small text-muted mb-2">Kesiswaan</h6>
                                 <div class="ml-3">
-                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
-                                        <div class="row align-items-center mb-3">
-                                            <div class="col ml--2">
+                                    <div class="list-group list-group-flush ml-2 mt-1">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">NISN</h4>
                                                 </div>
                                                 <p class="text-sm mb-0"><?= $data->nisn ?></p>
                                             </div>
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">Kelas</h4>
                                                 </div>
@@ -544,7 +371,7 @@
                                             </div>
                                         </div>
                                         <div class="row align-items-center">
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">Tahun Lulus</h4>
                                                 </div>
@@ -556,15 +383,15 @@
                                 <hr class="my-3">
                                 <h6 class="heading-small text-muted mb-2">Post Graduate</h6>
                                 <div class="ml-3">
-                                    <div class="list-group list-group-flush ml-2 mt-1 mb-3">
+                                    <div class="list-group list-group-flush ml-2 mt-1">
                                         <div class="row align-items-center">
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">Status</h4>
                                                 </div>
                                                 <p class="text-sm mb-0"><?= $data->status ?></p>
                                             </div>
-                                            <div class="col ml--2">
+                                            <div class="col-lg-6 ml--2 mb-3">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h4 class="mb-0 text-sm">Instansi</h4>
                                                 </div>
@@ -578,6 +405,68 @@
                     </div>
                     <!-- ============================================================== -->
                     <!-- End of Data Anda => Guru -->
+                    <!-- ============================================================== -->
+                </div>
+                <!-- ============================================================== -->
+                <!-- Notifikasi Perubahan Data -->
+                <!-- ============================================================== -->
+                <div class="col-xl-4">
+                    <?php if (!empty(session()->getFlashdata('message'))) : ?>
+                        <div class="alert alert-success alert-dismissible fade show mb-3 mt-0" role="alert">
+                            <?php echo session()->getFlashdata('message'); ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <?php endif ?>
+                    <div class="card">
+                        <div class="card-header bg-transparent">
+                            <div class="row align-items-center">
+                                <div class="col-10">
+                                    <h3 class="mb-0">Notifikasi Perubahan Data</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pl-0 pr-0 pt-0 pb-0">
+                            <div class="table-responsive">
+                                <table class="table align-items-center list-group-flush">
+                                    <tbody class="list pl-4 pt-2 pb-2">
+                                        <?php foreach ($perubahan as $perubahan) { ?>
+                                            <?php if ($perubahan->status == 'done') { ?>
+                                                <tr></tr>
+                                            <?php } else { ?>
+                                                <tr>
+                                                    <td class="pl-4">
+                                                        <div>
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <?php if ($perubahan->status == 'processed') { ?>
+                                                                    <h4 class="mb-0 text-sm"><?= ucfirst($perubahan->status) ?></h4>
+                                                                <?php } else if ($perubahan->status == 'approved') { ?>
+                                                                    <h4 class="mb-0 text-sm text-success"><?= ucfirst($perubahan->status) ?></h4>
+                                                                <?php } else if ($perubahan->status == 'rejected') { ?>
+                                                                    <h4 class="mb-0 text-sm text-danger"><?= ucfirst($perubahan->status) ?></h4>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <p class="text-sm mb-0">PERUBAHAN <?= strtoupper($perubahan->kategori_perubahan) ?></p>
+                                                        </div>
+                                                    </td>
+                                                    <?php if ($perubahan->status == 'approved' || $perubahan->status == 'rejected') { ?>
+                                                        <td class="pl-0 pr-3 text-center">
+                                                            <a class="btn btn-sm btn-icon-only text-light" href="<?= base_url('user/perubahan/selesai/' . $perubahan->id_perubahan . '') ?>" role="button" data-toggle="tooltip" data-placement="top" title="Tandai Selesai">
+                                                                <i class="fas fa-times"></i>
+                                                            </a>
+                                                        </td>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End of Notifikasi Perubahan Data -->
                     <!-- ============================================================== -->
                     <!-- ============================================================== -->
                     <!-- Informasi dan Pengumuman -->
